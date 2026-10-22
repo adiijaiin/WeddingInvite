@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Wedding Countdown Timer (Vivah Muhurat: 21 Dec 2026, 11:30 AM)
-    const weddingDate = new Date('2026-12-21T11:30:00+05:30').getTime();
+    // 5. Wedding Countdown Timer (Vivah Muhurat: 22 Dec 2026, 01:00 PM)
+    const weddingDate = new Date('2026-12-22T13:00:00+05:30').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -259,27 +259,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const events = {
             'haldi': {
                 title: "Naincee & Aditya's Haldi & Phoolon Ki Holi",
-                desc: "Join us for an auspicious, sunny morning of Haldi and flower shower celebrations followed by festive brunch!",
-                location: "The Greens Lawn, Hotel HR Greens, Indore",
-                googleDates: "20261220T050000Z/20261220T083000Z"
+                desc: "Join us for an auspicious afternoon of Haldi and flower shower celebrations followed by festive snacks!",
+                location: "Hotel HR Greens, Indore",
+                googleDates: "20261221T083000Z/20261221T113000Z"
             },
             'sangeet': {
                 title: "Naincee & Aditya's Sangeet & Cocktail Soirée",
                 desc: "An electrifying evening of music, dance face-offs, cocktails, and royal feast!",
-                location: "Crystal Grand Ballroom, Hotel HR Greens, Indore",
-                googleDates: "20261220T133000Z/20261220T193000Z"
+                location: "Hotel HR Greens, Indore",
+                googleDates: "20261221T133000Z/20261221T173000Z"
             },
             'phere': {
                 title: "Naincee & Aditya's Shubh Vivah & Sacred Phere",
-                desc: "Witness the sacred seven vows around the holy fire as Naincee & Aditya unite in matrimony. Baraat: 10 AM, Varmala: 11:15 AM, Phere: 12:00 PM.",
-                location: "The Royal Mandap Lawn, Hotel HR Greens, Indore",
-                googleDates: "20261221T043000Z/20261221T100000Z"
+                desc: "Witness the sacred seven vows around the holy fire as Naincee & Aditya unite in matrimony.",
+                location: "Hotel HR Greens, Indore",
+                googleDates: "20261222T073000Z/20261222T100000Z"
             },
             'reception': {
                 title: "Naincee & Aditya's Grand Royal Reception",
                 desc: "An enchanting evening banquet to toast the newlyweds. Live music & gourmet dining.",
-                location: "Grand Celebrations Lawn, Hotel HR Greens, Indore",
-                googleDates: "20261221T140000Z/20261221T180000Z"
+                location: "Hotel HR Greens, Indore",
+                googleDates: "20261222T130000Z/20261222T173000Z"
             }
         };
 
@@ -298,29 +298,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "Naincee & Aditya's Haldi & Phoolon Ki Holi",
                 desc: "Haldi & flower shower celebration.",
                 location: "Hotel HR Greens, Indore",
-                start: "20261220T103000",
-                end: "20261220T140000"
+                start: "20261221T140000",
+                end: "20261221T170000"
             },
             'sangeet': {
                 title: "Naincee & Aditya's Sangeet & Cocktail Soirée",
                 desc: "Dance, music, and cocktail celebration.",
                 location: "Hotel HR Greens, Indore",
-                start: "20261220T190000",
-                end: "20261221T010000"
+                start: "20261221T190000",
+                end: "20261221T230000"
             },
             'phere': {
                 title: "Naincee & Aditya's Shubh Vivah (Phere Ceremony)",
                 desc: "Sacred Vivah Sanskar and Phere ceremony.",
                 location: "Hotel HR Greens, Indore",
-                start: "20261221T100000",
-                end: "20261221T153000"
+                start: "20261222T130000",
+                end: "20261222T160000"
             },
             'reception': {
                 title: "Naincee & Aditya's Grand Royal Reception",
                 desc: "Royal wedding dinner reception.",
                 location: "Hotel HR Greens, Indore",
-                start: "20261221T193000",
-                end: "20261221T233000"
+                start: "20261222T183000",
+                end: "20261222T230000"
             }
         };
 
