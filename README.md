@@ -19,18 +19,17 @@ An interactive, responsive, festive, and bootstrapped Indian Wedding Invitation 
 
 As requested, all events are beautifully displayed in a **single, unified Timeline paper container** matching modern luxury wedding stationery:
 - Continuous vertical axis with solid round node dots.
-- Left side: Hand-crafted pastel wedding illustrations (Rings, Cocktails & Music, Haldi flowers, Vintage Camera, Tiered Cake).
+- Left side: Hand-crafted pastel wedding illustrations (Rings, Engagement Ring & Music, Haldi flowers, Tiered Cake).
 - Right side: Bold uppercase Time, Ceremony Name, Details, Venue, Attire / Bana, and "Add to Calendar" buttons.
 
 ### Schedule of Events:
-1. **Day 1 • Friday, 27th November 2026**
-   - **10:30 AM**: Haldi & Phoolon Ki Holi (*Hotel HR Greens Lawn* • Bana: *Pastel Yellow & Powder Blue*)
-   - **07:00 PM**: Sangeet & Cocktail Soirée (*Grand Crystal Ballroom* • Bana: *Dusty Mauve, Powder Blue & Glam*)
-2. **Day 2 • Saturday, 28th November 2026**
-   - **10:00 AM**: Baraat Swagat & Milni (*HR Greens Grand Portico* • Bana: *Traditional Silk & Sherwanis*)
-   - **11:15 AM – 01:30 PM**: Shubh Vivah & Sacred Saat Phere (*Mandap Lawn* • Bana: *Heritage Mauve-Rose Silks*)
-   - **01:30 PM**: Royal Wedding Bhojan (*Imperial Dining Hall*)
-   - **07:30 PM ONWARDS**: The Grand Royal Reception (*Celebrations Lawn* • Bana: *Formal Evening Wear & Tuxedos*)
+1. **Day 1 • Monday, 21st December 2026**
+   - **02:00 PM**: Haldi & Phoolon Ki Holi (*Hotel HR Greens Lawn* • Bana: *Pastel Yellow & Powder Blue*)
+   - **07:00 PM**: Ring Ceremony & Sangeet (*Grand Crystal Ballroom* • Bana: *Dusty Mauve, Powder Blue & Glam*)
+2. **Day 2 • Tuesday, 22nd December 2026**
+   - **12:30 PM**: Baraat Swagat & Milni (*HR Greens Grand Portico* • Bana: *Traditional Silk & Sherwanis*)
+   - **01:00 PM**: Shubh Vivah & Sacred Saat Phere (*Mandap Lawn* • Bana: *Heritage Mauve-Rose Silks*)
+   - **07:00 PM ONWARDS**: The Grand Royal Reception (*Celebrations Lawn* • Bana: *Formal Evening Wear & Tuxedos*)
 
 ---
 

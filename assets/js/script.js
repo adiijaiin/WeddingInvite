@@ -175,13 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const defaultBlessings = [
         {
-            name: "Snehlata & Satyendra Jain (Bride's Parents)",
-            message: "Our darling Naincee, you fill our lives with boundless joy and warmth. Aditya, we welcome you with open arms as our beloved son. May Bhagwan Mahavira bless both of you with eternal love, harmony, and prosperity!",
+            name: "Manju & Rajendra Jain (Groom's Parents)",
+            message: "Welcoming Naincee into our hearts and family as our cherished daughter. Aditya & Naincee, may your sacred union be showered with wisdom, peace, and lifelong happiness.",
             time: "Family Blessing"
         },
         {
-            name: "Manju & Rajendra Jain (Groom's Parents)",
-            message: "Welcoming Naincee into our hearts and family as our cherished daughter. Aditya & Naincee, may your sacred union be showered with wisdom, peace, and lifelong happiness.",
+            name: "Snehlata & Satyendra Jain (Bride's Parents)",
+            message: "Our darling Naincee, you fill our lives with boundless joy and warmth. Aditya, we welcome you with open arms as our beloved son. May Bhagwan Mahavira bless both of you with eternal love, harmony, and prosperity!",
             time: "Family Blessing"
         },
         {
@@ -264,8 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 googleDates: "20261221T083000Z/20261221T113000Z"
             },
             'sangeet': {
-                title: "Naincee & Aditya's Sangeet & Cocktail Soirée",
-                desc: "An electrifying evening of music, dance face-offs, cocktails, and royal feast!",
+                title: "Naincee & Aditya's Ring Ceremony & Sangeet",
+                desc: "Exchange of rings followed by an electrifying evening of music, dance face-offs, and a royal feast!",
                 location: "Hotel HR Greens, Indore",
                 googleDates: "20261221T133000Z/20261221T173000Z"
             },
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "Naincee & Aditya's Grand Royal Reception",
                 desc: "An enchanting evening banquet to toast the newlyweds. Live music & gourmet dining.",
                 location: "Hotel HR Greens, Indore",
-                googleDates: "20261222T130000Z/20261222T173000Z"
+                googleDates: "20261222T133000Z/20261222T173000Z"
             }
         };
 
@@ -302,8 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 end: "20261221T170000"
             },
             'sangeet': {
-                title: "Naincee & Aditya's Sangeet & Cocktail Soirée",
-                desc: "Dance, music, and cocktail celebration.",
+                title: "Naincee & Aditya's Ring Ceremony & Sangeet",
+                desc: "Ring ceremony followed by dance and music celebration.",
                 location: "Hotel HR Greens, Indore",
                 start: "20261221T190000",
                 end: "20261221T230000"
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "Naincee & Aditya's Grand Royal Reception",
                 desc: "Royal wedding dinner reception.",
                 location: "Hotel HR Greens, Indore",
-                start: "20261222T183000",
+                start: "20261222T190000",
                 end: "20261222T230000"
             }
         };
