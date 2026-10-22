@@ -1,0 +1,938 @@
+/* ==========================================================================
+   ROYAL INDIAN WEDDING INVITATION - PASTEL HERITAGE THEME
+   Palette: Warm Linen Beige, Dusty Mauve, Serene Powder Blue & Champagne Gold
+   ========================================================================== */
+
+:root {
+    /* Base Palette: Warm Linen Beige */
+    --bg-page: #fbf8f4;
+    --bg-page-soft: #f5efe6;
+    --bg-card: rgba(255, 255, 255, 0.92);
+    --bg-card-hover: rgba(255, 255, 255, 0.98);
+    --border-beige: #e8decb;
+    --border-card: rgba(184, 150, 110, 0.28);
+    
+    /* Dusty Mauve */
+    --mauve-primary: #8f5577;
+    --mauve-deep: #6e3a5a;
+    --mauve-light: #b784a7;
+    --mauve-soft: #f4ebf1;
+    --mauve-gradient: linear-gradient(135deg, #a86b90 0%, #7d4468 100%);
+
+    /* Powder Blue */
+    --powder-blue-primary: #52829f;
+    --powder-blue-light: #a3c4d7;
+    --powder-blue-soft: #edf4f8;
+    --powder-blue-deep: #325a73;
+    --powder-gradient: linear-gradient(135deg, #7ba5bf 0%, #4a7794 100%);
+
+    /* Champagne Gold & Rose Gold Accents */
+    --gold-accent: #c5a059;
+    --gold-light: #f7edd7;
+    --gold-dark: #98722b;
+    --gold-gradient: linear-gradient(135deg, #d8bc7e 0%, #b88f42 50%, #e2cb98 100%);
+
+    /* Typography Colors: High Contrast Deep Charcoal Plum */
+    --text-primary: #2d1c26;
+    --text-secondary: #57414f;
+    --text-muted: #786470;
+
+    /* Fonts */
+    --font-heading: 'Cinzel Decorative', 'Rozha One', 'Cinzel', serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Outfit', 'Montserrat', sans-serif;
+
+    /* Shadows & Transitions */
+    --shadow-soft: 0 10px 30px rgba(143, 85, 119, 0.08), 0 2px 8px rgba(82, 130, 159, 0.06);
+    --shadow-hover: 0 16px 40px rgba(143, 85, 119, 0.16), 0 6px 16px rgba(197, 160, 89, 0.18);
+    --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#petalsCanvas {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    pointer-events: none !important;
+    z-index: 99 !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-page);
+    background-image: 
+        radial-gradient(circle at 15% 10%, rgba(183, 132, 167, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(163, 196, 215, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 60%, rgba(245, 239, 230, 0.8) 0%, transparent 60%),
+        radial-gradient(circle at 20% 85%, rgba(197, 160, 89, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 80% 95%, rgba(183, 132, 167, 0.12) 0%, transparent 45%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2.5l5 3.5-5 3.5zm0 15v-2.5l5 3.5-5 3.5V37.5H0v-2h20z' fill='%23c5a059' fill-opacity='0.035' fill-rule='evenodd'/%3E%3C/svg%3E");
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Typography Utility */
+.font-royal {
+    font-family: var(--font-heading);
+}
+
+.font-script {
+    font-family: var(--font-script);
+}
+
+.font-serif {
+    font-family: var(--font-serif);
+}
+
+.text-mauve {
+    color: var(--mauve-primary) !important;
+}
+
+.text-mauve-deep {
+    color: var(--mauve-deep) !important;
+}
+
+.text-powder-blue {
+    color: var(--powder-blue-primary) !important;
+}
+
+.text-gold {
+    color: var(--gold-accent) !important;
+}
+
+.text-gold-gradient {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Top Pastel Floral Header */
+.pastel-floral-header {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    background: linear-gradient(90deg, #f5edf2 0%, #edf4f8 50%, #f7edd7 100%);
+    border-bottom: 1.5px solid var(--border-card);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.floral-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--mauve-deep);
+}
+
+/* Sanskrit Mangal Banner */
+.sanskrit-header-banner {
+    background: linear-gradient(135deg, rgba(244, 235, 241, 0.7) 0%, rgba(237, 244, 248, 0.7) 100%);
+    border-bottom: 1px solid var(--border-card);
+    padding: 1.2rem 1rem;
+    text-align: center;
+}
+
+.sanskrit-title {
+    font-family: 'Rozha One', serif;
+    font-size: clamp(1.1rem, 2.3vw, 1.45rem);
+    color: var(--mauve-deep);
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+}
+
+.sanskrit-sub {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Cards & Glassmorphism in Pastel */
+.pastel-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid var(--border-card);
+    border-radius: 24px;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.pastel-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(197, 160, 89, 0.5);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Corner Ornaments */
+.ornate-corners {
+    position: relative;
+}
+
+.ornate-corners::before,
+.ornate-corners::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    border: 2px solid var(--gold-accent);
+    opacity: 0.6;
+}
+
+.ornate-corners::before {
+    top: 14px;
+    left: 14px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.ornate-corners::after {
+    bottom: 14px;
+    right: 14px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 3rem 1rem 3.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.couple-portrait-box {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    background: linear-gradient(135deg, #eedfc8, #ffffff, #d8bc7e);
+    border-radius: 28px;
+    box-shadow: 0 20px 45px rgba(143, 85, 119, 0.16);
+    margin-bottom: 2rem;
+    max-width: 320px;
+}
+
+@media (min-width: 768px) {
+    .couple-portrait-box {
+        max-width: 360px;
+    }
+}
+
+.couple-portrait-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    display: block;
+}
+
+.names-main-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+    color: var(--mauve-deep);
+    letter-spacing: 2px;
+    line-height: 1.15;
+    margin: 1rem 0;
+}
+
+.ampersand-pastel {
+    font-family: var(--font-script);
+    color: var(--powder-blue-primary);
+    font-size: clamp(2.6rem, 6vw, 4.8rem);
+    display: inline-block;
+    padding: 0 0.5rem;
+}
+
+/* Parents Blessing Highlight Card */
+.parents-pastel-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 239, 230, 0.85));
+    border: 1.5px solid var(--border-card);
+    border-radius: 20px;
+    padding: 1.8rem 1.4rem;
+    max-width: 860px;
+    margin: 2rem auto 0;
+    box-shadow: var(--shadow-soft);
+}
+
+.parivaar-role {
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.parivaar-names {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+/* Interactive Royal Shahi Farman / E-Invite Unfold Card */
+.shahi-farman-wrapper {
+    background: linear-gradient(135deg, #fdfbf8 0%, #f4ebf1 50%, #edf4f8 100%);
+    border: 2px solid var(--gold-accent);
+    border-radius: 28px;
+    padding: 2.2rem 1.5rem;
+    max-width: 860px;
+    margin: 2rem auto;
+    box-shadow: 0 15px 45px rgba(143, 85, 119, 0.12);
+    position: relative;
+}
+
+.wax-seal-pastel {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #b784a7, #8f5577 65%, #6e3a5a 100%);
+    margin: 0 auto 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(143, 85, 119, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.wax-seal-pastel:hover {
+    transform: scale(1.08) rotate(4deg);
+    box-shadow: 0 12px 30px rgba(143, 85, 119, 0.5), 0 0 20px rgba(197, 160, 89, 0.6);
+}
+
+.wax-seal-inner-monogram {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.event-quick-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+}
+
+.quick-pill-btn {
+    background: #fff;
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.quick-pill-btn:hover {
+    background: var(--mauve-soft);
+    border-color: var(--mauve-primary);
+    color: var(--mauve-deep);
+    transform: translateY(-2px);
+}
+
+/* Live Countdown Boxes in Pastel */
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    max-width: 640px;
+    margin: 1.5rem auto 0;
+}
+
+@media (max-width: 576px) {
+    .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.countdown-box-pastel {
+    background: #ffffff;
+    border: 1.5px solid var(--border-card);
+    border-radius: 16px;
+    padding: 1.1rem 0.5rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: var(--transition-smooth);
+}
+
+.countdown-box-pastel:hover {
+    border-color: var(--mauve-primary);
+    transform: translateY(-3px);
+}
+
+.countdown-digit {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--mauve-deep);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.countdown-unit {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   WEDDING TIMELINE FORMAT (SINGLE CONTAINER AS PER REFERENCE IMAGE)
+   Clean, vertical line, left artistic illustrations, right time and details
+   ========================================================================== */
+
+.timeline-single-card {
+    background: #ffffff;
+    background-image: 
+        radial-gradient(circle at 100% 0%, rgba(244, 235, 241, 0.6) 0%, transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(237, 244, 248, 0.6) 0%, transparent 40%);
+    border: 1.5px solid var(--border-card);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(143, 85, 119, 0.1), 0 4px 15px rgba(0,0,0,0.02);
+    padding: 3.5rem 2.8rem;
+    max-width: 840px;
+    margin: 0 auto;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .timeline-single-card {
+        padding: 2.2rem 1.2rem;
+        border-radius: 20px;
+    }
+}
+
+.timeline-main-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 0.4rem;
+}
+
+.timeline-main-subtitle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2.8rem;
+}
+
+/* Day Divider Ribbon */
+.timeline-day-divider {
+    text-align: center;
+    position: relative;
+    margin: 2.5rem 0 2.2rem;
+}
+
+.timeline-day-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--border-card), transparent);
+    z-index: 1;
+}
+
+.timeline-day-badge {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--mauve-soft) 0%, var(--powder-blue-soft) 100%);
+    border: 1px solid var(--border-card);
+    color: var(--mauve-deep);
+    padding: 0.4rem 1.4rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Continuous Vertical Timeline Line */
+.timeline-vertical-flow {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.timeline-vertical-flow::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    bottom: 35px;
+    left: 42%;
+    width: 2px;
+    background: var(--text-primary);
+    opacity: 0.8;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+    .timeline-vertical-flow::before {
+        left: 75px;
+    }
+}
+
+/* Timeline Item Row */
+.timeline-event-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-event-row:last-child {
+    margin-bottom: 1rem;
+}
+
+/* Left Illustration Column */
+.timeline-left-art {
+    width: 42%;
+    padding-right: 2.6rem;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .timeline-left-art {
+        width: 75px;
+        padding-right: 1.2rem;
+        justify-content: center;
+    }
+}
+
+.timeline-art-box {
+    width: 85px;
+    height: 85px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.timeline-art-box svg, .timeline-art-box img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06));
+}
+
+.timeline-event-row:hover .timeline-art-box {
+    transform: scale(1.1) rotate(2deg);
+}
+
+@media (max-width: 768px) {
+    .timeline-art-box {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+/* Central Solid Node Dot (Directly on the line) */
+.timeline-center-dot {
+    position: absolute;
+    left: 42%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 2px var(--text-primary);
+    z-index: 3;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.timeline-event-row:hover .timeline-center-dot {
+    transform: translate(-50%, -50%) scale(1.3);
+    background: var(--mauve-primary);
+    box-shadow: 0 0 0 2px var(--mauve-primary);
+}
+
+@media (max-width: 768px) {
+    .timeline-center-dot {
+        left: 75px;
+    }
+}
+
+/* Right Information Column */
+.timeline-right-info {
+    width: 58%;
+    padding-left: 2.6rem;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .timeline-right-info {
+        width: calc(100% - 75px);
+        padding-left: 1.6rem;
+    }
+}
+
+.timeline-time-label {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+}
+
+.timeline-title-label {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mauve-deep);
+    margin-bottom: 0.35rem;
+}
+
+.timeline-desc-text {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin-bottom: 0.45rem;
+}
+
+.timeline-meta-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.timeline-badge-tag {
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    background: var(--bg-page-soft);
+    border: 1px solid var(--border-card);
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.timeline-cal-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.btn-cal-mini {
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-card);
+    background: #fff;
+    color: var(--mauve-primary);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.btn-cal-mini:hover {
+    background: var(--mauve-soft);
+    color: var(--mauve-deep);
+    border-color: var(--mauve-primary);
+}
+
+/* Custom Buttons */
+.btn-mauve {
+    background: var(--mauve-gradient);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    padding: 0.6rem 1.3rem;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    box-shadow: 0 4px 15px rgba(143, 85, 119, 0.25);
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+}
+
+.btn-mauve:hover {
+    background: linear-gradient(135deg, #7d4468 0%, #572b47 100%);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(143, 85, 119, 0.35);
+}
+
+.btn-powder-blue {
+    background: var(--powder-gradient);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    padding: 0.6rem 1.3rem;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    box-shadow: 0 4px 15px rgba(82, 130, 159, 0.25);
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+}
+
+.btn-powder-blue:hover {
+    background: linear-gradient(135deg, #4a7794 0%, #305872 100%);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-pastel-outline {
+    background: #fff;
+    border: 1.5px solid var(--border-card);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 0.55rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.86rem;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+}
+
+.btn-pastel-outline:hover {
+    background: var(--mauve-soft);
+    border-color: var(--mauve-primary);
+    color: var(--mauve-deep);
+    transform: translateY(-2px);
+}
+
+/* Venue Showcase */
+.venue-showcase-pastel {
+    border-radius: 28px;
+    overflow: hidden;
+    background: #fff;
+    border: 1.5px solid var(--border-card);
+    box-shadow: var(--shadow-soft);
+}
+
+.venue-pastel-img-wrap {
+    height: 380px;
+    overflow: hidden;
+    position: relative;
+}
+
+.venue-pastel-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.venue-showcase-pastel:hover .venue-pastel-img-wrap img {
+    transform: scale(1.04);
+}
+
+.venue-tag-floating {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 0.45rem 1.1rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-card);
+    color: var(--mauve-deep);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.venue-pastel-details {
+    padding: 2.2rem;
+    background: #fff;
+}
+
+.logistics-card-pastel {
+    background: var(--bg-page-soft);
+    border: 1px solid var(--border-card);
+    border-radius: 16px;
+    padding: 1.2rem;
+    height: 100%;
+    transition: var(--transition-smooth);
+}
+
+.logistics-card-pastel:hover {
+    background: #fff;
+    border-color: var(--mauve-primary);
+    transform: translateY(-3px);
+}
+
+/* RSVP Form */
+.form-control, .form-select {
+    background-color: #fff !important;
+    border: 1.5px solid var(--border-card) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.95rem !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--mauve-primary) !important;
+    box-shadow: 0 0 0 3px rgba(143, 85, 119, 0.15) !important;
+    outline: none !important;
+}
+
+.form-check-input {
+    border: 1.5px solid var(--mauve-light);
+}
+
+.form-check-input:checked {
+    background-color: var(--mauve-primary);
+    border-color: var(--mauve-primary);
+}
+
+/* Blessings Wall */
+.blessing-card-pastel {
+    background: #fff;
+    border: 1.5px solid var(--border-card);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+    height: 100%;
+}
+
+.blessing-card-pastel:hover {
+    transform: translateY(-4px);
+    border-color: var(--powder-blue-primary);
+    box-shadow: var(--shadow-hover);
+}
+
+.blessing-avatar-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--mauve-soft);
+    color: var(--mauve-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* Floating Controls */
+.floating-actions-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.floating-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--border-card);
+    color: var(--mauve-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 0 8px 24px rgba(143, 85, 119, 0.18);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    background: var(--mauve-soft);
+    border-color: var(--mauve-primary);
+}
+
+.floating-btn.blessing-shower-btn {
+    background: linear-gradient(135deg, #f5edf2 0%, #edf4f8 100%);
+    color: var(--powder-blue-deep);
+}
+
+/* Toast */
+.wedding-toast {
+    background: #ffffff;
+    border: 1.5px solid var(--border-card);
+    border-radius: 14px;
+    color: var(--text-primary);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Footer */
+.pastel-footer {
+    background: linear-gradient(180deg, var(--bg-page) 0%, #f0e5d8 100%);
+    border-top: 1.5px solid var(--border-card);
+    padding: 3.5rem 1rem 5rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .venue-pastel-img-wrap {
+        height: 240px;
+    }
+    .floating-actions-container {
+        bottom: 16px;
+        right: 16px;
+    }
+    .floating-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
