@@ -37,6 +37,26 @@
     --text-secondary: #57414f;
     --text-muted: #786470;
 
+    /* Extra stops used by gradients and hovers (kept as variables so themes can swap them) */
+    --mauve-darkest: #572b47;
+    --powder-blue-darkest: #305872;
+    --bg-page-deep: #f0e5d8;
+    --gold-pale: #eedfc8;
+    --gold-mid: #d8bc7e;
+
+    /* Soft colour washes behind the page (body radial gradients) */
+    --wash-1: rgba(183, 132, 167, 0.12);
+    --wash-2: rgba(163, 196, 215, 0.18);
+    --wash-3: rgba(197, 160, 89, 0.10);
+
+    /* Falling petals (read by petals.js) */
+    --petal-1-bg: #A3C4D7; --petal-1-border: #7BA5BF;
+    --petal-2-bg: #B8D5E5; --petal-2-border: #8FAFC3;
+    --petal-3-bg: #C492B1; --petal-3-border: #A86B90;
+    --petal-4-bg: #DDB3CC; --petal-4-border: #B784A7;
+    --petal-5-bg: #FFF9F0; --petal-5-border: #EEDFC8;
+    --petal-6-bg: #F7EDD7; --petal-6-border: #D8BC7E;
+
     /* Fonts */
     --font-heading: 'Cinzel Decorative', 'Rozha One', 'Cinzel', serif;
     --font-script: 'Great Vibes', cursive;
@@ -47,6 +67,195 @@
     --shadow-soft: 0 10px 30px rgba(143, 85, 119, 0.08), 0 2px 8px rgba(82, 130, 159, 0.06);
     --shadow-hover: 0 16px 40px rgba(143, 85, 119, 0.16), 0 6px 16px rgba(197, 160, 89, 0.18);
     --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   THEMES (temporary switcher at the top of the page)
+   Each theme only overrides the colour variables above; layout is untouched.
+   The default "Pastel Mauve" theme is the :root block itself.
+   ========================================================================== */
+
+/* Theme switcher bar */
+.theme-switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1rem;
+    background: var(--text-primary);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.theme-switcher select {
+    font: inherit;
+    max-width: 70vw;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.theme-switcher select option {
+    color: var(--text-primary);
+}
+
+/* ---- Theme overrides go below. Pattern:
+html[data-theme="theme-id"] {
+    --bg-page: ...;
+    ...
+}
+---- */
+
+/* Option 3 · Peach, Apricot & Camel on Warm White (editorial, understated)
+   Warm camel takes the mauve role, peach/apricot takes the powder-blue role,
+   handmade warm-white paper ground, gold foil kept. */
+html[data-theme="peach-camel"] {
+    --bg-page: #fcf9f4;
+    --bg-page-soft: #f6efe6;
+    --bg-page-deep: #efe3d5;
+    --border-beige: #e6d7c4;
+    --border-card: rgba(176, 124, 82, 0.26);
+
+    --mauve-primary: #b07c52;
+    --mauve-deep: #86593a;
+    --mauve-light: #d9b48f;
+    --mauve-soft: #f7eee5;
+    --mauve-darkest: #5e3d26;
+    --mauve-gradient: linear-gradient(135deg, #c8946a 0%, #96663f 100%);
+
+    --powder-blue-primary: #d9896a;
+    --powder-blue-light: #f2bda4;
+    --powder-blue-soft: #fdf0ea;
+    --powder-blue-deep: #b8623f;
+    --powder-blue-darkest: #8a4429;
+    --powder-gradient: linear-gradient(135deg, #e8a287 0%, #c2704d 100%);
+
+    --gold-accent: #c5a059;
+    --gold-light: #f7edd7;
+    --gold-dark: #98722b;
+    --gold-pale: #efe4cf;
+    --gold-mid: #d8bc7e;
+
+    --text-primary: #2f2520;
+    --text-secondary: #5a4a40;
+    --text-muted: #7d6b60;
+
+    --wash-1: rgba(242, 189, 164, 0.24);
+    --wash-2: rgba(217, 180, 143, 0.22);
+    --wash-3: rgba(197, 160, 89, 0.10);
+
+    --shadow-soft: 0 10px 30px rgba(176, 124, 82, 0.08), 0 2px 8px rgba(217, 137, 106, 0.06);
+    --shadow-hover: 0 16px 40px rgba(176, 124, 82, 0.16), 0 6px 16px rgba(197, 160, 89, 0.18);
+
+    --petal-1-bg: #F6DCCD; --petal-1-border: #E8B9A3;  /* peach */
+    --petal-2-bg: #F2BDA4; --petal-2-border: #D9896A;  /* apricot */
+    --petal-3-bg: #FBF3EC; --petal-3-border: #E6D7C4;  /* warm white */
+    --petal-4-bg: #D9B48F; --petal-4-border: #B07C52;  /* camel */
+    --petal-5-bg: #E8D7AD; --petal-5-border: #C5A059;  /* gold */
+    --petal-6-bg: #F1CFC8; --petal-6-border: #D9A49A;  /* blush */
+}
+
+/* Option 2 · Mint Aqua, Powder Blue & Champagne Gold (serene, modern, royal)
+   Deep aqua takes the mauve role, powder blue stays in its role, champagne gold kept,
+   ground is a pale aqua-white watercolour wash. */
+html[data-theme="mint-aqua"] {
+    --bg-page: #f6fbfa;
+    --bg-page-soft: #eaf5f3;
+    --bg-page-deep: #dcefeb;
+    --border-beige: #cfe3e0;
+    --border-card: rgba(120, 170, 170, 0.28);
+
+    --mauve-primary: #3f8f8c;
+    --mauve-deep: #2a6b69;
+    --mauve-light: #8fc9c5;
+    --mauve-soft: #e6f5f3;
+    --mauve-darkest: #1d4d4b;
+    --mauve-gradient: linear-gradient(135deg, #5fb0ac 0%, #2f7b78 100%);
+
+    --powder-blue-primary: #5b8fb9;
+    --powder-blue-light: #a9c8e0;
+    --powder-blue-soft: #ecf4fa;
+    --powder-blue-deep: #3a6a90;
+    --powder-blue-darkest: #27496a;
+    --powder-gradient: linear-gradient(135deg, #86b2d3 0%, #4a7ba3 100%);
+
+    --gold-accent: #c5a059;
+    --gold-light: #f7edd7;
+    --gold-dark: #98722b;
+    --gold-pale: #efe4cf;
+    --gold-mid: #d8bc7e;
+
+    --text-primary: #1f2e33;
+    --text-secondary: #44565c;
+    --text-muted: #6b7c82;
+
+    --wash-1: rgba(143, 201, 197, 0.24);
+    --wash-2: rgba(169, 200, 224, 0.26);
+    --wash-3: rgba(197, 160, 89, 0.10);
+
+    --shadow-soft: 0 10px 30px rgba(63, 143, 140, 0.08), 0 2px 8px rgba(91, 143, 185, 0.06);
+    --shadow-hover: 0 16px 40px rgba(63, 143, 140, 0.16), 0 6px 16px rgba(197, 160, 89, 0.18);
+
+    --petal-1-bg: #FBF6E6; --petal-1-border: #E8D9B0;  /* jasmine */
+    --petal-2-bg: #F0D79A; --petal-2-border: #D8BC7E;  /* marigold */
+    --petal-3-bg: #BDE3DF; --petal-3-border: #8FC9C5;  /* mint */
+    --petal-4-bg: #C9DDEE; --petal-4-border: #A9C8E0;  /* powder blue */
+    --petal-5-bg: #F4D4D8; --petal-5-border: #E6B8BF;  /* rose petal */
+    --petal-6-bg: #E8D7AD; --petal-6-border: #C5A059;  /* gold */
+}
+
+/* Option 1 · Blush Pink, Sage Green & Ivory (floral and romantic)
+   Blush rose takes the mauve role, sage green takes the powder-blue role, matte ivory ground,
+   gold foil accents kept. */
+html[data-theme="blush-sage"] {
+    --bg-page: #fdfbf6;
+    --bg-page-soft: #f6f1e6;
+    --bg-page-deep: #efe6d6;
+    --border-beige: #e9dfcd;
+    --border-card: rgba(184, 160, 120, 0.26);
+
+    --mauve-primary: #c97d90;
+    --mauve-deep: #a3586c;
+    --mauve-light: #e3aeba;
+    --mauve-soft: #fbeef1;
+    --mauve-darkest: #7d3f51;
+    --mauve-gradient: linear-gradient(135deg, #dc9aa8 0%, #b86a7e 100%);
+
+    --powder-blue-primary: #7c9879;
+    --powder-blue-light: #b7c9b1;
+    --powder-blue-soft: #eef3ea;
+    --powder-blue-deep: #5a7458;
+    --powder-blue-darkest: #40563f;
+    --powder-gradient: linear-gradient(135deg, #9bb598 0%, #6b8768 100%);
+
+    --gold-accent: #c5a059;
+    --gold-light: #f7edd7;
+    --gold-dark: #98722b;
+    --gold-pale: #efe4cf;
+    --gold-mid: #d8bc7e;
+
+    --text-primary: #2e2523;
+    --text-secondary: #574a45;
+    --text-muted: #7a6c66;
+
+    --wash-1: rgba(201, 125, 144, 0.13);
+    --wash-2: rgba(183, 201, 177, 0.22);
+    --wash-3: rgba(197, 160, 89, 0.10);
+
+    --shadow-soft: 0 10px 30px rgba(201, 125, 144, 0.08), 0 2px 8px rgba(124, 152, 121, 0.06);
+    --shadow-hover: 0 16px 40px rgba(201, 125, 144, 0.16), 0 6px 16px rgba(197, 160, 89, 0.18);
+
+    --petal-1-bg: #B7C9B1; --petal-1-border: #8FA98B;
+    --petal-2-bg: #D3DFCF; --petal-2-border: #A9BBA4;
+    --petal-3-bg: #E8B4BF; --petal-3-border: #C97D90;
+    --petal-4-bg: #F3CFD6; --petal-4-border: #E0A3B0;
+    --petal-5-bg: #FFFBF2; --petal-5-border: #EFE4CF;
+    --petal-6-bg: #F7EDD7; --petal-6-border: #D8BC7E;
 }
 
 /* Base Styles */
@@ -73,11 +282,11 @@ html {
 body {
     background-color: var(--bg-page);
     background-image: 
-        radial-gradient(circle at 15% 10%, rgba(183, 132, 167, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 25%, rgba(163, 196, 215, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 50% 60%, rgba(245, 239, 230, 0.8) 0%, transparent 60%),
-        radial-gradient(circle at 20% 85%, rgba(197, 160, 89, 0.1) 0%, transparent 45%),
-        radial-gradient(circle at 80% 95%, rgba(183, 132, 167, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 15% 10%, var(--wash-1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, var(--wash-2) 0%, transparent 45%),
+        radial-gradient(circle at 50% 60%, var(--bg-page-soft) 0%, transparent 60%),
+        radial-gradient(circle at 20% 85%, var(--wash-3) 0%, transparent 45%),
+        radial-gradient(circle at 80% 95%, var(--wash-1) 0%, transparent 45%),
         url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2.5l5 3.5-5 3.5zm0 15v-2.5l5 3.5-5 3.5V37.5H0v-2h20z' fill='%23c5a059' fill-opacity='0.035' fill-rule='evenodd'/%3E%3C/svg%3E");
     color: var(--text-primary);
     font-family: var(--font-sans);
@@ -140,7 +349,7 @@ body {
 .pastel-floral-header {
     width: 100%;
     padding: 0.6rem 1rem;
-    background: linear-gradient(90deg, #f5edf2 0%, #edf4f8 50%, #f7edd7 100%);
+    background: linear-gradient(90deg, var(--mauve-soft) 0%, var(--powder-blue-soft) 50%, var(--gold-light) 100%);
     border-bottom: 1.5px solid var(--border-card);
     display: flex;
     flex-wrap: wrap;
@@ -244,7 +453,7 @@ body {
     position: relative;
     display: inline-block;
     padding: 10px;
-    background: linear-gradient(135deg, #eedfc8, #ffffff, #d8bc7e);
+    background: linear-gradient(135deg, var(--gold-pale), #ffffff, var(--gold-mid));
     border-radius: 28px;
     box-shadow: 0 20px 45px rgba(143, 85, 119, 0.16);
     margin-bottom: 2rem;
@@ -309,7 +518,7 @@ body {
 
 /* Interactive Royal Shahi Farman / E-Invite Unfold Card */
 .shahi-farman-wrapper {
-    background: linear-gradient(135deg, #fdfbf8 0%, #f4ebf1 50%, #edf4f8 100%);
+    background: linear-gradient(135deg, var(--bg-page) 0%, var(--mauve-soft) 50%, var(--powder-blue-soft) 100%);
     border: 2px solid var(--gold-accent);
     border-radius: 28px;
     padding: 2.2rem 1.5rem;
@@ -323,7 +532,7 @@ body {
     width: 76px;
     height: 76px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #b784a7, #8f5577 65%, #6e3a5a 100%);
+    background: radial-gradient(circle at 35% 35%, var(--mauve-light), var(--mauve-primary) 65%, var(--mauve-deep) 100%);
     margin: 0 auto 1.2rem;
     display: flex;
     justify-content: center;
@@ -715,7 +924,7 @@ body {
 }
 
 .btn-mauve:hover {
-    background: linear-gradient(135deg, #7d4468 0%, #572b47 100%);
+    background: linear-gradient(135deg, var(--mauve-deep) 0%, var(--mauve-darkest) 100%);
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(143, 85, 119, 0.35);
@@ -738,7 +947,7 @@ body {
 }
 
 .btn-powder-blue:hover {
-    background: linear-gradient(135deg, #4a7794 0%, #305872 100%);
+    background: linear-gradient(135deg, var(--powder-blue-deep) 0%, var(--powder-blue-darkest) 100%);
     color: #fff;
     transform: translateY(-2px);
 }
@@ -914,7 +1123,7 @@ body {
 }
 
 .floating-btn.blessing-shower-btn {
-    background: linear-gradient(135deg, #f5edf2 0%, #edf4f8 100%);
+    background: linear-gradient(135deg, var(--mauve-soft) 0%, var(--powder-blue-soft) 100%);
     color: var(--powder-blue-deep);
 }
 
@@ -929,7 +1138,7 @@ body {
 
 /* Footer */
 .pastel-footer {
-    background: linear-gradient(180deg, var(--bg-page) 0%, #f0e5d8 100%);
+    background: linear-gradient(180deg, var(--bg-page) 0%, var(--bg-page-deep) 100%);
     border-top: 1.5px solid var(--border-card);
     padding: 3.5rem 1rem 5rem;
     text-align: center;

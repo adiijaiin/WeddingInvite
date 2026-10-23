@@ -1,0 +1,113 @@
+/* ==========================================================================
+   OPTION 2 THEME PAGE · Mint Aqua, Powder Blue & Champagne Gold
+   Colours come from html[data-theme="mint-aqua"] in style.css.
+   This file adds the imagery: watercolour wash with paper grain, a fixed
+   double-line gold frame with jali corners, the mandap arch strip above the
+   hero, and scattered edge motifs.
+   ========================================================================== */
+
+/* Watercolour wash: mint and powder blue bleeding into each other, with a paper grain */
+body {
+    background-color: var(--bg-page);
+    background-image:
+        radial-gradient(ellipse at 20% 15%, rgba(143, 201, 197, 0.34) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 20%, rgba(169, 200, 224, 0.36) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 55%, rgba(255, 255, 255, 0.85) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 85%, rgba(169, 200, 224, 0.28) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 90%, rgba(143, 201, 197, 0.30) 0%, transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* Pearlescent shimmer: a very slow drifting highlight over the wash */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    background-size: 300% 300%;
+    animation: maShimmer 18s ease-in-out infinite alternate;
+    opacity: 0.6;
+}
+
+@keyframes maShimmer {
+    from { background-position: 0% 0%; }
+    to { background-position: 100% 100%; }
+}
+
+/* Double-line champagne gold frame hugging the viewport */
+.ma-frame {
+    position: fixed;
+    inset: 10px;
+    pointer-events: none;
+    z-index: 2;
+    border: 1px solid rgba(197, 160, 89, 0.85);
+}
+
+.ma-frame::after {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(197, 160, 89, 0.55);
+}
+
+.ma-frame__corner {
+    position: absolute;
+    width: 84px;
+    height: 84px;
+}
+
+.ma-frame__corner--tl { top: -1px; left: -1px; }
+.ma-frame__corner--tr { top: -1px; right: -1px; transform: scaleX(-1); }
+.ma-frame__corner--bl { bottom: -1px; left: -1px; transform: scaleY(-1); }
+.ma-frame__corner--br { bottom: -1px; right: -1px; transform: scale(-1, -1); }
+
+/* Scattered motifs on the lower edges */
+.ma-motif {
+    position: fixed;
+    bottom: 24px;
+    width: clamp(90px, 10vw, 150px);
+    height: auto;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.9;
+}
+
+.ma-motif--left { left: 18px; }
+.ma-motif--right { right: 18px; }
+
+/* The mandap arch strip above the monogram */
+.ma-mandap {
+    display: block;
+    width: min(1100px, 100%);
+    height: auto;
+    margin: 0 auto -9.5rem;   /* the monogram card nests inside the arch opening */
+}
+
+/* Keep page content above the shimmer and motifs; the frame stays on top but ignores clicks */
+body > header,
+body > section,
+body > main,
+body > footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Tone the hero's own ornate frame down so the arch leads */
+.couple-portrait-box {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .ma-frame { inset: 6px; }
+    .ma-frame::after { inset: 3px; }
+    .ma-frame__corner { width: 52px; height: 52px; }
+    .ma-motif { width: 70px; bottom: 14px; opacity: 0.75; }
+    .ma-mandap { margin-bottom: -2.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before { animation: none; }
+}

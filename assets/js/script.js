@@ -5,6 +5,24 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Temporary theme switcher: each theme is its own page (same assets, same backend),
+    //    so changing the dropdown navigates there. The current page is read from <html data-theme>.
+    const themePages = {
+        'pastel-mauve': 'index.html',
+        'blush-sage': 'blush-sage.html',
+        'mint-aqua': 'mint-aqua.html',
+        'peach-camel': 'peach-camel.html'
+    };
+    const themeSelect = document.getElementById('themeSelect');
+    if (themeSelect) {
+        const current = document.documentElement.getAttribute('data-theme') || 'pastel-mauve';
+        if ([...themeSelect.options].some(o => o.value === current)) themeSelect.value = current;
+        themeSelect.addEventListener('change', () => {
+            const page = themePages[themeSelect.value];
+            if (page) window.location.href = page;
+        });
+    }
+
     // 1. Initialize Petal Animation Engine
     if (window.petalEngine) {
         window.petalEngine.init();

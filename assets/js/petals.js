@@ -14,6 +14,7 @@ class PetalEngine {
         this.height = window.innerHeight;
 
         // Pastel Palette: Powder Blue, Dusty Mauve, Rose Quartz, Jasmine White, Champagne Gold
+        // (fallback; the live values come from the --petal-N-* CSS variables so themes can change them)
         this.petalColors = [
             { bg: '#A3C4D7', border: '#7BA5BF', type: 'powder' },
             { bg: '#B8D5E5', border: '#8FAFC3', type: 'powder' },
@@ -24,7 +25,25 @@ class PetalEngine {
         ];
     }
 
+    // Read the petal colours from the current theme's CSS variables and recolour the petals in flight
+    refreshColors() {
+        const styles = getComputedStyle(document.documentElement);
+        const fromCss = this.petalColors.map((fallback, i) => {
+            const bg = styles.getPropertyValue(`--petal-${i + 1}-bg`).trim();
+            const border = styles.getPropertyValue(`--petal-${i + 1}-border`).trim();
+            return { bg: bg || fallback.bg, border: border || fallback.border, type: fallback.type };
+        });
+        this.petalColors = fromCss;
+        this.petals.forEach(p => {
+            const colorSet = fromCss[Math.floor(Math.random() * fromCss.length)];
+            p.color = colorSet.bg;
+            p.borderColor = colorSet.border;
+            p.type = colorSet.type;
+        });
+    }
+
     init() {
+        this.refreshColors();
         this.canvas = document.getElementById('petalsCanvas');
         if (!this.canvas) {
             this.canvas = document.createElement('canvas');

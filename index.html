@@ -27,6 +27,17 @@
 
 <body>
 
+    <!-- Temporary theme switcher (colours only; remove before sharing) -->
+    <div class="theme-switcher">
+        <label for="themeSelect"><i class="fas fa-palette me-1"></i> Theme</label>
+        <select id="themeSelect">
+            <option value="pastel-mauve">Pastel Mauve (current)</option>
+            <option value="blush-sage">Option 1 · Blush Pink, Sage Green & Ivory</option>
+            <option value="mint-aqua">Option 2 · Mint Aqua, Powder Blue & Champagne Gold</option>
+            <option value="peach-camel">Option 3 · Peach, Apricot & Camel on Warm White</option>
+        </select>
+    </div>
+
     <!-- Canvas for Floating Pastel Petals (Powder Blue, Mauve & Jasmine) -->
     <canvas id="petalsCanvas"
         style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 99;"></canvas>
@@ -54,8 +65,6 @@
                 || ॐ श्री जिनेंद्राय नमः || मंगलं भगवान वीरो मंगलं गौतमो गणी। मंगलं कुन्दकुन्दाद्यो जैनधर्मोऽस्तु
                 मंगलम्॥
             </h5>
-            <span class="sanskrit-sub">May the divine blessings of Bhagwan Mahavira bring eternal peace, harmony, and
-                happiness upon this union</span>
         </div>
     </section>
 
@@ -276,10 +285,6 @@
                             <div class="timeline-right-info">
                                 <div class="timeline-time-label">02:00 PM</div>
                                 <div class="timeline-title-label">Haldi & Phoolon Ki Holi</div>
-                                <div class="timeline-desc-text">
-                                    Turmeric blessing ceremony, fresh marigold flower shower, beats of the Punjabi dhol,
-                                    followed by a celebratory festive brunch.
-                                </div>
                                 <div class="timeline-meta-wrap">
                                     <span class="timeline-badge-tag">
                                         <i class="fas fa-map-marker-alt text-danger"></i> Hotel HR Greens, Indore
@@ -330,10 +335,6 @@
                             <div class="timeline-right-info">
                                 <div class="timeline-time-label">07:00 PM</div>
                                 <div class="timeline-title-label">Ring Ceremony & Sangeet</div>
-                                <div class="timeline-desc-text">
-                                    Exchange of rings between Aditya and Naincee, followed by electrifying family dance
-                                    face-offs, a live Bollywood musical band, and dancing under the stars.
-                                </div>
                                 <div class="timeline-meta-wrap">
                                     <span class="timeline-badge-tag">
                                         <i class="fas fa-map-marker-alt text-danger"></i> Hotel HR Greens, Indore
@@ -386,10 +387,6 @@
                             <div class="timeline-right-info">
                                 <div class="timeline-time-label">12:30 PM</div>
                                 <div class="timeline-title-label">Baraat Swagat & Milni</div>
-                                <div class="timeline-desc-text">
-                                    Arrival of the Groom's procession with traditional drums, followed by the
-                                    Milni garland greeting ceremony by the Jain family.
-                                </div>
                                 <div class="timeline-meta-wrap">
                                     <span class="timeline-badge-tag">
                                         <i class="fas fa-map-marker-alt text-danger"></i> Hotel HR Greens, Indore
@@ -428,10 +425,6 @@
                             <div class="timeline-right-info">
                                 <div class="timeline-time-label">01:00 PM</div>
                                 <div class="timeline-title-label">Shubh Vivah & Sacred Phere</div>
-                                <div class="timeline-desc-text">
-                                    Jaimala (Varmala) under floral canopy, followed by the Sacred Saat Phere and
-                                    Hastamelap around the holy agni kund amidst Vedic chants.
-                                </div>
                                 <div class="timeline-meta-wrap">
                                     <span class="timeline-badge-tag">
                                         <i class="fas fa-map-marker-alt text-danger"></i> Hotel HR Greens, Indore
@@ -480,10 +473,6 @@
                             <div class="timeline-right-info">
                                 <div class="timeline-time-label">07:00 PM ONWARDS</div>
                                 <div class="timeline-title-label">The Grand Reception</div>
-                                <div class="timeline-desc-text">
-                                    Toasting the newlyweds under illuminated celebratory lawns, live musical ensemble,
-                                    felicitations, and an extravagant dinner banquet under the Indore stars.
-                                </div>
                                 <div class="timeline-meta-wrap">
                                     <span class="timeline-badge-tag">
                                         <i class="fas fa-map-marker-alt text-danger"></i> Hotel HR Greens, Indore
@@ -525,9 +514,6 @@
                 <div class="venue-showcase-pastel">
                     <div class="venue-pastel-img-wrap">
                         <img src="assets/images/venue.jpg" alt="Hotel HR Greens Indore Wedding Venue">
-                        <div class="venue-tag-floating">
-                            <i class="fas fa-gem text-mauve me-1"></i> Luxury Wedding Venue & Resort
-                        </div>
                     </div>
 
                     <div class="venue-pastel-details">
@@ -616,10 +602,6 @@
                                 <i class="fas fa-envelope-open-text me-1"></i> R.S.V.P
                             </span>
                             <h2 class="font-royal text-mauve-deep fs-3 mb-2">Confirm Your Presence</h2>
-                            <p class="text-muted small mb-4">
-                                Kindly let us know of your arrival by 15th November 2026 to ensure comfortable
-                                arrangements.
-                            </p>
 
                             <form id="weddingRsvpForm">
                                 <div class="mb-3">
