@@ -37,9 +37,9 @@
             <i class="fas fa-seedling text-mauve"></i>
             <span>Shubh Vivah Celebrations</span>
         </div>
-        <div class="floral-badge-pill d-none d-md-flex">
+        <div class="floral-badge-pill">
             <i class="fas fa-heart text-powder-blue"></i>
-            <span>Indore • 20th - 21st December 2026</span>
+            <span>Indore • 21st - 22nd December 2026</span>
         </div>
         <div class="floral-badge-pill">
             <i class="fas fa-om text-gold"></i>
@@ -123,7 +123,7 @@
                         <small class="text-secondary font-serif fst-italic">
                             <i class="fas fa-praying-hands text-mauve me-1"></i>
                             With the heavenly blessings and fond memories of our beloved ancestors and elders of the
-                            <strong class="text-mauve-deep">Jain Parivaar</strong>
+                            <strong class="parivaar-name">Jain Parivaar</strong>
                         </small>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                 <div class="shahi-farman-wrapper text-center mt-5">
                     <div id="waxSealBtn" class="wax-seal-pastel" title="Click to View Timeline">
                         <div class="wax-seal-inner-monogram">
-                            N & A
+                            A & N
                         </div>
                     </div>
 
@@ -578,9 +578,9 @@
                                     <div class="col-sm-6">
                                         <div class="logistics-card-pastel">
                                             <i class="fas fa-car text-gold fs-4 mb-2"></i>
-                                            <h6 class="text-dark mb-1">Valet Parking</h6>
-                                            <p class="small text-muted mb-0">Spacious dedicated parking & valet
-                                                assistance</p>
+                                            <h6 class="text-dark mb-1">Parking</h6>
+                                            <p class="small text-muted mb-0">Spacious dedicated parking available at
+                                                the venue</p>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -672,55 +672,26 @@
                                     </div>
                                 </div>
 
-                                <!-- Ceremony checkboxes -->
+                                <!-- Side Radio -->
                                 <div class="mb-3">
-                                    <label class="form-label text-dark small fw-semibold d-block">Ceremonies you will
-                                        attend:</label>
-                                    <div class="row g-2">
-                                        <div class="col-6">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="attendingEvents"
-                                                    value="Haldi" id="evHaldi" checked>
-                                                <label class="form-check-label text-secondary small" for="evHaldi">Haldi
-                                                    & Holi</label>
-                                            </div>
+                                    <label class="form-label text-dark small fw-semibold d-block">Which side are you
+                                        from? *</label>
+                                    <div class="d-flex gap-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="side" id="sideGroom"
+                                                value="Groom" required>
+                                            <label class="form-check-label text-dark small fw-semibold" for="sideGroom">
+                                                <i class="fas fa-crown text-powder-blue me-1"></i> Groom (Aditya)
+                                            </label>
                                         </div>
-                                        <div class="col-6">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="attendingEvents"
-                                                    value="Sangeet" id="evSangeet" checked>
-                                                <label class="form-check-label text-secondary small"
-                                                    for="evSangeet">Ring Ceremony & Sangeet</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="attendingEvents"
-                                                    value="Phere" id="evPhere" checked>
-                                                <label class="form-check-label text-secondary small" for="evPhere">Shubh
-                                                    Vivah / Phere</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="attendingEvents"
-                                                    value="Reception" id="evReception" checked>
-                                                <label class="form-check-label text-secondary small"
-                                                    for="evReception">Royal Reception</label>
-                                            </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="side" id="sideBride"
+                                                value="Bride" required>
+                                            <label class="form-check-label text-dark small fw-semibold" for="sideBride">
+                                                <i class="fas fa-heart text-mauve me-1"></i> Bride (Naincee)
+                                            </label>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Dietary requirements -->
-                                <div class="mb-3">
-                                    <label class="form-label text-dark small fw-semibold">Dietary Preference</label>
-                                    <select id="guestDiet" class="form-select">
-                                        <option value="Vegetarian Gourmet">Pure Vegetarian Royal Feast</option>
-                                        <option value="Jain Vegetarian">Strict Jain Vegetarian (No root veggies)
-                                        </option>
-                                        <option value="Standard Celebratory">Standard Celebratory Feast</option>
-                                    </select>
                                 </div>
 
                                 <div class="mb-4">
@@ -728,6 +699,13 @@
                                         the Couple</label>
                                     <textarea id="guestWishes" class="form-control" rows="2"
                                         placeholder="Write your heartfelt blessing..."></textarea>
+                                </div>
+
+                                <!-- Honeypot: hidden from guests, bots tend to fill it in -->
+                                <div class="d-none" aria-hidden="true">
+                                    <label for="guestWebsite">Website</label>
+                                    <input type="text" id="guestWebsite" name="website" tabindex="-1"
+                                        autocomplete="off">
                                 </div>
 
                                 <button type="submit" class="btn btn-mauve w-100 py-2">

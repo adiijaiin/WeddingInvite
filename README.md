@@ -51,7 +51,7 @@ As requested, all events are beautifully displayed in a **single, unified Timeli
 - **Google Maps URL**: [https://maps.app.goo.gl/BKoSPSNK9DEDNnwh8](https://maps.app.goo.gl/BKoSPSNK9DEDNnwh8)
 - **1-Click Copy Full Address** button with instant confirmation toast.
 - **Direct Google Maps Navigation** button.
-- **Travel Guide**: Devi Ahilyabai Holkar Airport, Indore (~15 km / 25 mins), Indore Junction Railway Station (~9 km / 20 mins), dedicated valet parking, and family hospitality helpline numbers.
+- **Travel Guide**: Devi Ahilyabai Holkar Airport, Indore (~15 km / 25 mins), Indore Junction Railway Station (~9 km / 20 mins), dedicated parking, and family hospitality helpline numbers.
 
 ---
 

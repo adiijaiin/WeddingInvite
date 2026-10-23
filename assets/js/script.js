@@ -117,7 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Interactive RSVP Management with LocalStorage
+    // 8. Interactive RSVP Management (Google Sheet via Apps Script, LocalStorage as a backup copy)
+    const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzSTB2cLzNC63_eH1Xo9ESj_7XwatvSKvX1iydRd3FHFeK9nNOkGb1VxJnwLwQqO88/exec';
     const rsvpForm = document.getElementById('weddingRsvpForm');
     const rsvpModal = document.getElementById('rsvpSuccessModal');
 
@@ -129,32 +130,42 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone = document.getElementById('guestPhone').value.trim();
             const attendance = document.querySelector('input[name="attendance"]:checked')?.value || 'Attending with Joy';
             const guestsCount = document.getElementById('guestCount').value;
-            const diet = document.getElementById('guestDiet').value;
+            const side = document.querySelector('input[name="side"]:checked')?.value || '';
             const wishes = document.getElementById('guestWishes').value.trim();
-
-            const selectedEvents = [];
-            document.querySelectorAll('input[name="attendingEvents"]:checked').forEach(cb => {
-                selectedEvents.push(cb.value);
-            });
+            const website = document.getElementById('guestWebsite')?.value || ''; // honeypot, stays empty for real guests
 
             const rsvpData = {
+                type: 'rsvp',
                 id: Date.now(),
                 name,
                 phone,
                 attendance,
+                side,
                 guestsCount,
-                diet,
-                selectedEvents,
                 wishes,
+                website,
                 submittedAt: new Date().toISOString()
             };
+
+            // Send to the Google Sheet. Apps Script sends no CORS headers, so the request goes out
+            // as no-cors: the browser can't read the reply, but the row still lands in the sheet.
+            fetch(RSVP_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(rsvpData)
+            }).catch(() => {
+                showToast('⚠️ Could not reach the RSVP sheet. Please call the helpdesk to confirm.');
+            });
 
             const existingRsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
             existingRsvps.push(rsvpData);
             localStorage.setItem('wedding_rsvps', JSON.stringify(existingRsvps));
 
+            // The Apps Script copies an RSVP wish to the Blessings tab; show it to this guest
+            // right away, marked as awaiting approval.
             if (wishes) {
-                addBlessingToWall(name, wishes, 'Just now');
+                addPendingBlessing(name, wishes);
             }
 
             if (window.showerBlessings) {
@@ -183,34 +194,56 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Snehlata & Satyendra Jain (Bride's Parents)",
             message: "Our darling Naincee, you fill our lives with boundless joy and warmth. Aditya, we welcome you with open arms as our beloved son. May Bhagwan Mahavira bless both of you with eternal love, harmony, and prosperity!",
             time: "Family Blessing"
-        },
-        {
-            name: "Ankit & Ritu Jain (Cousins)",
-            message: "The Sangeet dance face-offs at Hotel HR Greens are going to be legendary! Can't wait to celebrate with both families in Indore!",
-            time: "2 hours ago"
-        },
-        {
-            name: "Prashant & Neha Jain (Family Friends)",
-            message: "Heartiest congratulations to both the Jain families! Looking forward to an enchanting celebration at Hotel HR Greens, Indore!",
-            time: "4 hours ago"
         }
     ];
 
-    function loadBlessings() {
-        if (!blessingsList) return;
-        const savedBlessings = JSON.parse(localStorage.getItem('wedding_blessings') || '[]');
-        const allBlessings = [...savedBlessings, ...defaultBlessings];
+    // Approved blessings come from the Google Sheet (Blessings tab, Approved ticked).
+    // A guest's own just-posted blessing is kept in localStorage so they see it at once,
+    // marked as awaiting approval, until it shows up in the approved list.
+    let sheetBlessings = [];
 
-        blessingsList.innerHTML = '';
-        allBlessings.forEach(b => {
-            renderBlessingCard(b.name, b.message, b.time);
-        });
+    function pendingBlessings() {
+        return JSON.parse(localStorage.getItem('wedding_blessings_pending') || '[]');
     }
 
-    function renderBlessingCard(name, message, time) {
+    function renderWall() {
+        if (!blessingsList) return;
+        const approvedKeys = new Set(sheetBlessings.map(b => b.name + '|' + b.message));
+        const pending = pendingBlessings().filter(b => !approvedKeys.has(b.name + '|' + b.message));
+        localStorage.setItem('wedding_blessings_pending', JSON.stringify(pending));
+
+        blessingsList.innerHTML = '';
+        pending.forEach(b => renderBlessingCard(b.name, b.message, 'Awaiting approval', true));
+        sheetBlessings.forEach(b => renderBlessingCard(b.name, b.message, formatBlessingTime(b.time)));
+        defaultBlessings.forEach(b => renderBlessingCard(b.name, b.message, b.time));
+    }
+
+    function formatBlessingTime(value) {
+        const d = new Date(value);
+        if (isNaN(d)) return 'Shubhkaamnaye';
+        return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    }
+
+    function loadBlessings() {
+        renderWall(); // family blessings (and any pending ones) show immediately
+        fetch(`${RSVP_ENDPOINT}?action=blessings`, { cache: 'no-store' })
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.ok && Array.isArray(data.blessings)) {
+                    sheetBlessings = data.blessings;
+                    renderWall();
+                }
+            })
+            .catch(() => { /* sheet unreachable: the wall keeps the family blessings */ });
+    }
+
+    function renderBlessingCard(name, message, time, pending = false) {
         if (!blessingsList) return;
         const card = document.createElement('div');
         card.className = 'col-md-6 col-lg-4';
+        const badge = pending
+            ? '<span class="badge bg-light text-secondary border"><i class="far fa-hourglass me-1"></i> Visible to you until approved</span>'
+            : '<span class="badge bg-light text-mauve-deep border"><i class="fas fa-heart text-danger me-1"></i> Shubhkaamnaye</span>';
         card.innerHTML = `
             <div class="blessing-card-pastel">
                 <div class="d-flex align-items-center mb-3">
@@ -223,19 +256,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <p class="mb-3 text-secondary fst-italic">"${escapeHtml(message)}"</p>
-                <div class="pt-2 text-end border-top border-light">
-                    <span class="badge bg-light text-mauve-deep border"><i class="fas fa-heart text-danger me-1"></i> Shubhkaamnaye</span>
-                </div>
+                <div class="pt-2 text-end border-top border-light">${badge}</div>
             </div>
         `;
         blessingsList.appendChild(card);
     }
 
-    function addBlessingToWall(name, message, time = 'Just now') {
-        const savedBlessings = JSON.parse(localStorage.getItem('wedding_blessings') || '[]');
-        savedBlessings.unshift({ name, message, time });
-        localStorage.setItem('wedding_blessings', JSON.stringify(savedBlessings));
-        loadBlessings();
+    function addPendingBlessing(name, message) {
+        const pending = pendingBlessings();
+        pending.unshift({ name, message });
+        localStorage.setItem('wedding_blessings_pending', JSON.stringify(pending));
+        renderWall();
     }
 
     if (blessingForm) {
@@ -243,12 +274,21 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const name = document.getElementById('blessingAuthor').value.trim();
             const message = document.getElementById('blessingContent').value.trim();
-            if (name && message) {
-                addBlessingToWall(name, message);
-                if (window.showerBlessings) window.showerBlessings(60);
-                showToast('💖 Your blessing has been lovingly posted to the wall!');
-                blessingForm.reset();
-            }
+            if (!name || !message) return;
+
+            fetch(RSVP_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ type: 'blessing', name, message, website: document.getElementById('guestWebsite')?.value || '' })
+            }).catch(() => {
+                showToast('⚠️ Could not reach the blessings sheet. Please try again in a moment.');
+            });
+
+            addPendingBlessing(name, message);
+            if (window.showerBlessings) window.showerBlessings(60);
+            showToast('💖 Thank you! Your blessing will appear on the wall once the family approves it.');
+            blessingForm.reset();
         });
     }
 
