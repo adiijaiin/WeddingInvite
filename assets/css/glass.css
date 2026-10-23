@@ -1,0 +1,435 @@
+/* ==========================================================================
+   LIQUID GLASS · a reusable design system in the manner of iOS 26 / macOS Tahoe
+   Loaded only by the glass pages (html.glass-theme), so Options 1 and 2 are untouched.
+
+   Structure
+     1. tokens (light, dark, reduced-transparency)
+     2. .glass base + modifiers (--subtle, --strong, --interactive, --inner, --pill)
+     3. the site's containers mapped onto those classes by selector grouping
+     4. interaction, sheen, refraction (Chromium), fallbacks, motion, mobile
+     5. the vivid animated backdrop the glass needs to show through
+   ========================================================================== */
+
+/* ---------- 1. tokens ---------- */
+html.glass-theme {
+    --glass-blur: 20px;
+    --glass-saturate: 170%;
+    --glass-brightness: 1.05;
+    --glass-tint: rgba(255, 255, 255, 0.30);
+    --glass-tint-subtle: rgba(255, 255, 255, 0.18);
+    --glass-tint-strong: rgba(255, 255, 255, 0.42);
+    --glass-tint-hover: rgba(255, 255, 255, 0.46);
+    --glass-inner: rgba(255, 255, 255, 0.46);     /* nested elements: fill only, no blur */
+    --glass-border: rgba(255, 255, 255, 0.55);
+    --glass-border-hover: rgba(255, 255, 255, 0.55);
+    --glass-highlight: rgba(255, 255, 255, 0.85); /* top specular edge */
+    --glass-rim: rgba(255, 255, 255, 0.12);       /* bottom rim */
+    --glass-glow: rgba(255, 255, 255, 0.06);      /* inner glow */
+    --glass-shadow: 0 8px 32px rgba(40, 30, 50, 0.12), 0 2px 6px rgba(40, 30, 50, 0.08);
+    --glass-shadow-hover: 0 16px 44px rgba(40, 30, 50, 0.18), 0 4px 10px rgba(40, 30, 50, 0.10);
+    --glass-radius-lg: 28px;
+    --glass-radius-md: 20px;
+    --glass-radius-sm: 16px;
+    --glass-radius-pill: 9999px;
+    --glass-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --glass-t: 260ms;
+    /* text over glass: the pages are light, so the ink stays dark; a faint light halo keeps it crisp */
+    --glass-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* The pages keep their own light grounds (the mint wash and the blush paper of Options 1 and 2)
+   in every colour scheme; the glass is tuned for them. */
+
+
+/* ---------- 2. base class and modifiers ---------- */
+html.glass-theme .glass {
+    position: relative;
+    background: var(--glass-tint);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) brightness(var(--glass-brightness));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) brightness(var(--glass-brightness));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius-lg);
+    box-shadow:
+        inset 0 1px 1px var(--glass-highlight),
+        inset 0 -1px 1px var(--glass-rim),
+        inset 0 0 20px var(--glass-glow),
+        var(--glass-shadow);
+    transition: background var(--glass-t) ease, box-shadow var(--glass-t) ease,
+                border-color var(--glass-t) ease, transform var(--glass-t) var(--glass-ease-spring);
+}
+
+html.glass-theme .glass--subtle { background: var(--glass-tint-subtle); }
+html.glass-theme .glass--strong { background: var(--glass-tint-strong); }
+html.glass-theme .glass--md { border-radius: var(--glass-radius-md); }
+html.glass-theme .glass--sm { border-radius: var(--glass-radius-sm); }
+html.glass-theme .glass--pill { border-radius: var(--glass-radius-pill); }
+
+/* nested inside a .glass: translucent fill and the same edge light, but NO backdrop-filter
+   (stacking blurs breaks in several browsers) */
+html.glass-theme .glass--inner {
+    position: relative;
+    background: var(--glass-inner);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--glass-radius-sm);
+    box-shadow: inset 0 1px 1px var(--glass-highlight), inset 0 -1px 1px var(--glass-rim), 0 2px 6px rgba(40, 30, 50, 0.06);
+    transition: background var(--glass-t) ease, box-shadow var(--glass-t) ease,
+                border-color var(--glass-t) ease, transform var(--glass-t) var(--glass-ease-spring);
+}
+
+/* gradient border: brighter top-left and bottom-right, fading between, a light source at the top-left */
+html.glass-theme .glass::before,
+html.glass-theme .glass--inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.05) 45%, rgba(255, 255, 255, 0.05) 55%, rgba(255, 255, 255, 0.55) 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* sheen: a diagonal wash over the top half */
+html.glass-theme .glass::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 50% 0;
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 70%);
+    pointer-events: none;
+}
+
+/* content of a glass container sits above its pseudo-elements */
+html.glass-theme .glass > *,
+html.glass-theme .glass--inner > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- 3. the site's containers, mapped by selector ---------- */
+
+/* major containers: blur */
+html.glass-theme .pastel-card,
+html.glass-theme .parents-pastel-card,
+html.glass-theme .shahi-farman-wrapper,
+html.glass-theme .timeline-single-card,
+html.glass-theme .venue-showcase-pastel,
+html.glass-theme .blessing-card-pastel,
+html.glass-theme .modal-content,
+html.glass-theme .wedding-toast,
+html.glass-theme .pastel-floral-header,
+html.glass-theme .sanskrit-header-banner,
+html.glass-theme .theme-switcher,
+html.glass-theme .floating-btn,
+html.glass-theme .pastel-footer {
+    position: relative;
+    background: var(--glass-tint);
+    background-image: none;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) brightness(var(--glass-brightness));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) brightness(var(--glass-brightness));
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        inset 0 1px 1px var(--glass-highlight),
+        inset 0 -1px 1px var(--glass-rim),
+        inset 0 0 20px var(--glass-glow),
+        var(--glass-shadow);
+    transition: background var(--glass-t) ease, box-shadow var(--glass-t) ease,
+                border-color var(--glass-t) ease, transform var(--glass-t) var(--glass-ease-spring);
+}
+
+html.glass-theme .pastel-card,
+html.glass-theme .parents-pastel-card,
+html.glass-theme .shahi-farman-wrapper,
+html.glass-theme .timeline-single-card,
+html.glass-theme .venue-showcase-pastel { border-radius: var(--glass-radius-lg); }
+
+html.glass-theme .blessing-card-pastel,
+html.glass-theme .modal-content { border-radius: var(--glass-radius-md); }
+
+html.glass-theme .wedding-toast { border-radius: var(--glass-radius-sm); }
+
+html.glass-theme .pastel-floral-header,
+html.glass-theme .sanskrit-header-banner,
+html.glass-theme .theme-switcher { border-radius: 0; border-left: 0; border-right: 0; }
+
+html.glass-theme .theme-switcher { background: rgba(30, 20, 36, 0.55); color: #fff; }
+html.glass-theme .theme-switcher select { background: rgba(255, 255, 255, 0.14); }
+
+html.glass-theme .floating-btn { border-radius: var(--glass-radius-pill); }
+
+html.glass-theme .pastel-footer { border-radius: var(--glass-radius-lg) var(--glass-radius-lg) 0 0; border-bottom: 0; }
+
+/* nested containers: translucent fill, no blur (they sit inside a blurred card) */
+html.glass-theme .countdown-box-pastel,
+html.glass-theme .logistics-card-pastel,
+html.glass-theme .timeline-art-box,
+html.glass-theme .timeline-day-badge,
+html.glass-theme .timeline-badge-tag,
+html.glass-theme .venue-pastel-details,
+html.glass-theme .blessing-avatar-circle,
+html.glass-theme .couple-portrait-box,
+html.glass-theme .form-control,
+html.glass-theme .form-select {
+    background: var(--glass-inner);
+    background-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 1px var(--glass-highlight), inset 0 -1px 1px var(--glass-rim), 0 2px 6px rgba(40, 30, 50, 0.06);
+}
+
+/* concentric radii: inner = outer − padding (cards pad ~24px) */
+html.glass-theme .countdown-box-pastel,
+html.glass-theme .logistics-card-pastel { border-radius: var(--glass-radius-sm); }
+html.glass-theme .timeline-art-box { border-radius: var(--glass-radius-md); }
+html.glass-theme .couple-portrait-box { border-radius: var(--glass-radius-lg); padding: 10px; }
+html.glass-theme .couple-portrait-box img { border-radius: calc(var(--glass-radius-lg) - 10px); }
+html.glass-theme .timeline-day-badge,
+html.glass-theme .timeline-badge-tag { border-radius: var(--glass-radius-pill); }
+html.glass-theme .form-control,
+html.glass-theme .form-select { border-radius: 14px; color: var(--text-primary); }
+html.glass-theme .form-control:focus,
+html.glass-theme .form-select:focus { background: var(--glass-tint-hover); border-color: var(--glass-border-hover); box-shadow: inset 0 1px 1px var(--glass-highlight), 0 0 0 3px rgba(255, 255, 255, 0.25); }
+html.glass-theme .form-control::placeholder { color: var(--text-muted); }
+
+/* buttons and nav items: pills, interactive, plain fill (most sit inside glass cards) */
+html.glass-theme .btn-mauve,
+html.glass-theme .btn-powder-blue,
+html.glass-theme .btn-pastel-outline,
+html.glass-theme .quick-pill-btn,
+html.glass-theme .btn-cal-mini,
+html.glass-theme .floral-badge-pill,
+html.glass-theme .wax-seal-pastel {
+    position: relative;
+    border-radius: var(--glass-radius-pill);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 1px var(--glass-highlight), inset 0 -1px 1px var(--glass-rim), 0 2px 6px rgba(40, 30, 50, 0.10);
+    overflow: hidden;
+    transition: background var(--glass-t) ease, box-shadow var(--glass-t) ease,
+                border-color var(--glass-t) ease, transform var(--glass-t) var(--glass-ease-spring), filter var(--glass-t) ease;
+}
+
+/* the two coloured buttons keep their theme colour, seen through a glass tint */
+html.glass-theme .btn-mauve { background: linear-gradient(var(--glass-tint-strong), var(--glass-tint-strong)), var(--mauve-gradient); color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+html.glass-theme .btn-powder-blue { background: linear-gradient(var(--glass-tint-strong), var(--glass-tint-strong)), var(--powder-gradient); color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+html.glass-theme .btn-pastel-outline,
+html.glass-theme .quick-pill-btn,
+html.glass-theme .btn-cal-mini,
+html.glass-theme .floral-badge-pill { background: var(--glass-inner); color: var(--text-primary); }
+html.glass-theme .floral-badge-pill { padding: 0.3rem 0.9rem; }
+
+/* ---------- 4. interaction ---------- */
+html.glass-theme .glass--interactive,
+html.glass-theme .btn-mauve,
+html.glass-theme .btn-powder-blue,
+html.glass-theme .btn-pastel-outline,
+html.glass-theme .quick-pill-btn,
+html.glass-theme .btn-cal-mini,
+html.glass-theme .floating-btn,
+html.glass-theme .wax-seal-pastel,
+html.glass-theme .logistics-card-pastel,
+html.glass-theme .countdown-box-pastel,
+html.glass-theme .blessing-card-pastel {
+    --mx: 50%;
+    --my: 50%;
+    will-change: transform;
+}
+
+/* cursor-following highlight (set by glass.js) */
+html.glass-theme .glass--interactive::after,
+html.glass-theme .btn-mauve::after,
+html.glass-theme .btn-powder-blue::after,
+html.glass-theme .btn-pastel-outline::after,
+html.glass-theme .quick-pill-btn::after,
+html.glass-theme .btn-cal-mini::after,
+html.glass-theme .logistics-card-pastel::after,
+html.glass-theme .countdown-box-pastel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at var(--mx) var(--my), rgba(255, 255, 255, 0.28), transparent 40%);
+    opacity: 0;
+    transition: opacity var(--glass-t) ease;
+    pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    html.glass-theme .glass--interactive:hover,
+    html.glass-theme .btn-mauve:hover,
+    html.glass-theme .btn-powder-blue:hover,
+    html.glass-theme .btn-pastel-outline:hover,
+    html.glass-theme .quick-pill-btn:hover,
+    html.glass-theme .btn-cal-mini:hover,
+    html.glass-theme .floating-btn:hover,
+    html.glass-theme .logistics-card-pastel:hover,
+    html.glass-theme .countdown-box-pastel:hover,
+    html.glass-theme .blessing-card-pastel:hover,
+    html.glass-theme .pastel-card:hover {
+        border-color: var(--glass-border-hover);
+        transform: translateY(-2px);
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75), inset 0 -1px 1px var(--glass-rim), inset 0 0 20px var(--glass-glow), var(--glass-shadow-hover);
+    }
+    html.glass-theme .btn-pastel-outline:hover,
+    html.glass-theme .quick-pill-btn:hover,
+    html.glass-theme .btn-cal-mini:hover,
+    html.glass-theme .logistics-card-pastel:hover,
+    html.glass-theme .countdown-box-pastel:hover { background: var(--glass-tint-hover); }
+    html.glass-theme .btn-mauve:hover,
+    html.glass-theme .btn-powder-blue:hover { filter: brightness(1.08); }
+    html.glass-theme .glass--interactive:hover::after,
+    html.glass-theme .btn-mauve:hover::after,
+    html.glass-theme .btn-powder-blue:hover::after,
+    html.glass-theme .btn-pastel-outline:hover::after,
+    html.glass-theme .quick-pill-btn:hover::after,
+    html.glass-theme .btn-cal-mini:hover::after,
+    html.glass-theme .logistics-card-pastel:hover::after,
+    html.glass-theme .countdown-box-pastel:hover::after { opacity: 1; }
+    html.glass-theme .wax-seal-pastel:hover { transform: translateY(-2px) scale(1.04) rotate(3deg); }
+}
+
+html.glass-theme .btn-mauve:active,
+html.glass-theme .btn-powder-blue:active,
+html.glass-theme .btn-pastel-outline:active,
+html.glass-theme .quick-pill-btn:active,
+html.glass-theme .btn-cal-mini:active,
+html.glass-theme .floating-btn:active,
+html.glass-theme .wax-seal-pastel:active,
+html.glass-theme .glass--interactive:active {
+    transform: scale(0.97);
+    transition-duration: 160ms;
+}
+
+/* ---------- refraction (Chromium): the SVG filter in the page bends what lies behind the glass.
+   Browsers that cannot take url() in backdrop-filter drop this declaration and keep the blur above. ---------- */
+html.glass-theme .pastel-card,
+html.glass-theme .parents-pastel-card,
+html.glass-theme .shahi-farman-wrapper,
+html.glass-theme .timeline-single-card,
+html.glass-theme .venue-showcase-pastel,
+html.glass-theme .blessing-card-pastel,
+html.glass-theme .modal-content {
+    -webkit-backdrop-filter: url(#liquid-glass) blur(var(--glass-blur)) saturate(var(--glass-saturate)) brightness(var(--glass-brightness));
+    backdrop-filter: url(#liquid-glass) blur(var(--glass-blur)) saturate(var(--glass-saturate)) brightness(var(--glass-brightness));
+}
+
+/* ---------- fallbacks and preferences ---------- */
+@supports not (backdrop-filter: blur(1px)) {
+    html.glass-theme .pastel-card,
+    html.glass-theme .parents-pastel-card,
+    html.glass-theme .shahi-farman-wrapper,
+    html.glass-theme .timeline-single-card,
+    html.glass-theme .venue-showcase-pastel,
+    html.glass-theme .blessing-card-pastel,
+    html.glass-theme .modal-content,
+    html.glass-theme .wedding-toast,
+    html.glass-theme .pastel-floral-header,
+    html.glass-theme .sanskrit-header-banner,
+    html.glass-theme .pastel-footer,
+    html.glass-theme .glass { background: rgba(255, 255, 255, 0.85); }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    html.glass-theme .pastel-card,
+    html.glass-theme .parents-pastel-card,
+    html.glass-theme .shahi-farman-wrapper,
+    html.glass-theme .timeline-single-card,
+    html.glass-theme .venue-showcase-pastel,
+    html.glass-theme .blessing-card-pastel,
+    html.glass-theme .modal-content,
+    html.glass-theme .wedding-toast,
+    html.glass-theme .pastel-floral-header,
+    html.glass-theme .sanskrit-header-banner,
+    html.glass-theme .pastel-footer,
+    html.glass-theme .countdown-box-pastel,
+    html.glass-theme .logistics-card-pastel,
+    html.glass-theme .glass,
+    html.glass-theme .glass--inner {
+        background: var(--bg-page-soft);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+    html.glass-theme .glass-blobs { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.glass-theme .glass-blobs span { animation: none; }
+    html.glass-theme *,
+    html.glass-theme *::after,
+    html.glass-theme *::before { transition-duration: 0ms !important; }
+}
+
+/* text over glass keeps its contrast: a hairline light halo under dark ink */
+html.glass-theme .pastel-card,
+html.glass-theme .parents-pastel-card,
+html.glass-theme .timeline-single-card,
+html.glass-theme .venue-showcase-pastel,
+html.glass-theme .blessing-card-pastel { text-shadow: var(--glass-text-shadow); }
+html.glass-theme .timeline-title-label,
+html.glass-theme .parivaar-names,
+html.glass-theme .names-main-title { text-shadow: none; } /* gradient-filled text must not carry a text-shadow */
+
+/* mobile: lighter blur and tighter corners */
+@media (max-width: 768px) {
+    html.glass-theme {
+        --glass-blur: 14px;
+        --glass-radius-lg: 22px;
+        --glass-radius-md: 16px;
+        --glass-radius-sm: 14px;
+    }
+}
+
+/* ---------- 5. the vivid backdrop: large soft blobs drifting behind everything ---------- */
+html.glass-theme .glass-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+html.glass-theme .glass-blobs span {
+    position: absolute;
+    width: 46vmax;
+    height: 46vmax;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.7;
+    will-change: transform;
+    animation: glassDrift 28s ease-in-out infinite alternate;
+}
+
+html.glass-theme .glass-blobs span:nth-child(1) { top: -12vmax; left: -10vmax; background: var(--blob-1); animation-duration: 30s; }
+html.glass-theme .glass-blobs span:nth-child(2) { top: 20vh; right: -14vmax; background: var(--blob-2); animation-duration: 36s; animation-delay: -12s; }
+html.glass-theme .glass-blobs span:nth-child(3) { bottom: -16vmax; left: 20vw; background: var(--blob-3); animation-duration: 42s; animation-delay: -20s; }
+html.glass-theme .glass-blobs span:nth-child(4) { top: 45vh; left: 35vw; width: 30vmax; height: 30vmax; background: var(--blob-4); animation-duration: 34s; animation-delay: -6s; opacity: 0.6; }
+
+@keyframes glassDrift {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(6vw, -4vh, 0) scale(1.08); }
+    to   { transform: translate3d(-5vw, 6vh, 0) scale(0.96); }
+}
+
+/* blob colours per page */
+html[data-theme="mint-glass"] {
+    --blob-1: #a7dcd7;   /* mint */
+    --blob-2: #b4cfe8;   /* powder blue */
+    --blob-3: #f1dfae;   /* champagne */
+    --blob-4: #f6d6de;   /* a breath of the monogram's pink */
+}
+
+html[data-theme="blush-glass"] {
+    --blob-1: #f5c3cf;   /* blush rose */
+    --blob-2: #c6d8c0;   /* sage */
+    --blob-3: #f1dfae;   /* champagne */
+    --blob-4: #fbe3dc;   /* the blush paper, lighter */
+}
+
+

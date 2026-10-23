@@ -9,11 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //    so changing the dropdown navigates there. The current page is read from <html data-theme>.
     const themePages = {
         'pastel-mauve': 'index.html',
-        'blush-sage': 'blush-sage.html',
-        'mint-aqua': 'mint-aqua.html',
-        'peach-camel': 'peach-camel.html',
         'mint-illustrated': 'mint-illustrated.html',
-        'blush-garden': 'blush-garden.html'
+        'blush-garden': 'blush-garden.html',
+        'mint-glass': 'mint-glass.html',
+        'blush-glass': 'blush-glass.html'
     };
     const themeSelect = document.getElementById('themeSelect');
     if (themeSelect) {

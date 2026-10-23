@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="peach-camel">
+<html lang="en" data-theme="blush-glass" class="glass-theme">
 
 <head>
     <meta charset="UTF-8">
@@ -24,232 +24,153 @@
     <!-- Custom Pastel Indian Wedding Stylesheet (Beige, Mauve, Powder Blue) -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Option 3 theme page: handmade paper, torn-paper collage, peacock, tree, mandap with couple -->
-    <link rel="stylesheet" href="assets/css/theme-peach-camel.css">
+    <!-- Option 2 theme page: the inspiration card — gold cusped arch, jasmine latkans, lotus borders, a palace garden -->
+    <link rel="stylesheet" href="assets/css/theme-blush-garden.css">
+
+    <!-- Liquid Glass design system (Option 4 = Option 2 + glass) -->
+    <link rel="stylesheet" href="assets/css/glass.css">
 </head>
 
 <body>
+
+    <!-- Liquid Glass: refraction filter (Chromium) and the drifting colour blobs the glass shows through -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <filter id="liquid-glass" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.006 0.009" numOctaves="2" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+    <div class="glass-blobs" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
     <!-- Temporary theme switcher (colours only; remove before sharing) -->
     <div class="theme-switcher">
         <label for="themeSelect"><i class="fas fa-palette me-1"></i> Theme</label>
         <select id="themeSelect">
             <option value="pastel-mauve">Pastel Mauve (current)</option>
-            <option value="blush-sage">Option 1 · Blush Pink, Sage Green & Ivory</option>
-            <option value="mint-aqua">Option 2 · Mint Aqua, Powder Blue & Champagne Gold</option>
-            <option value="peach-camel">Option 3 · Peach, Apricot & Camel on Warm White</option>
-            <option value="mint-illustrated">Option 4 · Mint Aqua with Illustrations</option>
-            <option value="blush-garden">Option 5 · Blush Garden (inspiration card)</option>
+            <option value="mint-illustrated">Option 1 · Mint Aqua with Illustrations</option>
+            <option value="blush-garden">Option 2 · Blush Garden</option>
+            <option value="mint-glass">Option 3 · Mint Aqua · Liquid Glass</option>
+            <option value="blush-glass">Option 4 · Blush Garden · Liquid Glass</option>
         </select>
     </div>
 
     <!-- =========================================================================
-         THEME IMAGERY · shared symbols (fine gold and taupe linework, drawn once)
+         THEME IMAGERY · shared gold symbols
          ========================================================================= -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
         <defs>
-            <linearGradient id="pcGold" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient id="bgGold" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#e6d2a6" />
                 <stop offset="0.5" stop-color="#c5a059" />
                 <stop offset="1" stop-color="#ead9b2" />
             </linearGradient>
-            <!-- one peacock eye-feather, drawn pointing up from (0,0) -->
-            <g id="pcFeather">
-                <path d="M0 0 C-3 -40 -3 -90 0 -130" stroke="#b07c52" stroke-width="1.1" fill="none" />
-                <path d="M0 -70 C-14 -90 -16 -120 0 -138 C16 -120 14 -90 0 -70Z" fill="#f6dccd" stroke="#c5a059" stroke-width="0.8" />
-                <ellipse cx="0" cy="-108" rx="7" ry="12" fill="#d9b48f" />
-                <ellipse cx="0" cy="-110" rx="4" ry="7" fill="#b07c52" />
-                <circle cx="0" cy="-112" r="1.8" fill="#c5a059" />
-                <path d="M-6 -40 L-14 -46 M-5 -52 L-13 -58 M-4 -64 L-11 -70 M6 -40 L14 -46 M5 -52 L13 -58 M4 -64 L11 -70" stroke="#d9b48f" stroke-width="0.6" />
+            <!-- fleur finial -->
+            <g id="bgFinial" fill="url(#bgGold)">
+                <path d="M0 -26 C4 -18 6 -12 0 -4 C-6 -12 -4 -18 0 -26Z" />
+                <path d="M-10 -8 C-4 -10 -2 -6 0 -2 C2 -6 4 -10 10 -8 C6 -4 2 -2 0 2 C-2 -2 -6 -4 -10 -8Z" />
+                <circle cx="0" cy="6" r="2.2" />
+                <path d="M0 9 V22" stroke="url(#bgGold)" stroke-width="1.2" />
+                <circle cx="0" cy="25" r="1.6" />
             </g>
-            <!-- a leaf cluster for the tree -->
-            <g id="pcLeaves" fill="#efc3aa" stroke="#a46f47" stroke-width="0.8">
-                <ellipse cx="0" cy="0" rx="14" ry="7" transform="rotate(-20)" />
-                <ellipse cx="12" cy="-8" rx="12" ry="6" transform="rotate(20 12 -8)" />
-                <ellipse cx="-12" cy="-8" rx="12" ry="6" transform="rotate(-40 -12 -8)" />
-                <ellipse cx="4" cy="-16" rx="11" ry="5.5" transform="rotate(-10 4 -16)" />
-                <circle cx="2" cy="-6" r="1.4" fill="#c5a059" stroke="none" />
+            <!-- a jasmine latkan: pearl string with pink buds and a gold bell tassel -->
+            <g id="bgLatkan">
+                <path d="M0 0 V110" stroke="#d9c38a" stroke-width="0.8" />
+                <g fill="#fbf6e6" stroke="#e3cf9a" stroke-width="0.4">
+                    <circle cx="0" cy="8" r="2.4" /><circle cx="0" cy="15" r="2.4" /><circle cx="0" cy="22" r="2.4" /><circle cx="0" cy="29" r="2.4" />
+                    <circle cx="0" cy="44" r="2.4" /><circle cx="0" cy="51" r="2.4" /><circle cx="0" cy="58" r="2.4" /><circle cx="0" cy="65" r="2.4" />
+                    <circle cx="0" cy="80" r="2.4" /><circle cx="0" cy="87" r="2.4" /><circle cx="0" cy="94" r="2.4" />
+                </g>
+                <circle cx="0" cy="36" r="3.8" fill="#f1b8c6" /><circle cx="0" cy="72" r="3.8" fill="#f1b8c6" />
+                <path d="M-5 110 Q-5 104 0 104 Q5 104 5 110 L6 113 H-6Z" fill="url(#bgGold)" />
+                <circle cx="0" cy="115" r="1.4" fill="#c5a059" />
+                <path d="M-4 117 V124 M0 117 V126 M4 117 V124" stroke="#c5a059" stroke-width="0.9" />
             </g>
-            <!-- lotus in bloom -->
-            <g id="pcLotus" fill="#f6dccd" stroke="#b07c52" stroke-width="0.7">
-                <path d="M0 0 C-10 -6 -14 -22 0 -30 C14 -22 10 -6 0 0Z" />
-                <path d="M0 0 C-18 -4 -26 -16 -20 -26 C-8 -24 -2 -10 0 0Z" />
-                <path d="M0 0 C18 -4 26 -16 20 -26 C8 -24 2 -10 0 0Z" />
-                <path d="M0 0 C-24 2 -32 -6 -30 -12 C-16 -16 -6 -6 0 0Z" fill="#efc9b4" />
-                <path d="M0 0 C24 2 32 -6 30 -12 C16 -16 6 -6 0 0Z" fill="#efc9b4" />
-                <path d="M-34 2 Q0 10 34 2" stroke="#c5a059" fill="none" />
+            <!-- lotus for the divider and the garden -->
+            <g id="bgLotus" fill="#f4c6d1" stroke="#d99aa8" stroke-width="0.6">
+                <path d="M0 0 C-8 -5 -11 -18 0 -24 C11 -18 8 -5 0 0Z" />
+                <path d="M0 0 C-15 -3 -21 -13 -16 -21 C-7 -19 -2 -8 0 0Z" />
+                <path d="M0 0 C15 -3 21 -13 16 -21 C7 -19 2 -8 0 0Z" />
+                <path d="M0 0 C-20 1 -26 -5 -24 -10 C-13 -12 -5 -5 0 0Z" fill="#eaa9b8" />
+                <path d="M0 0 C20 1 26 -5 24 -10 C13 -12 5 -5 0 0Z" fill="#eaa9b8" />
             </g>
-            <!-- lotus bud -->
-            <path id="pcBud" d="M0 0 C-8 -8 -8 -24 0 -32 C8 -24 8 -8 0 0Z M0 -4 C-4 -10 -4 -22 0 -28" fill="#f6dccd" stroke="#b07c52" stroke-width="0.7" />
-            <!-- paisley -->
-            <path id="pcPaisley" d="M0 0 C-18 -10 -22 -34 -6 -46 C10 -56 28 -40 20 -22 C14 -10 6 -4 0 0Z M-4 -14 C-12 -20 -12 -34 -2 -38" fill="none" stroke="url(#pcGold)" stroke-width="1.3" stroke-linecap="round" />
-            <!-- garland swag: marigold and mogra -->
-            <g id="pcSwag">
-                <path d="M0 0 Q40 36 80 0" stroke="#d9b48f" stroke-width="1" fill="none" />
-                <circle cx="10" cy="8" r="3" fill="#f6dccd" /><circle cx="22" cy="15" r="3.2" fill="#f2bda4" />
-                <circle cx="34" cy="19" r="3" fill="#f6dccd" /><circle cx="46" cy="19" r="3.2" fill="#f2bda4" />
-                <circle cx="58" cy="15" r="3" fill="#f6dccd" /><circle cx="70" cy="8" r="3.2" fill="#f2bda4" />
+            <!-- chhatri: a domed pavilion in gold line -->
+            <g id="bgChhatri" fill="none" stroke="#c5a059" stroke-width="1.3" stroke-linecap="round">
+                <path d="M-30 0 V-50 M30 0 V-50 M-18 0 V-50 M18 0 V-50" />
+                <path d="M-40 -50 H40" />
+                <path d="M-36 -50 C-36 -82 36 -82 36 -50" fill="#f9e9e2" />
+                <path d="M-26 -56 C-26 -72 26 -72 26 -56" stroke-width="0.8" />
+                <path d="M0 -82 V-94 M-5 -92 Q0 -100 5 -92" />
+                <path d="M-44 -46 H44" stroke-width="0.8" />
+                <path d="M-40 -50 Q-30 -40 -20 -50 Q-10 -40 0 -50 Q10 -40 20 -50 Q30 -40 40 -50" stroke-width="0.8" />
             </g>
-            <!-- elephant in fine line, facing right -->
-            <g id="pcElephant">
-                <path d="M20 70 C14 44 36 30 62 32 C84 34 96 46 96 64 L96 92 H84 L82 72 H72 L70 92 H58 L56 74 H44 L42 92 H30 L28 74 C22 74 20 72 20 70Z" fill="#fbf3ec" stroke="#b07c52" stroke-width="1.3" />
-                <path d="M94 50 C110 44 118 28 112 12 C110 18 108 24 104 28 C106 20 104 12 100 8 C100 20 92 30 92 44Z" fill="#fbf3ec" stroke="#b07c52" stroke-width="1.3" />
-                <path d="M30 40 C14 36 8 50 14 60 C20 58 26 50 30 40Z" fill="#f6dccd" stroke="#b07c52" stroke-width="1.1" />
-                <circle cx="84" cy="44" r="1.8" fill="#5e3d26" />
-                <path d="M34 50 L74 50 L72 72 L36 72Z" fill="#f2bda4" stroke="#c5a059" stroke-width="1.1" />
-                <path d="M36 56 H72 M36 62 H72" stroke="#c5a059" stroke-width="0.7" />
-                <path d="M40 72 L42 79 M48 72 L50 79 M56 72 L58 79 M64 72 L66 79" stroke="#c5a059" stroke-width="1.1" stroke-linecap="round" />
-                <path d="M78 34 Q84 26 92 32 Q90 40 84 40Z" fill="#f2bda4" stroke="#c5a059" stroke-width="0.9" />
-                <circle cx="86" cy="33" r="1.5" fill="#c5a059" />
-            </g>
-            <!-- the couple, faceless, holding hands -->
-            <g id="pcCouple">
-                <!-- bride: flowing lehenga -->
-                <path d="M-70 160 C-66 100 -52 70 -40 40 L-24 40 C-12 70 0 100 4 160Z" fill="#f2bda4" stroke="#b07c52" stroke-width="1" />
-                <path d="M-68 150 Q-32 142 2 150" stroke="#c5a059" stroke-width="1" fill="none" />
-                <path d="M-62 120 Q-32 114 -2 120" stroke="#c5a059" stroke-width="0.8" fill="none" />
-                <path d="M-40 40 L-24 40 L-22 10 L-42 10Z" fill="#b07c52" />
-                <path d="M-42 12 C-50 30 -56 50 -58 70 L-50 72 C-48 54 -44 36 -40 18Z" fill="#d9a483" />
-                <path d="M-22 12 C-16 24 -10 40 -4 58 L2 56 C-4 38 -10 24 -16 16Z" fill="#d9a483" />
-                <circle cx="-32" cy="-6" r="13" fill="#d9a483" />
-                <path d="M-45 -6 Q-45 -24 -32 -24 Q-19 -24 -19 -6 Q-26 -14 -32 -14 Q-38 -14 -45 -6Z" fill="#5e3d26" />
-                <path d="M-48 -14 Q-56 30 -58 70 L-50 72 Q-46 30 -40 -8Z" fill="#f6dccd" opacity="0.8" />
-                <path d="M-34 -2 Q-32 2 -30 -2" stroke="#c5a059" stroke-width="1" fill="none" />
-                <!-- groom: sherwani -->
-                <path d="M24 160 L28 40 L58 40 L62 160Z" fill="#fbf3ec" stroke="#b07c52" stroke-width="1" />
-                <path d="M43 44 V158" stroke="#c5a059" stroke-width="0.8" />
-                <circle cx="43" cy="60" r="1.3" fill="#c5a059" /><circle cx="43" cy="80" r="1.3" fill="#c5a059" /><circle cx="43" cy="100" r="1.3" fill="#c5a059" /><circle cx="43" cy="120" r="1.3" fill="#c5a059" />
-                <path d="M28 44 C20 54 14 60 6 58 L2 56 C12 50 18 44 28 40Z" fill="#fbf3ec" stroke="#b07c52" stroke-width="0.8" />
-                <path d="M58 44 C66 60 70 80 68 100 L62 100 C62 80 60 62 56 46Z" fill="#fbf3ec" stroke="#b07c52" stroke-width="0.8" />
-                <path d="M54 44 C64 64 66 90 64 110 L60 110 Q62 80 54 50Z" fill="#f2bda4" />
-                <path d="M36 40 L50 40 L50 10 L36 10Z" fill="#d9a483" />
-                <circle cx="43" cy="-6" r="13" fill="#d9a483" />
-                <ellipse cx="43" cy="-18" rx="17" ry="8" fill="#f2bda4" stroke="#b07c52" stroke-width="0.8" />
-                <path d="M26 -16 Q43 -10 60 -16" stroke="#c5a059" stroke-width="1" fill="none" />
-                <path d="M44 -20 Q54 -34 60 -42" stroke="#c5a059" stroke-width="1.2" fill="none" stroke-linecap="round" />
-                <!-- joined hands -->
-                <circle cx="2" cy="58" r="4.5" fill="#d9a483" />
-            </g>
+            <!-- cypress -->
+            <path id="bgCypress" d="M0 0 C-7 -14 -7 -40 0 -64 C7 -40 7 -14 0 0Z" fill="#b7c9b1" stroke="#7c9879" stroke-width="0.7" />
         </defs>
     </svg>
 
-    <!-- Torn-paper collage shapes and the arched gold frame (fixed, behind the content) -->
-    <svg class="pc-collage" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path d="M-40 60 C120 20 260 90 330 40 C390 0 470 80 420 160 C380 230 260 260 160 300 C60 340 -20 300 -40 240Z" fill="#f6dccd" />
-        <path d="M1480 120 C1380 80 1260 140 1180 90 C1120 50 1040 140 1090 220 C1140 290 1260 300 1340 340 C1420 380 1480 340 1480 280Z" fill="#efd8c0" />
-        <path d="M-40 900 C40 820 140 860 220 800 C300 740 420 780 380 860 C350 920 240 920 160 940Z" fill="#e8d5c2" />
-        <path d="M1480 900 C1400 820 1280 850 1200 790 C1140 740 1040 800 1080 870 C1120 940 1260 920 1360 940Z" fill="#f2bda4" opacity="0.7" />
-        <!-- gentle arches with gold edging -->
-        <path d="M980 900 V560 A160 160 0 0 1 1300 560 V900" fill="#f3e3d2" opacity="0.8" />
-        <path d="M980 900 V560 A160 160 0 0 1 1300 560 V900" fill="none" stroke="url(#pcGold)" stroke-width="1.2" />
-        <path d="M120 900 V640 A110 110 0 0 1 340 640 V900" fill="#f8e6d8" opacity="0.8" />
-        <path d="M120 900 V640 A110 110 0 0 1 340 640 V900" fill="none" stroke="url(#pcGold)" stroke-width="1.2" />
-        <!-- small gold dot patterns -->
-        <g fill="#c5a059" opacity="0.7">
-            <circle cx="200" cy="420" r="1.6" /><circle cx="214" cy="432" r="1.2" /><circle cx="190" cy="438" r="1" />
-            <circle cx="1240" cy="470" r="1.6" /><circle cx="1256" cy="480" r="1.2" /><circle cx="1232" cy="488" r="1" />
-            <circle cx="720" cy="860" r="1.4" /><circle cx="740" cy="868" r="1" /><circle cx="700" cy="870" r="1" />
+    <!-- Thin gold frame with side finials (fixed) -->
+    <div class="bg-frame" aria-hidden="true">
+        <svg class="bg-frame__finial bg-frame__finial--left" viewBox="-13 -35 26 70"><use href="#bgFinial" /></svg>
+        <svg class="bg-frame__finial bg-frame__finial--right" viewBox="-13 -35 26 70"><use href="#bgFinial" /></svg>
+    </div>
+
+    <!-- Lotus sprays on both sides of the page (fixed) -->
+    <img class="bg-lotus bg-lotus--left" src="assets/illustrations/lotus.png" alt="" aria-hidden="true">
+    <img class="bg-lotus bg-lotus--right" src="assets/illustrations/lotus.png" alt="" aria-hidden="true">
+
+    <!-- The palace garden from the card: chhatris at the corners, a balustrade, cypresses, a fountain -->
+    <svg class="bg-garden" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+        <!-- lawn and pond -->
+        <path d="M0 230 Q720 200 1440 230 V260 H0Z" fill="#dfe8d8" />
+        <ellipse cx="720" cy="236" rx="190" ry="16" fill="#cfe0e6" stroke="#9fbfc9" stroke-width="0.8" />
+        <!-- balustrades and steps -->
+        <g stroke="#c5a059" stroke-width="1" fill="none">
+            <path d="M120 206 H480 M120 226 H480 M960 206 H1320 M960 226 H1320" />
+            <path d="M140 206 V226 M170 206 V226 M200 206 V226 M230 206 V226 M260 206 V226 M290 206 V226 M320 206 V226 M350 206 V226 M380 206 V226 M410 206 V226 M440 206 V226 M470 206 V226" />
+            <path d="M980 206 V226 M1010 206 V226 M1040 206 V226 M1070 206 V226 M1100 206 V226 M1130 206 V226 M1160 206 V226 M1190 206 V226 M1220 206 V226 M1250 206 V226 M1280 206 V226 M1310 206 V226" />
+            <path d="M480 206 L520 226 H560 M960 206 L920 226 H880 M490 214 H540 M950 214 H900" />
         </g>
-    </svg>
-    <div class="pc-frame" aria-hidden="true"></div>
-
-    <!-- Peacock, top right, train flowing down the side -->
-    <svg class="pc-peacock" viewBox="0 0 420 760" aria-hidden="true">
-        <defs>
-            <!-- theme colours: camel body, peach-to-gold plumes, gold and camel eyes -->
-            <linearGradient id="pcBodyGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#d9a483" />
-                <stop offset="0.6" stop-color="#b07c52" />
-                <stop offset="1" stop-color="#86593a" />
-            </linearGradient>
-            <linearGradient id="pcPlumeGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#f6dccd" stop-opacity="0.6" />
-                <stop offset="0.55" stop-color="#f2bda4" stop-opacity="0.8" />
-                <stop offset="1" stop-color="#e2c48a" stop-opacity="0.9" />
-            </linearGradient>
-            <!-- one train feather, hanging down from (0,0): camel stem, peach-to-gold plume, the eye near the tip -->
-            <g id="pcTrainFeather">
-                <path d="M0 0 V232" stroke="#b07c52" stroke-width="1.3" fill="none" />
-                <path d="M0 40 C-11 90 -12 160 0 238 C12 160 11 90 0 40Z" fill="url(#pcPlumeGrad)" />
-                <path d="M-2 70 L-9 76 M-3 94 L-10 100 M-3 118 L-10 124 M-2 142 L-9 148 M2 70 L9 76 M3 94 L10 100 M3 118 L10 124 M2 142 L9 148" stroke="#c9a06a" stroke-width="0.7" opacity="0.9" />
-                <ellipse cx="0" cy="196" rx="11" ry="17" fill="#c5a059" />
-                <ellipse cx="0" cy="197" rx="8" ry="12.5" fill="#f6dccd" />
-                <ellipse cx="0" cy="199" rx="5" ry="8" fill="#b07c52" />
-                <ellipse cx="0" cy="201" rx="2.4" ry="4" fill="#5e3d26" />
-            </g>
-        </defs>
-
-        <!-- the train: eleven feathers cascading from the tail in a wide fan, the eyes forming an arc -->
-        <g transform="translate(300 300)">
-            <use href="#pcTrainFeather" transform="rotate(-44) scale(0.95)" />
-            <use href="#pcTrainFeather" transform="rotate(-35) scale(1.2)" />
-            <use href="#pcTrainFeather" transform="rotate(-26) scale(1.45)" />
-            <use href="#pcTrainFeather" transform="rotate(-17) scale(1.68)" />
-            <use href="#pcTrainFeather" transform="rotate(-8) scale(1.86)" />
-            <use href="#pcTrainFeather" transform="rotate(1) scale(1.95)" />
-            <use href="#pcTrainFeather" transform="rotate(10) scale(1.86)" />
-            <use href="#pcTrainFeather" transform="rotate(19) scale(1.68)" />
-            <use href="#pcTrainFeather" transform="rotate(28) scale(1.45)" />
-            <use href="#pcTrainFeather" transform="rotate(37) scale(1.2)" />
-            <use href="#pcTrainFeather" transform="rotate(46) scale(0.95)" />
+        <!-- chhatris -->
+        <use href="#bgChhatri" transform="translate(150 206) scale(1.2)" />
+        <use href="#bgChhatri" transform="translate(1290 206) scale(1.2)" />
+        <use href="#bgChhatri" transform="translate(400 206) scale(0.75)" />
+        <use href="#bgChhatri" transform="translate(1040 206) scale(0.75)" />
+        <!-- cypresses and hedges -->
+        <use href="#bgCypress" transform="translate(280 206) scale(1.1)" />
+        <use href="#bgCypress" transform="translate(330 206) scale(0.8)" />
+        <use href="#bgCypress" transform="translate(560 214) scale(0.9)" />
+        <use href="#bgCypress" transform="translate(880 214) scale(0.9)" />
+        <use href="#bgCypress" transform="translate(1110 206) scale(0.8)" />
+        <use href="#bgCypress" transform="translate(1160 206) scale(1.1)" />
+        <g fill="#c9d8c1" stroke="#9fb49a" stroke-width="0.6">
+            <ellipse cx="600" cy="222" rx="30" ry="9" /><ellipse cx="840" cy="222" rx="30" ry="9" />
+            <ellipse cx="60" cy="236" rx="40" ry="10" /><ellipse cx="1380" cy="236" rx="40" ry="10" />
         </g>
-
-        <!-- gold branch it perches on -->
-        <path d="M420 282 C380 272 340 276 296 300 C280 310 266 318 250 322" stroke="url(#pcGold)" stroke-width="3.5" fill="none" stroke-linecap="round" />
-        <path d="M352 280 C356 268 366 262 378 262 M322 288 C318 278 320 268 328 260" stroke="url(#pcGold)" stroke-width="1.6" fill="none" stroke-linecap="round" />
-
-        <!-- body: a full teardrop in iridescent blue, the folded wing in teal-green with gold edging -->
-        <path d="M300 300 C258 290 240 240 256 200 C270 166 318 160 340 190 C362 220 346 290 300 300Z" fill="url(#pcBodyGrad)" />
-        <path d="M312 198 C340 208 350 246 332 288 C342 250 336 220 312 198Z" fill="#f2bda4" opacity="0.95" />
-        <path d="M318 206 C336 220 342 250 330 282" stroke="#c5a059" stroke-width="1" fill="none" opacity="0.85" />
-        <path d="M268 232 C280 246 300 252 318 246" stroke="#f6dccd" stroke-width="1" fill="none" opacity="0.7" />
-
-        <!-- neck: short and full, rising from the chest and curving to the left; head facing the page -->
-        <path d="M278 210 C262 196 246 180 236 160 C230 148 228 138 230 128" stroke="#86593a" stroke-width="30" fill="none" stroke-linecap="round" />
-        <path d="M278 210 C262 196 246 180 236 160 C230 148 228 138 230 128" stroke="#c8946a" stroke-width="14" fill="none" stroke-linecap="round" />
-        <path d="M262 204 C252 190 242 176 238 160" stroke="#f2bda4" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8" />
-        <circle cx="228" cy="118" r="22" fill="url(#pcBodyGrad)" />
-        <path d="M208 120 L180 128 L208 134Z" fill="#c5a059" />
-        <path d="M212 106 C220 98 232 98 238 106 C232 114 220 114 212 106Z" fill="#fbf3ec" />
-        <circle cx="220" cy="109" r="3.2" fill="#5e3d26" />
-        <!-- crest: thin stems with gold teardrops -->
-        <path d="M220 98 L204 72 M228 96 L224 66 M236 96 L242 66 M242 100 L258 76" stroke="#86593a" stroke-width="1.4" />
-        <path d="M204 72 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M224 66 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M242 66 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M258 76 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z" fill="#c5a059" />
-        <!-- feet gripping the branch -->
-        <path d="M286 302 L282 314 M278 312 L270 316 M284 316 L290 320 M306 300 L310 312 M304 312 L298 316 M312 314 L318 318" stroke="#8a6a3a" stroke-width="1.8" stroke-linecap="round" />
+        <!-- fountain -->
+        <g stroke="#c5a059" stroke-width="1" fill="#f9e9e2">
+            <ellipse cx="720" cy="232" rx="70" ry="10" fill="#e9f1f3" />
+            <path d="M690 212 H750 L744 230 H696Z" />
+            <ellipse cx="720" cy="212" rx="30" ry="5" />
+            <path d="M712 190 H728 L726 207 H714Z" />
+            <ellipse cx="720" cy="190" rx="14" ry="3" />
+            <path d="M720 160 V186" stroke-width="1.4" />
+        </g>
+        <g stroke="#9fbfc9" stroke-width="1" fill="none" stroke-linecap="round">
+            <path d="M720 160 C706 168 700 182 702 196 M720 160 C734 168 740 182 738 196 M720 160 C716 176 716 188 718 206 M720 160 C724 176 724 188 722 206" />
+        </g>
+        <!-- lotus pads and blooms on the pond -->
+        <g fill="#b7c9b1" stroke="#7c9879" stroke-width="0.5">
+            <ellipse cx="600" cy="244" rx="12" ry="4" /><ellipse cx="840" cy="244" rx="12" ry="4" /><ellipse cx="660" cy="248" rx="9" ry="3" /><ellipse cx="780" cy="248" rx="9" ry="3" />
+        </g>
+        <use href="#bgLotus" transform="translate(600 244) scale(0.5)" />
+        <use href="#bgLotus" transform="translate(840 244) scale(0.5)" />
+        <!-- flower sprays in the lower corners -->
+        <use href="#bgLotus" transform="translate(70 200) scale(1.3)" />
+        <use href="#bgLotus" transform="translate(40 150) scale(0.9) rotate(-15)" />
+        <use href="#bgLotus" transform="translate(1370 200) scale(1.3)" />
+        <use href="#bgLotus" transform="translate(1400 150) scale(0.9) rotate(15)" />
     </svg>
 
-    <!-- Peepal tree, top left -->
-    <svg class="pc-tree" viewBox="0 0 320 560" aria-hidden="true">
-        <path d="M150 560 C150 470 146 400 140 330 C136 280 150 240 160 200" stroke="#b07c52" stroke-width="7" fill="none" stroke-linecap="round" />
-        <path d="M156 300 C120 270 90 240 60 180 M158 260 C200 230 230 200 250 150 M150 230 C110 200 80 160 70 110 M160 210 C190 170 220 130 230 90 M160 200 C150 160 140 120 150 70" stroke="#b07c52" stroke-width="3" fill="none" stroke-linecap="round" />
-        <path d="M120 240 C100 230 90 210 86 190 M200 200 C220 180 236 160 240 130 M130 170 C116 150 110 130 112 110" stroke="#b07c52" stroke-width="1.6" fill="none" stroke-linecap="round" />
-        <circle cx="150" cy="130" r="88" fill="#f6dccd" opacity="0.55" />
-        <use href="#pcLeaves" transform="translate(60 180)" /><use href="#pcLeaves" transform="translate(86 190) scale(0.9)" />
-        <use href="#pcLeaves" transform="translate(250 150)" /><use href="#pcLeaves" transform="translate(240 130) scale(0.9)" />
-        <use href="#pcLeaves" transform="translate(70 110)" /><use href="#pcLeaves" transform="translate(112 110) scale(0.9)" />
-        <use href="#pcLeaves" transform="translate(230 90)" /><use href="#pcLeaves" transform="translate(150 70)" />
-        <use href="#pcLeaves" transform="translate(190 60) scale(0.9)" /><use href="#pcLeaves" transform="translate(110 60) scale(0.9)" />
-        <use href="#pcLeaves" transform="translate(150 40) scale(0.8)" /><use href="#pcLeaves" transform="translate(205 180) scale(0.8)" />
-        <use href="#pcLeaves" transform="translate(100 220) scale(0.8)" />
-        <path d="M100 560 Q150 548 200 560" stroke="#c5a059" stroke-width="1" fill="none" />
-    </svg>
-
-    <!-- Lotus clusters and paisleys along the bottom corners -->
-    <svg class="pc-lotus pc-lotus--left" viewBox="0 0 200 120" aria-hidden="true">
-        <use href="#pcLotus" transform="translate(60 100)" />
-        <use href="#pcLotus" transform="translate(120 108) scale(0.8)" />
-        <use href="#pcBud" transform="translate(150 100) rotate(15)" />
-        <use href="#pcBud" transform="translate(24 104) rotate(-15) scale(0.8)" />
-        <use href="#pcPaisley" transform="translate(180 90) scale(0.7)" />
-    </svg>
-    <svg class="pc-lotus pc-lotus--right" viewBox="0 0 200 120" aria-hidden="true">
-        <use href="#pcLotus" transform="translate(140 100)" />
-        <use href="#pcLotus" transform="translate(80 108) scale(0.8)" />
-        <use href="#pcBud" transform="translate(50 100) rotate(-15)" />
-        <use href="#pcBud" transform="translate(176 104) rotate(15) scale(0.8)" />
-        <use href="#pcPaisley" transform="translate(30 90) scale(-0.7 0.7)" />
-    </svg>
 
     <!-- Canvas for Floating Pastel Petals (Powder Blue, Mauve & Jasmine) -->
     <canvas id="petalsCanvas"
@@ -289,41 +210,46 @@
             <div class="container position-relative">
 
                 <!-- Couple Royal Framed Portrait in Pastel -->
+                <!-- Cusped Mughal arch over the monogram, jasmine latkans hanging at its sides -->
+                <svg class="bg-arch" viewBox="0 0 1000 420" aria-hidden="true" focusable="false">
+                    <g fill="none" stroke="url(#bgGold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- outer arch -->
+                        <path d="M250 420 V200 C250 150 280 120 320 112 C350 106 362 96 372 82 C390 66 404 60 420 56 C440 50 452 40 460 28 C472 14 486 8 500 2 C514 8 528 14 540 28 C548 40 560 50 580 56 C596 60 610 66 628 82 C638 96 650 106 680 112 C720 120 750 150 750 200 V420" />
+                        <!-- inner arch -->
+                        <path d="M270 420 V206 C270 164 296 138 330 130 C358 124 372 112 384 98 C398 84 412 78 428 74 C446 68 458 58 468 46 C478 34 490 28 500 24 C510 28 522 34 532 46 C542 58 554 68 572 74 C588 78 602 84 616 98 C628 112 642 124 670 130 C704 138 730 164 730 206 V420" stroke-width="1" />
+                        <!-- little cusps along the inner arch -->
+                        <path d="M330 130 q-6 10 0 20 M384 98 q-6 10 0 20 M428 74 q-6 10 0 20 M468 46 q-6 10 0 20 M532 46 q6 10 0 20 M572 74 q6 10 0 20 M616 98 q6 10 0 20 M670 130 q6 10 0 20" stroke-width="0.9" />
+                    </g>
+                    <!-- finial on the apex -->
+                    <use href="#bgFinial" transform="translate(500 -2) scale(1.1)" />
+                    <!-- latkans hanging from the shoulders of the arch and from the frame line -->
+                    <use href="#bgLatkan" transform="translate(286 170)" />
+                    <use href="#bgLatkan" transform="translate(318 120) scale(0.85)" />
+                    <use href="#bgLatkan" transform="translate(714 170)" />
+                    <use href="#bgLatkan" transform="translate(682 120) scale(0.85)" />
+                    <use href="#bgLatkan" transform="translate(200 60) scale(1.1)" />
+                    <use href="#bgLatkan" transform="translate(160 30) scale(0.9)" />
+                    <use href="#bgLatkan" transform="translate(800 60) scale(1.1)" />
+                    <use href="#bgLatkan" transform="translate(840 30) scale(0.9)" />
+                    <!-- lotus and leaf sprays at the top corners -->
+                    <g transform="translate(90 40)">
+                        <use href="#bgLotus" transform="rotate(-20) scale(1.3)" />
+                        <use href="#bgLotus" transform="translate(40 30) rotate(15) scale(0.9)" />
+                        <path d="M-10 10 C-30 20 -40 40 -36 60 M20 20 C40 30 50 50 46 72 M4 24 C0 44 4 64 12 80" stroke="#7c9879" stroke-width="1" fill="none" />
+                        <g fill="#b7c9b1" stroke="#7c9879" stroke-width="0.5"><ellipse cx="-30" cy="34" rx="7" ry="3.5" transform="rotate(-50 -30 34)" /><ellipse cx="38" cy="44" rx="7" ry="3.5" transform="rotate(50 38 44)" /><ellipse cx="8" cy="56" rx="6" ry="3" transform="rotate(80 8 56)" /></g>
+                    </g>
+                    <g transform="translate(910 40) scale(-1 1)">
+                        <use href="#bgLotus" transform="rotate(-20) scale(1.3)" />
+                        <use href="#bgLotus" transform="translate(40 30) rotate(15) scale(0.9)" />
+                        <path d="M-10 10 C-30 20 -40 40 -36 60 M20 20 C40 30 50 50 46 72 M4 24 C0 44 4 64 12 80" stroke="#7c9879" stroke-width="1" fill="none" />
+                        <g fill="#b7c9b1" stroke="#7c9879" stroke-width="0.5"><ellipse cx="-30" cy="34" rx="7" ry="3.5" transform="rotate(-50 -30 34)" /><ellipse cx="38" cy="44" rx="7" ry="3.5" transform="rotate(50 38 44)" /><ellipse cx="8" cy="56" rx="6" ry="3" transform="rotate(80 8 56)" /></g>
+                    </g>
+                </svg>
+
                 <div class="couple-portrait-box">
                     <img src="assets/images/logo.jpg" alt="Aditya & Naincee - Wedding Celebrations in Indore"
                         class="img-fluid">
                 </div>
-
-                <!-- Theme imagery: the mandap with the couple beneath the logo, elephants either side, lotuses along the base -->
-                <svg class="pc-mandap" viewBox="0 0 1200 380" aria-hidden="true" focusable="false">
-                    <g stroke="#b07c52" stroke-width="2" fill="none" stroke-linecap="round">
-                        <path d="M400 350 V120 M520 350 V100 M680 350 V100 M800 350 V120" />
-                        <path d="M380 120 H820" stroke-width="1.4" />
-                        <path d="M400 120 Q460 60 520 100 Q600 50 680 100 Q740 60 800 120" />
-                        <path d="M400 125 Q460 150 520 125 Q600 160 680 125 Q740 150 800 125" stroke-width="1.2" />
-                        <path d="M392 350 H408 M512 350 H528 M672 350 H688 M792 350 H808" />
-                    </g>
-                    <path d="M400 120 Q440 180 400 260 L404 260 Q450 180 410 120Z M800 120 Q760 180 800 260 L796 260 Q750 180 790 120Z" fill="#f6dccd" stroke="#b07c52" stroke-width="0.8" />
-                    <use href="#pcSwag" transform="translate(420 128) scale(1.2)" />
-                    <use href="#pcSwag" transform="translate(524 128) scale(1.2)" />
-                    <use href="#pcSwag" transform="translate(684 128) scale(1.2)" />
-                    <use href="#pcSwag" transform="translate(600 100) scale(1.1)" />
-                    <use href="#pcSwag" transform="translate(500 100) scale(1.1)" />
-                    <use href="#pcCouple" transform="translate(600 190)" />
-                    <use href="#pcElephant" transform="translate(110 206) scale(1.55)" />
-                    <use href="#pcElephant" transform="translate(1090 206) scale(-1.55 1.55)" />
-                    <path d="M80 352 H1120" stroke="url(#pcGold)" stroke-width="1" />
-                    <use href="#pcLotus" transform="translate(300 352) scale(0.9)" />
-                    <use href="#pcLotus" transform="translate(900 352) scale(0.9)" />
-                    <use href="#pcBud" transform="translate(350 350) rotate(10) scale(0.7)" />
-                    <use href="#pcBud" transform="translate(850 350) rotate(-10) scale(0.7)" />
-                    <use href="#pcLotus" transform="translate(60 356) scale(0.7)" />
-                    <use href="#pcLotus" transform="translate(1140 356) scale(0.7)" />
-                    <use href="#pcPaisley" transform="translate(250 330) scale(0.6)" />
-                    <use href="#pcPaisley" transform="translate(950 330) scale(-0.6 0.6)" />
-                    <g fill="#f2bda4"><ellipse cx="460" cy="338" rx="5" ry="3" transform="rotate(-20 460 338)" /><ellipse cx="740" cy="342" rx="5" ry="3" transform="rotate(25 740 342)" /><ellipse cx="620" cy="360" rx="4" ry="2.5" /></g>
-                </svg>
-
 
                 <!-- Invitation Tagline -->
                 <p class="font-script fs-1 text-mauve mb-1">Together with their families</p>
@@ -337,6 +263,14 @@
                     <span class="ampersand-pastel">&</span>
                     <span class="d-inline-block">Naincee</span>
                 </h1>
+
+                <!-- gold rule with a lotus at its centre, as under the names on the card -->
+                <svg class="bg-divider" viewBox="0 0 360 44" aria-hidden="true" focusable="false">
+                    <path d="M10 22 H140 M220 22 H350" stroke="url(#bgGold)" stroke-width="1.2" stroke-linecap="round" />
+                    <path d="M140 22 L150 18 L160 22 L150 26Z M200 22 L210 18 L220 22 L210 26Z" fill="url(#bgGold)" />
+                    <use href="#bgLotus" transform="translate(180 30) scale(0.9)" />
+                    <circle cx="180" cy="40" r="1.6" fill="#c5a059" />
+                </svg>
 
                 <!-- Parents & Family Honor Card -->
                 <div class="parents-pastel-card ornate-corners">
@@ -353,10 +287,7 @@
 
                         <!-- Central Holy Knot Symbol -->
                         <div class="col-md-2 text-center my-2 my-md-0">
-                            <div
-                                class="d-inline-flex align-items-center justify-content-center p-3 rounded-circle bg-white border shadow-sm">
-                                <i class="fas fa-ring text-mauve fs-4"></i>
-                            </div>
+                            <img class="bg-knot" src="assets/illustrations/knot.png" width="110" height="110" alt="The wedding knot: two cloths tied together">
                             <div class="small text-powder-blue mt-1 font-script fs-4">Vivah Bandhan</div>
                         </div>
 
@@ -385,10 +316,8 @@
                      2. INTERACTIVE ROYAL SHAHI FARMAN / E-INVITE UNVEIL BANNER
                      ========================================================================= -->
                 <div class="shahi-farman-wrapper text-center mt-5">
-                    <div id="waxSealBtn" class="wax-seal-pastel" title="Click to View Timeline">
-                        <div class="wax-seal-inner-monogram">
-                            A & N
-                        </div>
+                    <div id="waxSealBtn" class="wax-seal-pastel wax-seal-logo" title="Click to View Timeline">
+                        <img src="assets/images/logo.jpg" width="76" height="76" alt="A & N monogram">
                     </div>
 
                     <h3 class="font-royal text-mauve-deep fs-3 mb-2">Wedding E-Invitation</h3>
@@ -477,6 +406,8 @@
                 <div class="timeline-single-card">
 
                     <!-- Main Header -->
+                    <img class="bg-shehnai" src="assets/illustrations/tabla shehnai.png" alt="" aria-hidden="true">
+                    <img class="bg-swing" src="assets/illustrations/couple1.png" alt="" aria-hidden="true">
                     <h2 class="timeline-main-title">Wedding Timeline</h2>
                     <p class="timeline-main-subtitle">
                         Aditya & Naincee's Celebration of Love • Hotel HR Greens, Indore 2026
@@ -983,6 +914,9 @@
              ========================================================================= -->
         <section class="py-5">
             <div class="container">
+                <figure class="bg-couple2">
+                    <img src="assets/illustrations/couple2.png" alt="Illustration of the couple from behind, the bride in a deep red lehenga">
+                </figure>
                 <div class="text-center mb-5">
                     <span class="badge bg-light text-mauve border px-3 py-2 text-uppercase letter-spacing-2">
                         <i class="fas fa-praying-hands me-1"></i> Aashirvaad Wall
@@ -1006,9 +940,7 @@
          ========================================================================= -->
     <footer class="pastel-footer">
         <div class="container">
-            <div class="mb-3">
-                <i class="fas fa-om fa-2x text-mauve mb-2"></i>
-                <h4 class="font-royal text-mauve-deep mb-1">Aditya & Naincee</h4>
+            <div class="mb-3">                <h4 class="font-royal text-mauve-deep mb-1">Aditya & Naincee</h4>
                 <p class="font-script fs-2 text-powder-blue mb-0">Two Souls, One Sacred Journey</p>
             </div>
 
@@ -1083,6 +1015,7 @@
     <!-- Interactive Scripts -->
     <script src="assets/js/petals.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/glass.js"></script>
 </body>
 
 </html>

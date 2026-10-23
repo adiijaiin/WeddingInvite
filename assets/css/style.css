@@ -111,7 +111,7 @@ html[data-theme="theme-id"] {
 }
 ---- */
 
-/* Option 3 · Peach, Apricot & Camel on Warm White (editorial, understated)
+/* Peach, Apricot & Camel palette (unused since the option pages were removed; kept for reference)
    Warm camel takes the mauve role, peach/apricot takes the powder-blue role,
    handmade warm-white paper ground, gold foil kept. */
 html[data-theme="peach-camel"] {
@@ -160,11 +160,12 @@ html[data-theme="peach-camel"] {
     --petal-6-bg: #F1CFC8; --petal-6-border: #D9A49A;  /* blush */
 }
 
-/* Option 2 · Mint Aqua, Powder Blue & Champagne Gold (serene, modern, royal)
+/* Mint Aqua, Powder Blue & Champagne Gold palette — used by Option 1 (mint-illustrated)
    Deep aqua takes the mauve role, powder blue stays in its role, champagne gold kept,
    ground is a pale aqua-white watercolour wash. */
 html[data-theme="mint-aqua"],
-html[data-theme="mint-illustrated"] {
+html[data-theme="mint-illustrated"],
+html[data-theme="mint-glass"] {
     --bg-page: #f6fbfa;
     --bg-page-soft: #eaf5f3;
     --bg-page-deep: #dcefeb;
@@ -210,11 +211,12 @@ html[data-theme="mint-illustrated"] {
     --petal-6-bg: #E8D7AD; --petal-6-border: #C5A059;  /* gold */
 }
 
-/* Option 1 · Blush Pink, Sage Green & Ivory (floral and romantic)
+/* Blush Pink, Sage Green & Ivory palette — used by Option 2 (blush-garden)
    Blush rose takes the mauve role, sage green takes the powder-blue role, matte ivory ground,
    gold foil accents kept. */
 html[data-theme="blush-sage"],
-html[data-theme="blush-garden"] {
+html[data-theme="blush-garden"],
+html[data-theme="blush-glass"] {
     --bg-page: #fdfbf6;
     --bg-page-soft: #f6f1e6;
     --bg-page-deep: #efe6d6;

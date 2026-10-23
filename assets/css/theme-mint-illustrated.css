@@ -1,6 +1,6 @@
 /* ==========================================================================
-   OPTION 4 THEME PAGE · Mint Aqua with Illustrations
-   Colours are Option 2's (html[data-theme="mint-illustrated"] shares the
+   OPTION 1 THEME PAGE · Mint Aqua with Illustrations
+   Colours are the mint-aqua set (html[data-theme="mint-illustrated"] shares the
    mint-aqua variables in style.css). This file places the artwork from
    assets/illustrations. The files are JPGs on white, so every one is blended
    with multiply: white disappears into the page wash, the drawing stays.
@@ -13,7 +13,7 @@ html {
     background: var(--bg-page);
 }
 
-/* Watercolour wash, as on Option 2 */
+/* Watercolour wash */
 body {
     position: relative;
     z-index: 0;
@@ -43,41 +43,104 @@ body {
     opacity: 0.9;
 }
 
-/* lotuses rising from the bottom-left corner */
+/* lotus sprays on both sides of the page, at mid-height, mirrored on the right */
 .il-lotus {
-    bottom: -10px;
-    left: 0;
-    width: clamp(110px, 13vw, 210px);
-    opacity: 0.85;
+    top: 50%;
+    width: clamp(100px, 12vw, 200px);
+    opacity: 0.9;
 }
 
-/* The couple on the swing sits behind the hero as a faint backdrop: absolutely positioned,
-   below the page content (z-index -1 inside the body's stacking context), brightened so the
-   JPG's off-white ground goes fully white before the multiply, then faded. */
+.il-lotus--left { left: 10px; transform: translateY(-46%); }
+.il-lotus--right { right: 10px; transform: translateY(-46%) scaleX(-1); }
+
+/* The couple on the swing, faint, behind the timeline (the card is its own stacking context,
+   so it sits above the card's background and below every event) */
 .il-swing {
     position: absolute;
     left: 50%;
-    top: 40px;
-    width: min(680px, 92%);
-    margin: 0;
-    transform: translateX(-50%);
-    z-index: -1;
+    top: 50%;
+    width: min(620px, 90%);
+    height: auto;
+    transform: translate(-50%, -50%);
+    opacity: 0.16;
+    z-index: 0;
     pointer-events: none;
 }
 
-.il-swing img {
-    opacity: 0.42;
+.timeline-single-card {
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.timeline-single-card > *:not(.il-swing):not(.il-shehnai) {
+    position: relative;
+    z-index: 1;
 }
 
 /* the illustrations are PNGs with the white keyed to transparency (assets/illustrations/*.png,
    made from the JPGs), so they sit on any background without blend tricks */
-.il-swing img,
 .il-couple2 img,
 .il-shehnai,
 .il-knot {
     display: block;
     width: 100%;
     height: auto;
+}
+
+/* the palace garden (shared with Option 2), fixed along the bottom of the viewport behind the content */
+.bg-garden {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.95;
+}
+
+/* ---- timeline: event names in gold foil with a faint lift, times in the theme's aqua ---- */
+.timeline-title-label {
+    background-image: linear-gradient(100deg, #a8823c 0%, #cfa95a 22%, #e6c97a 40%, #c3993f 55%, #e9d08a 72%, #b48d3f 100%);
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 1px rgba(110, 75, 25, 0.28));
+    animation: goldDrift 7s ease-in-out infinite alternate;
+}
+
+.timeline-time-label {
+    color: var(--mauve-primary);
+}
+
+@keyframes goldDrift {
+    from { background-position: 100% 0; }
+    to   { background-position: 0% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-title-label { animation: none; }
+}
+
+/* the monogram in place of the wax seal: same 76px circle, same click to the timeline */
+.wax-seal-logo {
+    background: var(--bg-page);
+    overflow: hidden;
+    padding: 0;
+    border: 2px solid var(--gold-accent);
+    box-shadow: 0 8px 24px rgba(63, 143, 140, 0.25);
+}
+
+.wax-seal-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.35);   /* crop in on the letters so they fill the circle */
 }
 
 /* the knot between the two families, where the ring icon sits on the other pages */
@@ -97,6 +160,7 @@ body {
     right: 22px;
     width: 120px;
     opacity: 0.95;
+    z-index: 1;
 }
 
 /* the second couple illustration opens the blessings wall */
@@ -107,9 +171,8 @@ body {
 
 @media (max-width: 768px) {
     .il-peacock { width: 120px; top: 140px; right: -16px; opacity: 0.75; }
-    .il-lotus { width: 80px; opacity: 0.7; }
-    .il-swing { width: 96%; top: 20px; }
-    .il-swing img { opacity: 0.3; }
+    .il-lotus { width: 64px; opacity: 0.7; }
+    .il-swing { width: 100%; opacity: 0.14; }
     .il-knot { width: 84px; }
     .il-shehnai { position: static; width: 96px; margin: 0 auto 0.75rem; }
     .il-couple2 { width: 55%; }

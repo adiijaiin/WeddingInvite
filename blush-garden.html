@@ -24,7 +24,7 @@
     <!-- Custom Pastel Indian Wedding Stylesheet (Beige, Mauve, Powder Blue) -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Option 5 theme page: the inspiration card — gold cusped arch, jasmine latkans, lotus borders, a palace garden -->
+    <!-- Option 2 theme page: the inspiration card — gold cusped arch, jasmine latkans, lotus borders, a palace garden -->
     <link rel="stylesheet" href="assets/css/theme-blush-garden.css">
 </head>
 
@@ -35,11 +35,10 @@
         <label for="themeSelect"><i class="fas fa-palette me-1"></i> Theme</label>
         <select id="themeSelect">
             <option value="pastel-mauve">Pastel Mauve (current)</option>
-            <option value="blush-sage">Option 1 · Blush Pink, Sage Green & Ivory</option>
-            <option value="mint-aqua">Option 2 · Mint Aqua, Powder Blue & Champagne Gold</option>
-            <option value="peach-camel">Option 3 · Peach, Apricot & Camel on Warm White</option>
-            <option value="mint-illustrated">Option 4 · Mint Aqua with Illustrations</option>
-            <option value="blush-garden">Option 5 · Blush Garden (inspiration card)</option>
+            <option value="mint-illustrated">Option 1 · Mint Aqua with Illustrations</option>
+            <option value="blush-garden">Option 2 · Blush Garden</option>
+            <option value="mint-glass">Option 3 · Mint Aqua · Liquid Glass</option>
+            <option value="blush-glass">Option 4 · Blush Garden · Liquid Glass</option>
         </select>
     </div>
 
@@ -106,6 +105,60 @@
     <!-- Lotus sprays on both sides of the page (fixed) -->
     <img class="bg-lotus bg-lotus--left" src="assets/illustrations/lotus.png" alt="" aria-hidden="true">
     <img class="bg-lotus bg-lotus--right" src="assets/illustrations/lotus.png" alt="" aria-hidden="true">
+
+    <!-- The palace garden from the card: chhatris at the corners, a balustrade, cypresses, a fountain -->
+    <svg class="bg-garden" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+        <!-- lawn and pond -->
+        <path d="M0 230 Q720 200 1440 230 V260 H0Z" fill="#dfe8d8" />
+        <ellipse cx="720" cy="236" rx="190" ry="16" fill="#cfe0e6" stroke="#9fbfc9" stroke-width="0.8" />
+        <!-- balustrades and steps -->
+        <g stroke="#c5a059" stroke-width="1" fill="none">
+            <path d="M120 206 H480 M120 226 H480 M960 206 H1320 M960 226 H1320" />
+            <path d="M140 206 V226 M170 206 V226 M200 206 V226 M230 206 V226 M260 206 V226 M290 206 V226 M320 206 V226 M350 206 V226 M380 206 V226 M410 206 V226 M440 206 V226 M470 206 V226" />
+            <path d="M980 206 V226 M1010 206 V226 M1040 206 V226 M1070 206 V226 M1100 206 V226 M1130 206 V226 M1160 206 V226 M1190 206 V226 M1220 206 V226 M1250 206 V226 M1280 206 V226 M1310 206 V226" />
+            <path d="M480 206 L520 226 H560 M960 206 L920 226 H880 M490 214 H540 M950 214 H900" />
+        </g>
+        <!-- chhatris -->
+        <use href="#bgChhatri" transform="translate(150 206) scale(1.2)" />
+        <use href="#bgChhatri" transform="translate(1290 206) scale(1.2)" />
+        <use href="#bgChhatri" transform="translate(400 206) scale(0.75)" />
+        <use href="#bgChhatri" transform="translate(1040 206) scale(0.75)" />
+        <!-- cypresses and hedges -->
+        <use href="#bgCypress" transform="translate(280 206) scale(1.1)" />
+        <use href="#bgCypress" transform="translate(330 206) scale(0.8)" />
+        <use href="#bgCypress" transform="translate(560 214) scale(0.9)" />
+        <use href="#bgCypress" transform="translate(880 214) scale(0.9)" />
+        <use href="#bgCypress" transform="translate(1110 206) scale(0.8)" />
+        <use href="#bgCypress" transform="translate(1160 206) scale(1.1)" />
+        <g fill="#c9d8c1" stroke="#9fb49a" stroke-width="0.6">
+            <ellipse cx="600" cy="222" rx="30" ry="9" /><ellipse cx="840" cy="222" rx="30" ry="9" />
+            <ellipse cx="60" cy="236" rx="40" ry="10" /><ellipse cx="1380" cy="236" rx="40" ry="10" />
+        </g>
+        <!-- fountain -->
+        <g stroke="#c5a059" stroke-width="1" fill="#f9e9e2">
+            <ellipse cx="720" cy="232" rx="70" ry="10" fill="#e9f1f3" />
+            <path d="M690 212 H750 L744 230 H696Z" />
+            <ellipse cx="720" cy="212" rx="30" ry="5" />
+            <path d="M712 190 H728 L726 207 H714Z" />
+            <ellipse cx="720" cy="190" rx="14" ry="3" />
+            <path d="M720 160 V186" stroke-width="1.4" />
+        </g>
+        <g stroke="#9fbfc9" stroke-width="1" fill="none" stroke-linecap="round">
+            <path d="M720 160 C706 168 700 182 702 196 M720 160 C734 168 740 182 738 196 M720 160 C716 176 716 188 718 206 M720 160 C724 176 724 188 722 206" />
+        </g>
+        <!-- lotus pads and blooms on the pond -->
+        <g fill="#b7c9b1" stroke="#7c9879" stroke-width="0.5">
+            <ellipse cx="600" cy="244" rx="12" ry="4" /><ellipse cx="840" cy="244" rx="12" ry="4" /><ellipse cx="660" cy="248" rx="9" ry="3" /><ellipse cx="780" cy="248" rx="9" ry="3" />
+        </g>
+        <use href="#bgLotus" transform="translate(600 244) scale(0.5)" />
+        <use href="#bgLotus" transform="translate(840 244) scale(0.5)" />
+        <!-- flower sprays in the lower corners -->
+        <use href="#bgLotus" transform="translate(70 200) scale(1.3)" />
+        <use href="#bgLotus" transform="translate(40 150) scale(0.9) rotate(-15)" />
+        <use href="#bgLotus" transform="translate(1370 200) scale(1.3)" />
+        <use href="#bgLotus" transform="translate(1400 150) scale(0.9) rotate(15)" />
+    </svg>
+
 
     <!-- Canvas for Floating Pastel Petals (Powder Blue, Mauve & Jasmine) -->
     <canvas id="petalsCanvas"
@@ -222,10 +275,7 @@
 
                         <!-- Central Holy Knot Symbol -->
                         <div class="col-md-2 text-center my-2 my-md-0">
-                            <div
-                                class="d-inline-flex align-items-center justify-content-center p-3 rounded-circle bg-white border shadow-sm">
-                                <i class="fas fa-ring text-mauve fs-4"></i>
-                            </div>
+                            <img class="bg-knot" src="assets/illustrations/knot.png" width="110" height="110" alt="The wedding knot: two cloths tied together">
                             <div class="small text-powder-blue mt-1 font-script fs-4">Vivah Bandhan</div>
                         </div>
 
@@ -254,10 +304,8 @@
                      2. INTERACTIVE ROYAL SHAHI FARMAN / E-INVITE UNVEIL BANNER
                      ========================================================================= -->
                 <div class="shahi-farman-wrapper text-center mt-5">
-                    <div id="waxSealBtn" class="wax-seal-pastel" title="Click to View Timeline">
-                        <div class="wax-seal-inner-monogram">
-                            A & N
-                        </div>
+                    <div id="waxSealBtn" class="wax-seal-pastel wax-seal-logo" title="Click to View Timeline">
+                        <img src="assets/images/logo.jpg" width="76" height="76" alt="A & N monogram">
                     </div>
 
                     <h3 class="font-royal text-mauve-deep fs-3 mb-2">Wedding E-Invitation</h3>
@@ -878,64 +926,9 @@
     <!-- =========================================================================
          8. FOOTER SECTION
          ========================================================================= -->
-        <!-- The palace garden from the card: chhatris at the corners, a balustrade, cypresses, a fountain -->
-        <svg class="bg-garden" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
-            <!-- lawn and pond -->
-            <path d="M0 230 Q720 200 1440 230 V260 H0Z" fill="#dfe8d8" />
-            <ellipse cx="720" cy="236" rx="190" ry="16" fill="#cfe0e6" stroke="#9fbfc9" stroke-width="0.8" />
-            <!-- balustrades and steps -->
-            <g stroke="#c5a059" stroke-width="1" fill="none">
-                <path d="M120 206 H480 M120 226 H480 M960 206 H1320 M960 226 H1320" />
-                <path d="M140 206 V226 M170 206 V226 M200 206 V226 M230 206 V226 M260 206 V226 M290 206 V226 M320 206 V226 M350 206 V226 M380 206 V226 M410 206 V226 M440 206 V226 M470 206 V226" />
-                <path d="M980 206 V226 M1010 206 V226 M1040 206 V226 M1070 206 V226 M1100 206 V226 M1130 206 V226 M1160 206 V226 M1190 206 V226 M1220 206 V226 M1250 206 V226 M1280 206 V226 M1310 206 V226" />
-                <path d="M480 206 L520 226 H560 M960 206 L920 226 H880 M490 214 H540 M950 214 H900" />
-            </g>
-            <!-- chhatris -->
-            <use href="#bgChhatri" transform="translate(150 206) scale(1.2)" />
-            <use href="#bgChhatri" transform="translate(1290 206) scale(1.2)" />
-            <use href="#bgChhatri" transform="translate(400 206) scale(0.75)" />
-            <use href="#bgChhatri" transform="translate(1040 206) scale(0.75)" />
-            <!-- cypresses and hedges -->
-            <use href="#bgCypress" transform="translate(280 206) scale(1.1)" />
-            <use href="#bgCypress" transform="translate(330 206) scale(0.8)" />
-            <use href="#bgCypress" transform="translate(560 214) scale(0.9)" />
-            <use href="#bgCypress" transform="translate(880 214) scale(0.9)" />
-            <use href="#bgCypress" transform="translate(1110 206) scale(0.8)" />
-            <use href="#bgCypress" transform="translate(1160 206) scale(1.1)" />
-            <g fill="#c9d8c1" stroke="#9fb49a" stroke-width="0.6">
-                <ellipse cx="600" cy="222" rx="30" ry="9" /><ellipse cx="840" cy="222" rx="30" ry="9" />
-                <ellipse cx="60" cy="236" rx="40" ry="10" /><ellipse cx="1380" cy="236" rx="40" ry="10" />
-            </g>
-            <!-- fountain -->
-            <g stroke="#c5a059" stroke-width="1" fill="#f9e9e2">
-                <ellipse cx="720" cy="232" rx="70" ry="10" fill="#e9f1f3" />
-                <path d="M690 212 H750 L744 230 H696Z" />
-                <ellipse cx="720" cy="212" rx="30" ry="5" />
-                <path d="M712 190 H728 L726 207 H714Z" />
-                <ellipse cx="720" cy="190" rx="14" ry="3" />
-                <path d="M720 160 V186" stroke-width="1.4" />
-            </g>
-            <g stroke="#9fbfc9" stroke-width="1" fill="none" stroke-linecap="round">
-                <path d="M720 160 C706 168 700 182 702 196 M720 160 C734 168 740 182 738 196 M720 160 C716 176 716 188 718 206 M720 160 C724 176 724 188 722 206" />
-            </g>
-            <!-- lotus pads and blooms on the pond -->
-            <g fill="#b7c9b1" stroke="#7c9879" stroke-width="0.5">
-                <ellipse cx="600" cy="244" rx="12" ry="4" /><ellipse cx="840" cy="244" rx="12" ry="4" /><ellipse cx="660" cy="248" rx="9" ry="3" /><ellipse cx="780" cy="248" rx="9" ry="3" />
-            </g>
-            <use href="#bgLotus" transform="translate(600 244) scale(0.5)" />
-            <use href="#bgLotus" transform="translate(840 244) scale(0.5)" />
-            <!-- flower sprays in the lower corners -->
-            <use href="#bgLotus" transform="translate(70 200) scale(1.3)" />
-            <use href="#bgLotus" transform="translate(40 150) scale(0.9) rotate(-15)" />
-            <use href="#bgLotus" transform="translate(1370 200) scale(1.3)" />
-            <use href="#bgLotus" transform="translate(1400 150) scale(0.9) rotate(15)" />
-        </svg>
-
     <footer class="pastel-footer">
         <div class="container">
-            <div class="mb-3">
-                <i class="fas fa-om fa-2x text-mauve mb-2"></i>
-                <h4 class="font-royal text-mauve-deep mb-1">Aditya & Naincee</h4>
+            <div class="mb-3">                <h4 class="font-royal text-mauve-deep mb-1">Aditya & Naincee</h4>
                 <p class="font-script fs-2 text-powder-blue mb-0">Two Souls, One Sacred Journey</p>
             </div>
 

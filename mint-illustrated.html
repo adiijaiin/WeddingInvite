@@ -24,7 +24,7 @@
     <!-- Custom Pastel Indian Wedding Stylesheet (Beige, Mauve, Powder Blue) -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Option 4 theme page: Option 2's mint and powder-blue palette with the illustrations from assets/illustrations -->
+    <!-- Option 1 theme page: the mint and powder-blue palette with the illustrations from assets/illustrations -->
     <link rel="stylesheet" href="assets/css/theme-mint-illustrated.css">
 </head>
 
@@ -35,18 +35,99 @@
         <label for="themeSelect"><i class="fas fa-palette me-1"></i> Theme</label>
         <select id="themeSelect">
             <option value="pastel-mauve">Pastel Mauve (current)</option>
-            <option value="blush-sage">Option 1 · Blush Pink, Sage Green & Ivory</option>
-            <option value="mint-aqua">Option 2 · Mint Aqua, Powder Blue & Champagne Gold</option>
-            <option value="peach-camel">Option 3 · Peach, Apricot & Camel on Warm White</option>
-            <option value="mint-illustrated">Option 4 · Mint Aqua with Illustrations</option>
-            <option value="blush-garden">Option 5 · Blush Garden (inspiration card)</option>
+            <option value="mint-illustrated">Option 1 · Mint Aqua with Illustrations</option>
+            <option value="blush-garden">Option 2 · Blush Garden</option>
+            <option value="mint-glass">Option 3 · Mint Aqua · Liquid Glass</option>
+            <option value="blush-glass">Option 4 · Blush Garden · Liquid Glass</option>
         </select>
     </div>
 
-    <!-- Theme imagery fixed to the viewport: the peacock down the right edge, lotuses at the bottom left.
+    <!-- Theme imagery fixed to the viewport: lotuses at the bottom left.
          The JPGs have white backgrounds; mix-blend-mode: multiply lets the page wash show through them. -->
-    <img class="il-peacock" src="assets/illustrations/peacock2.png" alt="" aria-hidden="true">
-    <img class="il-lotus" src="assets/illustrations/lotus.png" alt="" aria-hidden="true">
+    <img class="il-lotus il-lotus--left" src="assets/illustrations/lotus.png" alt="" aria-hidden="true">
+    <img class="il-lotus il-lotus--right" src="assets/illustrations/lotus.png" alt="" aria-hidden="true">
+
+    <!-- gold symbols for the garden strip -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="bgGold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e6d2a6" />
+                <stop offset="0.5" stop-color="#c5a059" />
+                <stop offset="1" stop-color="#ead9b2" />
+            </linearGradient>
+            <g id="bgLotus" fill="#f4c6d1" stroke="#d99aa8" stroke-width="0.6">
+                <path d="M0 0 C-8 -5 -11 -18 0 -24 C11 -18 8 -5 0 0Z" />
+                <path d="M0 0 C-15 -3 -21 -13 -16 -21 C-7 -19 -2 -8 0 0Z" />
+                <path d="M0 0 C15 -3 21 -13 16 -21 C7 -19 2 -8 0 0Z" />
+                <path d="M0 0 C-20 1 -26 -5 -24 -10 C-13 -12 -5 -5 0 0Z" fill="#eaa9b8" />
+                <path d="M0 0 C20 1 26 -5 24 -10 C13 -12 5 -5 0 0Z" fill="#eaa9b8" />
+            </g>
+            <g id="bgChhatri" fill="none" stroke="#c5a059" stroke-width="1.3" stroke-linecap="round">
+                <path d="M-30 0 V-50 M30 0 V-50 M-18 0 V-50 M18 0 V-50" />
+                <path d="M-40 -50 H40" />
+                <path d="M-36 -50 C-36 -82 36 -82 36 -50" fill="#eef6f5" />
+                <path d="M-26 -56 C-26 -72 26 -72 26 -56" stroke-width="0.8" />
+                <path d="M0 -82 V-94 M-5 -92 Q0 -100 5 -92" />
+                <path d="M-44 -46 H44" stroke-width="0.8" />
+                <path d="M-40 -50 Q-30 -40 -20 -50 Q-10 -40 0 -50 Q10 -40 20 -50 Q30 -40 40 -50" stroke-width="0.8" />
+            </g>
+            <path id="bgCypress" d="M0 0 C-7 -14 -7 -40 0 -64 C7 -40 7 -14 0 0Z" fill="#b7cfc9" stroke="#6f9a93" stroke-width="0.7" />
+        </defs>
+    </svg>
+
+    <!-- The palace garden from the card: chhatris at the corners, a balustrade, cypresses, a fountain -->
+    <svg class="bg-garden" viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+        <!-- lawn and pond -->
+        <path d="M0 230 Q720 200 1440 230 V260 H0Z" fill="#dfe8d8" />
+        <ellipse cx="720" cy="236" rx="190" ry="16" fill="#cfe0e6" stroke="#9fbfc9" stroke-width="0.8" />
+        <!-- balustrades and steps -->
+        <g stroke="#c5a059" stroke-width="1" fill="none">
+            <path d="M120 206 H480 M120 226 H480 M960 206 H1320 M960 226 H1320" />
+            <path d="M140 206 V226 M170 206 V226 M200 206 V226 M230 206 V226 M260 206 V226 M290 206 V226 M320 206 V226 M350 206 V226 M380 206 V226 M410 206 V226 M440 206 V226 M470 206 V226" />
+            <path d="M980 206 V226 M1010 206 V226 M1040 206 V226 M1070 206 V226 M1100 206 V226 M1130 206 V226 M1160 206 V226 M1190 206 V226 M1220 206 V226 M1250 206 V226 M1280 206 V226 M1310 206 V226" />
+            <path d="M480 206 L520 226 H560 M960 206 L920 226 H880 M490 214 H540 M950 214 H900" />
+        </g>
+        <!-- chhatris -->
+        <use href="#bgChhatri" transform="translate(150 206) scale(1.2)" />
+        <use href="#bgChhatri" transform="translate(1290 206) scale(1.2)" />
+        <use href="#bgChhatri" transform="translate(400 206) scale(0.75)" />
+        <use href="#bgChhatri" transform="translate(1040 206) scale(0.75)" />
+        <!-- cypresses and hedges -->
+        <use href="#bgCypress" transform="translate(280 206) scale(1.1)" />
+        <use href="#bgCypress" transform="translate(330 206) scale(0.8)" />
+        <use href="#bgCypress" transform="translate(560 214) scale(0.9)" />
+        <use href="#bgCypress" transform="translate(880 214) scale(0.9)" />
+        <use href="#bgCypress" transform="translate(1110 206) scale(0.8)" />
+        <use href="#bgCypress" transform="translate(1160 206) scale(1.1)" />
+        <g fill="#c9d8c1" stroke="#9fb49a" stroke-width="0.6">
+            <ellipse cx="600" cy="222" rx="30" ry="9" /><ellipse cx="840" cy="222" rx="30" ry="9" />
+            <ellipse cx="60" cy="236" rx="40" ry="10" /><ellipse cx="1380" cy="236" rx="40" ry="10" />
+        </g>
+        <!-- fountain -->
+        <g stroke="#c5a059" stroke-width="1" fill="#f9e9e2">
+            <ellipse cx="720" cy="232" rx="70" ry="10" fill="#e9f1f3" />
+            <path d="M690 212 H750 L744 230 H696Z" />
+            <ellipse cx="720" cy="212" rx="30" ry="5" />
+            <path d="M712 190 H728 L726 207 H714Z" />
+            <ellipse cx="720" cy="190" rx="14" ry="3" />
+            <path d="M720 160 V186" stroke-width="1.4" />
+        </g>
+        <g stroke="#9fbfc9" stroke-width="1" fill="none" stroke-linecap="round">
+            <path d="M720 160 C706 168 700 182 702 196 M720 160 C734 168 740 182 738 196 M720 160 C716 176 716 188 718 206 M720 160 C724 176 724 188 722 206" />
+        </g>
+        <!-- lotus pads and blooms on the pond -->
+        <g fill="#b7c9b1" stroke="#7c9879" stroke-width="0.5">
+            <ellipse cx="600" cy="244" rx="12" ry="4" /><ellipse cx="840" cy="244" rx="12" ry="4" /><ellipse cx="660" cy="248" rx="9" ry="3" /><ellipse cx="780" cy="248" rx="9" ry="3" />
+        </g>
+        <use href="#bgLotus" transform="translate(600 244) scale(0.5)" />
+        <use href="#bgLotus" transform="translate(840 244) scale(0.5)" />
+        <!-- flower sprays in the lower corners -->
+        <use href="#bgLotus" transform="translate(70 200) scale(1.3)" />
+        <use href="#bgLotus" transform="translate(40 150) scale(0.9) rotate(-15)" />
+        <use href="#bgLotus" transform="translate(1370 200) scale(1.3)" />
+        <use href="#bgLotus" transform="translate(1400 150) scale(0.9) rotate(15)" />
+    </svg>
+
 
     <!-- Canvas for Floating Pastel Petals (Powder Blue, Mauve & Jasmine) -->
     <canvas id="petalsCanvas"
@@ -87,14 +168,10 @@
 
                 <!-- Couple Royal Framed Portrait in Pastel -->
                 <div class="couple-portrait-box">
-                    <img src="assets/images/logo.jpg" alt="Aditya & Naincee - Wedding Celebrations in Indore"
+                    <img src="assets/images/logo-mint.jpg" alt="Aditya & Naincee - Wedding Celebrations in Indore"
                         class="img-fluid">
                 </div>
 
-                <!-- Theme imagery: the couple on the swing, beneath the logo -->
-                <figure class="il-swing">
-                    <img src="assets/illustrations/couple1.png" alt="Illustration of the couple seated together on a flower-draped swing">
-                </figure>
 
                 <!-- Invitation Tagline -->
                 <p class="font-script fs-1 text-mauve mb-1">Together with their families</p>
@@ -124,7 +201,7 @@
 
                         <!-- Central Holy Knot Symbol -->
                         <div class="col-md-2 text-center my-2 my-md-0">
-                            <img class="il-knot" src="assets/illustrations/knot.png" alt="The wedding knot: two cloths tied together">
+                            <img class="il-knot" src="assets/illustrations/knot.png" width="110" height="110" alt="The wedding knot: two cloths tied together">
                             <div class="small text-powder-blue mt-1 font-script fs-4">Vivah Bandhan</div>
                         </div>
 
@@ -153,10 +230,8 @@
                      2. INTERACTIVE ROYAL SHAHI FARMAN / E-INVITE UNVEIL BANNER
                      ========================================================================= -->
                 <div class="shahi-farman-wrapper text-center mt-5">
-                    <div id="waxSealBtn" class="wax-seal-pastel" title="Click to View Timeline">
-                        <div class="wax-seal-inner-monogram">
-                            A & N
-                        </div>
+                    <div id="waxSealBtn" class="wax-seal-pastel wax-seal-logo" title="Click to View Timeline">
+                        <img src="assets/images/logo-mint.jpg" width="76" height="76" alt="A & N monogram">
                     </div>
 
                     <h3 class="font-royal text-mauve-deep fs-3 mb-2">Wedding E-Invitation</h3>
@@ -246,6 +321,7 @@
 
                     <!-- Main Header -->
                     <img class="il-shehnai" src="assets/illustrations/tabla shehnai.png" alt="" aria-hidden="true">
+                    <img class="il-swing" src="assets/illustrations/couple1.png" alt="" aria-hidden="true">
                     <h2 class="timeline-main-title">Wedding Timeline</h2>
                     <p class="timeline-main-subtitle">
                         Aditya & Naincee's Celebration of Love • Hotel HR Greens, Indore 2026
@@ -778,9 +854,7 @@
          ========================================================================= -->
     <footer class="pastel-footer">
         <div class="container">
-            <div class="mb-3">
-                <i class="fas fa-om fa-2x text-mauve mb-2"></i>
-                <h4 class="font-royal text-mauve-deep mb-1">Aditya & Naincee</h4>
+            <div class="mb-3">                <h4 class="font-royal text-mauve-deep mb-1">Aditya & Naincee</h4>
                 <p class="font-script fs-2 text-powder-blue mb-0">Two Souls, One Sacred Journey</p>
             </div>
 
