@@ -43,6 +43,39 @@ body {
         radial-gradient(circle at 50% 50%, var(--bg-page-soft) 0%, transparent 70%);
 }
 
+/* Gold foil for the parents' names and the event names: a metallic gradient clipped to the
+   letters, a slow highlight that drifts across it, and the faintest warm glow. Quiet, not loud. */
+.parivaar-names,
+.timeline-title-label {
+    background-image: linear-gradient(
+        100deg,
+        #a8823c 0%,
+        #cfa95a 22%,
+        #e6c97a 40%,
+        #c3993f 55%,
+        #e9d08a 72%,
+        #b48d3f 100%
+    );
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 1px rgba(197, 160, 89, 0.25), 0 1px 0 rgba(255, 250, 235, 0.55);
+    animation: goldDrift 7s ease-in-out infinite alternate;
+}
+
+@keyframes goldDrift {
+    from { background-position: 100% 0; }
+    to   { background-position: 0% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .parivaar-names,
+    .timeline-title-label { animation: none; }
+}
+
 @media (max-width: 768px) {
     .theme-floral {
         width: 130px;

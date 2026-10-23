@@ -68,7 +68,7 @@ Invitation Anti/
     │   ├── petals.js           # Canvas pastel flower petal physics engine
     │   └── script.js           # Countdown, RSVP, calendar links, clipboard, blessings wall
     └── images/
-        ├── couple.jpg          # Regal portrait in dusty mauve & ivory
+        ├── logo.jpg            # Couple's monogram shown in the hero
         └── venue.jpg           # Official photo of Hotel HR Greens, Indore
 ```
 

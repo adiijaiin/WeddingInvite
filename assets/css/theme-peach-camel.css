@@ -73,40 +73,17 @@ body {
 .pc-lotus--left { left: 16px; }
 .pc-lotus--right { right: 16px; }
 
-/* Mandap with the couple and elephants: fixed along the bottom of the viewport,
-   behind the content, so it stays with the reader the whole way down the page */
-.pc-mandap-wrap {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-    pointer-events: none;
-    padding: 0 1rem;
-}
-
-/* centre: the mandap and couple as a soft watermark behind the content column */
+/* Mandap with the couple, elephants and lotuses: sits in the hero directly under the logo */
 .pc-mandap {
     display: block;
-    width: min(760px, 70vw);
+    width: min(1150px, 100%);
     height: auto;
-    margin: 0 auto;
-    opacity: 0.5;
+    margin: -3.5rem auto 0.25rem;
+    position: relative;
+    z-index: 1;
 }
 
-/* corners: the elephants at full strength, outside the content column on desktop */
-.pc-elephant {
-    position: absolute;
-    bottom: 0;
-    width: clamp(140px, 17vw, 280px);
-    height: auto;
-    opacity: 0.95;
-}
-
-.pc-elephant--left { left: 12px; }
-.pc-elephant--right { right: 12px; }
-
-/* the bottom-corner lotus clusters are part of the mandap strip now */
+/* the lotus clusters are part of the mandap strip now */
 .pc-lotus { display: none; }
 
 /* Page content sits above the fixed imagery; the frame is on top but ignores clicks */
@@ -122,9 +99,5 @@ body > footer {
     .pc-frame { inset: 6px; border-radius: 80px 80px 0 0; }
     .pc-peacock { width: 130px; top: 120px; opacity: 0.85; }
     .pc-tree { width: 100px; top: 110px; opacity: 0.8; }
-    .pc-mandap-wrap { padding: 0; }
-    .pc-mandap { width: 80vw; opacity: 0.4; }
-    .pc-elephant { width: 110px; opacity: 0.8; }
-    .pc-elephant--left { left: 2px; }
-    .pc-elephant--right { right: 2px; }
+    .pc-mandap { width: 100%; margin-top: -0.5rem; }
 }

@@ -163,7 +163,8 @@ html[data-theme="peach-camel"] {
 /* Option 2 · Mint Aqua, Powder Blue & Champagne Gold (serene, modern, royal)
    Deep aqua takes the mauve role, powder blue stays in its role, champagne gold kept,
    ground is a pale aqua-white watercolour wash. */
-html[data-theme="mint-aqua"] {
+html[data-theme="mint-aqua"],
+html[data-theme="mint-illustrated"] {
     --bg-page: #f6fbfa;
     --bg-page-soft: #eaf5f3;
     --bg-page-deep: #dcefeb;
@@ -212,7 +213,8 @@ html[data-theme="mint-aqua"] {
 /* Option 1 · Blush Pink, Sage Green & Ivory (floral and romantic)
    Blush rose takes the mauve role, sage green takes the powder-blue role, matte ivory ground,
    gold foil accents kept. */
-html[data-theme="blush-sage"] {
+html[data-theme="blush-sage"],
+html[data-theme="blush-garden"] {
     --bg-page: #fdfbf6;
     --bg-page-soft: #f6f1e6;
     --bg-page-deep: #efe6d6;

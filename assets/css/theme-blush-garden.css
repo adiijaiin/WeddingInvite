@@ -1,0 +1,205 @@
+/* ==========================================================================
+   OPTION 5 THEME PAGE · Blush Garden
+   Modelled on assets/images/inspiration.jpg: blush paper, a thin gold frame
+   with side finials, a cusped Mughal arch over the monogram with jasmine
+   latkans hanging either side, lotus sprays down both edges, a gold lotus
+   divider under the names, and a palace garden with chhatris and a fountain
+   closing the page. Colours are Option 1's (html[data-theme="blush-garden"]
+   shares the blush-sage variables in style.css).
+   ========================================================================== */
+
+/* Blush paper: a touch pinker than Option 1's ivory, with a soft linen grain */
+html { background: #fbeee9; }
+
+body {
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    background-color: #fbeee9;
+    background-image:
+        radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.55) 0%, transparent 60%),
+        radial-gradient(ellipse at 10% 90%, rgba(201, 125, 144, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 90%, rgba(124, 152, 121, 0.08) 0%, transparent 40%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.45 0 0 0 0 0.4 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* ---- fixed artwork, behind the content ---- */
+
+/* thin gold frame with an inner hairline */
+.bg-frame {
+    position: fixed;
+    inset: 14px;
+    pointer-events: none;
+    z-index: 2;
+    border: 1px solid rgba(197, 160, 89, 0.8);
+}
+
+.bg-frame::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+}
+
+/* small gold finials at the middle of each side, as on the card */
+.bg-frame__finial {
+    position: absolute;
+    top: 50%;
+    width: 26px;
+    height: 70px;
+    transform: translateY(-50%);
+}
+
+.bg-frame__finial--left { left: -13px; }
+.bg-frame__finial--right { right: -13px; }
+
+/* lotus sprays down both edges */
+.bg-lotus {
+    position: fixed;
+    top: 50%;
+    width: clamp(90px, 11vw, 190px);
+    height: auto;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.92;
+}
+
+.bg-lotus--left { left: 10px; transform: translateY(-46%); }
+.bg-lotus--right { right: 10px; transform: translateY(-46%) scaleX(-1); }
+
+/* ---- in-flow artwork ---- */
+
+/* the cusped arch with latkans, behind and around the monogram */
+.bg-arch {
+    display: block;
+    width: min(1000px, 100%);
+    height: auto;
+    margin: 0 auto -11rem;
+    position: relative;
+    z-index: 0;
+}
+
+.couple-portrait-box {
+    position: relative;
+    z-index: 1;
+}
+
+/* gold lotus divider under the names */
+.bg-divider {
+    display: block;
+    width: min(360px, 70%);
+    height: auto;
+    margin: 0.25rem auto 1.5rem;
+}
+
+/* the palace garden that closes the page */
+.bg-garden {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 2rem auto -0.5rem;
+}
+
+/* ---- illustrations in the timeline and the blessings wall ---- */
+.timeline-single-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* tabla and shehnai in the top corner of the timeline card */
+.bg-shehnai {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 120px;
+    height: auto;
+    z-index: 1;
+    opacity: 0.95;
+}
+
+/* the couple on the swing, faint, behind the timeline */
+.bg-swing {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(620px, 90%);
+    height: auto;
+    transform: translate(-50%, -50%);
+    opacity: 0.16;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.timeline-single-card > *:not(.bg-swing) {
+    position: relative;
+    z-index: 1;
+}
+
+/* the second couple illustration opens the blessings wall */
+.bg-couple2 {
+    width: min(260px, 60%);
+    margin: 0 auto 1.5rem;
+}
+
+.bg-couple2 img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ---- gold foil names, as on the inspiration card ---- */
+.names-main-title,
+.parivaar-names,
+.timeline-title-label {
+    background-image: linear-gradient(100deg, #a8823c 0%, #cfa95a 22%, #e6c97a 40%, #c3993f 55%, #e9d08a 72%, #b48d3f 100%);
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 1px rgba(197, 160, 89, 0.25), 0 1px 0 rgba(255, 250, 235, 0.55);
+    animation: goldDrift 7s ease-in-out infinite alternate;
+}
+
+/* the names in the card are a flowing script; the ampersand keeps the page's own treatment */
+.names-main-title {
+    font-family: var(--font-script);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: clamp(3rem, 7.5vw, 5.4rem);
+    line-height: 1.05;
+    /* the thin script needs a deeper gold than the bold names to stay legible */
+    background-image: linear-gradient(100deg, #8f6a2a 0%, #b8903f 25%, #d9b765 45%, #a8823c 60%, #d4b160 78%, #94702c 100%);
+}
+
+.names-main-title .ampersand-pastel {
+    background: none;
+    -webkit-text-fill-color: var(--powder-blue-primary);
+    color: var(--powder-blue-primary);
+    text-shadow: none;
+    animation: none;
+}
+
+@keyframes goldDrift {
+    from { background-position: 100% 0; }
+    to   { background-position: 0% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .names-main-title, .parivaar-names, .timeline-title-label { animation: none; }
+}
+
+@media (max-width: 768px) {
+    .bg-frame { inset: 6px; }
+    .bg-frame::after { inset: 3px; }
+    .bg-frame__finial { display: none; }
+    .bg-lotus { width: 64px; opacity: 0.75; }
+    .bg-arch { margin-bottom: -3.5rem; }
+    .names-main-title { font-size: 2.6rem; }
+    .bg-shehnai { position: static; width: 96px; margin: 0 auto 0.75rem; display: block; }
+    .bg-swing { width: 100%; opacity: 0.14; }
+    .bg-couple2 { width: 55%; }
+}

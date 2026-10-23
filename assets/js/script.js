@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'pastel-mauve': 'index.html',
         'blush-sage': 'blush-sage.html',
         'mint-aqua': 'mint-aqua.html',
-        'peach-camel': 'peach-camel.html'
+        'peach-camel': 'peach-camel.html',
+        'mint-illustrated': 'mint-illustrated.html',
+        'blush-garden': 'blush-garden.html'
     };
     const themeSelect = document.getElementById('themeSelect');
     if (themeSelect) {

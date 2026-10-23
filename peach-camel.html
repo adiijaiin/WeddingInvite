@@ -38,6 +38,8 @@
             <option value="blush-sage">Option 1 · Blush Pink, Sage Green & Ivory</option>
             <option value="mint-aqua">Option 2 · Mint Aqua, Powder Blue & Champagne Gold</option>
             <option value="peach-camel">Option 3 · Peach, Apricot & Camel on Warm White</option>
+            <option value="mint-illustrated">Option 4 · Mint Aqua with Illustrations</option>
+            <option value="blush-garden">Option 5 · Blush Garden (inspiration card)</option>
         </select>
     </div>
 
@@ -154,25 +156,26 @@
     <!-- Peacock, top right, train flowing down the side -->
     <svg class="pc-peacock" viewBox="0 0 420 760" aria-hidden="true">
         <defs>
+            <!-- theme colours: camel body, peach-to-gold plumes, gold and camel eyes -->
             <linearGradient id="pcBodyGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#2a6fc2" />
-                <stop offset="0.6" stop-color="#1b4f9c" />
-                <stop offset="1" stop-color="#1c8a8a" />
+                <stop offset="0" stop-color="#d9a483" />
+                <stop offset="0.6" stop-color="#b07c52" />
+                <stop offset="1" stop-color="#86593a" />
             </linearGradient>
             <linearGradient id="pcPlumeGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#6aa84f" stop-opacity="0.55" />
-                <stop offset="0.55" stop-color="#3f8f5a" stop-opacity="0.75" />
-                <stop offset="1" stop-color="#c9a24b" stop-opacity="0.85" />
+                <stop offset="0" stop-color="#f6dccd" stop-opacity="0.6" />
+                <stop offset="0.55" stop-color="#f2bda4" stop-opacity="0.8" />
+                <stop offset="1" stop-color="#e2c48a" stop-opacity="0.9" />
             </linearGradient>
-            <!-- one train feather, hanging down from (0,0): olive stem, green-to-gold plume, the eye near the tip -->
+            <!-- one train feather, hanging down from (0,0): camel stem, peach-to-gold plume, the eye near the tip -->
             <g id="pcTrainFeather">
-                <path d="M0 0 V232" stroke="#7a8f3a" stroke-width="1.3" fill="none" />
+                <path d="M0 0 V232" stroke="#b07c52" stroke-width="1.3" fill="none" />
                 <path d="M0 40 C-11 90 -12 160 0 238 C12 160 11 90 0 40Z" fill="url(#pcPlumeGrad)" />
-                <path d="M-2 70 L-9 76 M-3 94 L-10 100 M-3 118 L-10 124 M-2 142 L-9 148 M2 70 L9 76 M3 94 L10 100 M3 118 L10 124 M2 142 L9 148" stroke="#4f8a5a" stroke-width="0.7" opacity="0.8" />
-                <ellipse cx="0" cy="196" rx="11" ry="17" fill="#b5722a" />
-                <ellipse cx="0" cy="197" rx="8" ry="12.5" fill="#2f9e73" />
-                <ellipse cx="0" cy="199" rx="5" ry="8" fill="#1d4ed8" />
-                <ellipse cx="0" cy="201" rx="2.4" ry="4" fill="#10264a" />
+                <path d="M-2 70 L-9 76 M-3 94 L-10 100 M-3 118 L-10 124 M-2 142 L-9 148 M2 70 L9 76 M3 94 L10 100 M3 118 L10 124 M2 142 L9 148" stroke="#c9a06a" stroke-width="0.7" opacity="0.9" />
+                <ellipse cx="0" cy="196" rx="11" ry="17" fill="#c5a059" />
+                <ellipse cx="0" cy="197" rx="8" ry="12.5" fill="#f6dccd" />
+                <ellipse cx="0" cy="199" rx="5" ry="8" fill="#b07c52" />
+                <ellipse cx="0" cy="201" rx="2.4" ry="4" fill="#5e3d26" />
             </g>
         </defs>
 
@@ -197,21 +200,21 @@
 
         <!-- body: a full teardrop in iridescent blue, the folded wing in teal-green with gold edging -->
         <path d="M300 300 C258 290 240 240 256 200 C270 166 318 160 340 190 C362 220 346 290 300 300Z" fill="url(#pcBodyGrad)" />
-        <path d="M312 198 C340 208 350 246 332 288 C342 250 336 220 312 198Z" fill="#1c8a8a" opacity="0.95" />
-        <path d="M318 206 C336 220 342 250 330 282" stroke="#c9a24b" stroke-width="1" fill="none" opacity="0.75" />
-        <path d="M268 232 C280 246 300 252 318 246" stroke="#2a6fc2" stroke-width="1" fill="none" opacity="0.6" />
+        <path d="M312 198 C340 208 350 246 332 288 C342 250 336 220 312 198Z" fill="#f2bda4" opacity="0.95" />
+        <path d="M318 206 C336 220 342 250 330 282" stroke="#c5a059" stroke-width="1" fill="none" opacity="0.85" />
+        <path d="M268 232 C280 246 300 252 318 246" stroke="#f6dccd" stroke-width="1" fill="none" opacity="0.7" />
 
         <!-- neck: short and full, rising from the chest and curving to the left; head facing the page -->
-        <path d="M278 210 C262 196 246 180 236 160 C230 148 228 138 230 128" stroke="#1b4f9c" stroke-width="30" fill="none" stroke-linecap="round" />
-        <path d="M278 210 C262 196 246 180 236 160 C230 148 228 138 230 128" stroke="#2a6fc2" stroke-width="14" fill="none" stroke-linecap="round" />
-        <path d="M262 204 C252 190 242 176 238 160" stroke="#1c8a8a" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7" />
+        <path d="M278 210 C262 196 246 180 236 160 C230 148 228 138 230 128" stroke="#86593a" stroke-width="30" fill="none" stroke-linecap="round" />
+        <path d="M278 210 C262 196 246 180 236 160 C230 148 228 138 230 128" stroke="#c8946a" stroke-width="14" fill="none" stroke-linecap="round" />
+        <path d="M262 204 C252 190 242 176 238 160" stroke="#f2bda4" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8" />
         <circle cx="228" cy="118" r="22" fill="url(#pcBodyGrad)" />
-        <path d="M208 120 L180 128 L208 134Z" fill="#d9a441" />
-        <path d="M212 106 C220 98 232 98 238 106 C232 114 220 114 212 106Z" fill="#ffffff" />
-        <circle cx="220" cy="109" r="3.2" fill="#10264a" />
-        <!-- crest: thin stems with teal teardrops -->
-        <path d="M220 98 L204 72 M228 96 L224 66 M236 96 L242 66 M242 100 L258 76" stroke="#1b4f9c" stroke-width="1.4" />
-        <path d="M204 72 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M224 66 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M242 66 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M258 76 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z" fill="#1c8a8a" />
+        <path d="M208 120 L180 128 L208 134Z" fill="#c5a059" />
+        <path d="M212 106 C220 98 232 98 238 106 C232 114 220 114 212 106Z" fill="#fbf3ec" />
+        <circle cx="220" cy="109" r="3.2" fill="#5e3d26" />
+        <!-- crest: thin stems with gold teardrops -->
+        <path d="M220 98 L204 72 M228 96 L224 66 M236 96 L242 66 M242 100 L258 76" stroke="#86593a" stroke-width="1.4" />
+        <path d="M204 72 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M224 66 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M242 66 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z M258 76 c-5 -6 -5 -12 0 -16 c5 4 5 10 0 16Z" fill="#c5a059" />
         <!-- feet gripping the branch -->
         <path d="M286 302 L282 314 M278 312 L270 316 M284 316 L290 320 M306 300 L310 312 M304 312 L298 316 M312 314 L318 318" stroke="#8a6a3a" stroke-width="1.8" stroke-linecap="round" />
     </svg>
@@ -247,43 +250,6 @@
         <use href="#pcBud" transform="translate(176 104) rotate(15) scale(0.8)" />
         <use href="#pcPaisley" transform="translate(30 90) scale(-0.7 0.7)" />
     </svg>
-
-    <!-- Theme imagery, fixed along the bottom of the viewport: the mandap with the couple in the
-         centre as a soft watermark, and an elephant in each lower corner facing inwards -->
-    <div class="pc-mandap-wrap" aria-hidden="true">
-        <svg class="pc-mandap" viewBox="0 0 700 360" focusable="false">
-            <g stroke="#b07c52" stroke-width="2" fill="none" stroke-linecap="round">
-                <path d="M150 340 V120 M270 340 V100 M430 340 V100 M550 340 V120" />
-                <path d="M130 120 H570" stroke-width="1.4" />
-                <path d="M150 120 Q210 60 270 100 Q350 50 430 100 Q490 60 550 120" />
-                <path d="M150 125 Q210 150 270 125 Q350 160 430 125 Q490 150 550 125" stroke-width="1.2" />
-                <path d="M142 340 H158 M262 340 H278 M422 340 H438 M542 340 H558" />
-            </g>
-            <path d="M150 120 Q190 180 150 260 L154 260 Q200 180 160 120Z M550 120 Q510 180 550 260 L546 260 Q500 180 540 120Z" fill="#f6dccd" stroke="#b07c52" stroke-width="0.8" />
-            <use href="#pcSwag" transform="translate(170 128) scale(1.2)" />
-            <use href="#pcSwag" transform="translate(274 128) scale(1.2)" />
-            <use href="#pcSwag" transform="translate(434 128) scale(1.2)" />
-            <use href="#pcSwag" transform="translate(350 100) scale(1.1)" />
-            <use href="#pcSwag" transform="translate(250 100) scale(1.1)" />
-            <use href="#pcCouple" transform="translate(350 182)" />
-            <path d="M60 342 H640" stroke="url(#pcGold)" stroke-width="1" />
-            <use href="#pcBud" transform="translate(110 340) scale(0.7)" />
-            <use href="#pcBud" transform="translate(590 340) scale(0.7)" />
-            <use href="#pcLotus" transform="translate(70 342) scale(0.8)" />
-            <use href="#pcLotus" transform="translate(630 342) scale(0.8)" />
-            <g fill="#f2bda4"><ellipse cx="210" cy="330" rx="5" ry="3" transform="rotate(-20 210 330)" /><ellipse cx="490" cy="334" rx="5" ry="3" transform="rotate(25 490 334)" /><ellipse cx="370" cy="350" rx="4" ry="2.5" /></g>
-        </svg>
-        <svg class="pc-elephant pc-elephant--left" viewBox="0 0 220 180" focusable="false">
-            <use href="#pcElephant" transform="translate(10 30) scale(1.6)" />
-            <use href="#pcLotus" transform="translate(190 176) scale(0.9)" />
-            <use href="#pcBud" transform="translate(206 170) rotate(12) scale(0.7)" />
-        </svg>
-        <svg class="pc-elephant pc-elephant--right" viewBox="0 0 220 180" focusable="false">
-            <use href="#pcElephant" transform="translate(210 30) scale(-1.6 1.6)" />
-            <use href="#pcLotus" transform="translate(30 176) scale(0.9)" />
-            <use href="#pcBud" transform="translate(14 170) rotate(-12) scale(0.7)" />
-        </svg>
-    </div>
 
     <!-- Canvas for Floating Pastel Petals (Powder Blue, Mauve & Jasmine) -->
     <canvas id="petalsCanvas"
@@ -324,9 +290,40 @@
 
                 <!-- Couple Royal Framed Portrait in Pastel -->
                 <div class="couple-portrait-box">
-                    <img src="assets/images/couple.jpg" alt="Aditya & Naincee - Wedding Celebrations in Indore"
+                    <img src="assets/images/logo.jpg" alt="Aditya & Naincee - Wedding Celebrations in Indore"
                         class="img-fluid">
                 </div>
+
+                <!-- Theme imagery: the mandap with the couple beneath the logo, elephants either side, lotuses along the base -->
+                <svg class="pc-mandap" viewBox="0 0 1200 380" aria-hidden="true" focusable="false">
+                    <g stroke="#b07c52" stroke-width="2" fill="none" stroke-linecap="round">
+                        <path d="M400 350 V120 M520 350 V100 M680 350 V100 M800 350 V120" />
+                        <path d="M380 120 H820" stroke-width="1.4" />
+                        <path d="M400 120 Q460 60 520 100 Q600 50 680 100 Q740 60 800 120" />
+                        <path d="M400 125 Q460 150 520 125 Q600 160 680 125 Q740 150 800 125" stroke-width="1.2" />
+                        <path d="M392 350 H408 M512 350 H528 M672 350 H688 M792 350 H808" />
+                    </g>
+                    <path d="M400 120 Q440 180 400 260 L404 260 Q450 180 410 120Z M800 120 Q760 180 800 260 L796 260 Q750 180 790 120Z" fill="#f6dccd" stroke="#b07c52" stroke-width="0.8" />
+                    <use href="#pcSwag" transform="translate(420 128) scale(1.2)" />
+                    <use href="#pcSwag" transform="translate(524 128) scale(1.2)" />
+                    <use href="#pcSwag" transform="translate(684 128) scale(1.2)" />
+                    <use href="#pcSwag" transform="translate(600 100) scale(1.1)" />
+                    <use href="#pcSwag" transform="translate(500 100) scale(1.1)" />
+                    <use href="#pcCouple" transform="translate(600 190)" />
+                    <use href="#pcElephant" transform="translate(110 206) scale(1.55)" />
+                    <use href="#pcElephant" transform="translate(1090 206) scale(-1.55 1.55)" />
+                    <path d="M80 352 H1120" stroke="url(#pcGold)" stroke-width="1" />
+                    <use href="#pcLotus" transform="translate(300 352) scale(0.9)" />
+                    <use href="#pcLotus" transform="translate(900 352) scale(0.9)" />
+                    <use href="#pcBud" transform="translate(350 350) rotate(10) scale(0.7)" />
+                    <use href="#pcBud" transform="translate(850 350) rotate(-10) scale(0.7)" />
+                    <use href="#pcLotus" transform="translate(60 356) scale(0.7)" />
+                    <use href="#pcLotus" transform="translate(1140 356) scale(0.7)" />
+                    <use href="#pcPaisley" transform="translate(250 330) scale(0.6)" />
+                    <use href="#pcPaisley" transform="translate(950 330) scale(-0.6 0.6)" />
+                    <g fill="#f2bda4"><ellipse cx="460" cy="338" rx="5" ry="3" transform="rotate(-20 460 338)" /><ellipse cx="740" cy="342" rx="5" ry="3" transform="rotate(25 740 342)" /><ellipse cx="620" cy="360" rx="4" ry="2.5" /></g>
+                </svg>
+
 
                 <!-- Invitation Tagline -->
                 <p class="font-script fs-1 text-mauve mb-1">Together with their families</p>
@@ -500,29 +497,27 @@
                             <div class="timeline-left-art">
                                 <div class="timeline-art-box" title="Haldi & Floral Petals">
                                     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <!-- Floral bowl / Marigold bloom -->
-                                        <circle cx="50" cy="50" r="32" fill="#FEF3C7" stroke="#D97706"
-                                            stroke-width="2.5" />
-                                        <circle cx="50" cy="50" r="22" fill="#FDE68A" stroke="#F59E0B" stroke-width="2"
-                                            stroke-dasharray="4 2" />
-                                        <!-- Petals -->
-                                        <ellipse cx="50" cy="18" rx="7" ry="12" fill="#F59E0B" stroke="#B45309"
-                                            stroke-width="1.5" />
-                                        <ellipse cx="50" cy="82" rx="7" ry="12" fill="#F59E0B" stroke="#B45309"
-                                            stroke-width="1.5" />
-                                        <ellipse cx="18" cy="50" rx="12" ry="7" fill="#F59E0B" stroke="#B45309"
-                                            stroke-width="1.5" />
-                                        <ellipse cx="82" cy="50" rx="12" ry="7" fill="#F59E0B" stroke="#B45309"
-                                            stroke-width="1.5" />
-                                        <ellipse cx="28" cy="28" rx="8" ry="11" transform="rotate(-45 28 28)"
-                                            fill="#FBBF24" stroke="#B45309" stroke-width="1.5" />
-                                        <ellipse cx="72" cy="72" rx="8" ry="11" transform="rotate(-45 72 72)"
-                                            fill="#FBBF24" stroke="#B45309" stroke-width="1.5" />
-                                        <ellipse cx="72" cy="28" rx="8" ry="11" transform="rotate(45 72 28)"
-                                            fill="#FBBF24" stroke="#B45309" stroke-width="1.5" />
-                                        <ellipse cx="28" cy="72" rx="8" ry="11" transform="rotate(45 28 72)"
-                                            fill="#FBBF24" stroke="#B45309" stroke-width="1.5" />
-                                        <circle cx="50" cy="50" r="10" fill="#EA580C" />
+                                        <!-- Haldi bowl: a soft marigold in the theme's gold and accent tones, a turmeric bowl beneath -->
+                                        <g style="fill: var(--gold-light); stroke: var(--gold-accent);" stroke-width="1.6">
+                                            <ellipse cx="50" cy="26" rx="6" ry="11" />
+                                            <ellipse cx="50" cy="26" rx="6" ry="11" transform="rotate(45 50 36)" />
+                                            <ellipse cx="50" cy="26" rx="6" ry="11" transform="rotate(90 50 36)" />
+                                            <ellipse cx="50" cy="26" rx="6" ry="11" transform="rotate(135 50 36)" />
+                                            <ellipse cx="50" cy="26" rx="6" ry="11" transform="rotate(180 50 36)" />
+                                            <ellipse cx="50" cy="26" rx="6" ry="11" transform="rotate(225 50 36)" />
+                                            <ellipse cx="50" cy="26" rx="6" ry="11" transform="rotate(270 50 36)" />
+                                            <ellipse cx="50" cy="26" rx="6" ry="11" transform="rotate(315 50 36)" />
+                                        </g>
+                                        <circle cx="50" cy="36" r="6" style="fill: var(--gold-accent);" />
+                                        <circle cx="50" cy="36" r="2.5" style="fill: var(--mauve-primary);" />
+                                        <!-- bowl -->
+                                        <path d="M24 62 H76 L70 82 Q50 88 30 82 Z" style="fill: var(--mauve-soft); stroke: var(--mauve-primary);" stroke-width="2" />
+                                        <ellipse cx="50" cy="62" rx="26" ry="5" style="fill: var(--gold-light); stroke: var(--mauve-primary);" stroke-width="2" />
+                                        <ellipse cx="50" cy="62" rx="18" ry="3" style="fill: var(--gold-accent);" opacity="0.8" />
+                                        <!-- a leaf and two loose petals -->
+                                        <path d="M64 50 C72 42 82 44 84 52 C76 56 68 56 64 50Z" style="fill: var(--powder-blue-light); stroke: var(--powder-blue-primary);" stroke-width="1.2" />
+                                        <ellipse cx="22" cy="48" rx="4" ry="2.5" transform="rotate(-30 22 48)" style="fill: var(--gold-accent);" opacity="0.8" />
+                                        <ellipse cx="80" cy="30" rx="4" ry="2.5" transform="rotate(25 80 30)" style="fill: var(--gold-accent);" opacity="0.8" />
                                     </svg>
                                 </div>
                             </div>
@@ -572,7 +567,7 @@
                                         <path d="M31 27V18" stroke="#C5A059" stroke-width="2" />
                                         <!-- Sparkles -->
                                         <path d="M49 20L51 25L56 27L51 29L49 34L47 29L42 27L47 25L49 20Z"
-                                            fill="#F59E0B" />
+                                            style="fill: var(--gold-accent);" />
                                     </svg>
                                 </div>
                             </div>
@@ -659,9 +654,9 @@
                                         <polygon points="56,22 64,15 72,22 64,30" fill="#EBF3F8" stroke="#52829F"
                                             stroke-width="2" />
                                         <polygon points="60,22 64,16 68,22 64,28" fill="#FFFFFF" />
-                                        <line x1="64" y1="9" x2="64" y2="13" stroke="#F59E0B" stroke-width="2"
+                                        <line x1="64" y1="9" x2="64" y2="13" style="stroke: var(--gold-accent);" stroke-width="2"
                                             stroke-linecap="round" />
-                                        <line x1="74" y1="13" x2="71" y2="16" stroke="#F59E0B" stroke-width="2"
+                                        <line x1="74" y1="13" x2="71" y2="16" style="stroke: var(--gold-accent);" stroke-width="2"
                                             stroke-linecap="round" />
                                     </svg>
                                 </div>
