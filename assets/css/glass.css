@@ -159,7 +159,7 @@ html.glass-theme .pastel-floral-header,
 html.glass-theme .sanskrit-header-banner,
 html.glass-theme .theme-switcher { border-radius: 0; border-left: 0; border-right: 0; }
 
-html.glass-theme .theme-switcher { background: rgba(30, 20, 36, 0.55); color: #fff; }
+html.glass-theme .theme-switcher { background: rgba(30, 20, 36, 0.55); color: #fff; position: relative; z-index: 1; padding: 0.7rem 1rem; }
 html.glass-theme .theme-switcher select { background: rgba(255, 255, 255, 0.14); }
 
 html.glass-theme .floating-btn { border-radius: var(--glass-radius-pill); }

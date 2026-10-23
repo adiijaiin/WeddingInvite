@@ -1104,7 +1104,7 @@ body {
 .floating-actions-container {
     position: fixed;
     bottom: 24px;
-    right: 24px;
+    left: 24px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
@@ -1145,6 +1145,12 @@ body {
     border-radius: 14px;
     color: var(--text-primary);
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* the message sits centred in the toast, the close button tucked at the right */
+.wedding-toast .toast-body {
+    flex: 1;
+    text-align: center;
 }
 
 /* Footer */

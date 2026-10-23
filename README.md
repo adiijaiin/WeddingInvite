@@ -24,7 +24,7 @@ As requested, all events are beautifully displayed in a **single, unified Timeli
 
 ### Schedule of Events:
 1. **Day 1 • Monday, 21st December 2026**
-   - **02:00 PM**: Haldi & Phoolon Ki Holi (*Hotel HR Greens Lawn* • Bana: *Pastel Yellow & Powder Blue*)
+   - **02:00 PM**: Haldi/Phoolon ki Haldi (*Hotel HR Greens Lawn* • Bana: *Pastel Yellow & Powder Blue*)
    - **07:00 PM**: Ring Ceremony & Sangeet (*Grand Crystal Ballroom* • Bana: *Dusty Mauve, Powder Blue & Glam*)
 2. **Day 2 • Tuesday, 22nd December 2026**
    - **11:00 AM**: Baarat/Procession (*HR Greens Grand Portico* • Bana: *Traditional Silk & Sherwanis*)

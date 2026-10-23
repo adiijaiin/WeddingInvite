@@ -1,4 +1,4 @@
-/**
+const current = document.documentElement.getAttribute('data-theme') || 'blush-glass';/**
  * Main Interactive Logic for Indian Wedding E-Invite (Pastel Theme)
  * Handles: Event Timeline Filtering, Audio, Countdown, Calendar (.ics & Google),
  * Copy to Clipboard, RSVP with LocalStorage, Blessings Wall, and Petal Showers.
@@ -8,11 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 0. Temporary theme switcher: each theme is its own page (same assets, same backend),
     //    so changing the dropdown navigates there. The current page is read from <html data-theme>.
     const themePages = {
-        'pastel-mauve': 'index.html',
-        'mint-illustrated': 'mint-illustrated.html',
-        'blush-garden': 'blush-garden.html',
-        'mint-glass': 'mint-glass.html',
-        'blush-glass': 'blush-glass.html'
+        'blush-glass': 'index.html',
+        'mint-glass': 'mint-glass.html'
     };
     const themeSelect = document.getElementById('themeSelect');
     if (themeSelect) {
@@ -311,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventToCalendar = function (eventType) {
         const events = {
             'haldi': {
-                title: "Naincee & Aditya's Haldi & Phoolon Ki Holi",
+                title: "Naincee & Aditya's Haldi/Phoolon ki Haldi",
                 desc: "Join us for an auspicious afternoon of Haldi and flower shower celebrations followed by festive snacks!",
                 location: "Hotel HR Greens, Indore",
                 googleDates: "20261221T083000Z/20261221T113000Z"
@@ -354,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.downloadICS = function (eventType) {
         const events = {
             'haldi': {
-                title: "Naincee & Aditya's Haldi & Phoolon Ki Holi",
+                title: "Naincee & Aditya's Haldi/Phoolon ki Haldi",
                 desc: "Haldi & flower shower celebration.",
                 location: "Hotel HR Greens, Indore",
                 start: "20261221T140000",

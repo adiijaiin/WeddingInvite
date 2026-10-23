@@ -27,7 +27,7 @@
     <!-- Option 1 theme page: the mint and powder-blue palette with the illustrations from assets/illustrations -->
     <link rel="stylesheet" href="assets/css/theme-mint-illustrated.css">
 
-    <!-- Liquid Glass design system (Option 3 = Option 1 + glass) -->
+    <!-- Liquid Glass design system -->
     <link rel="stylesheet" href="assets/css/glass.css">
 </head>
 
@@ -42,17 +42,6 @@
     </svg>
     <div class="glass-blobs" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
-    <!-- Temporary theme switcher (colours only; remove before sharing) -->
-    <div class="theme-switcher">
-        <label for="themeSelect"><i class="fas fa-palette me-1"></i> Theme</label>
-        <select id="themeSelect">
-            <option value="pastel-mauve">Pastel Mauve (current)</option>
-            <option value="mint-illustrated">Option 1 · Mint Aqua with Illustrations</option>
-            <option value="blush-garden">Option 2 · Blush Garden</option>
-            <option value="mint-glass">Option 3 · Mint Aqua · Liquid Glass</option>
-            <option value="blush-glass">Option 4 · Blush Garden · Liquid Glass</option>
-        </select>
-    </div>
 
     <!-- Theme imagery fixed to the viewport: lotuses at the bottom left.
          The JPGs have white backgrounds; mix-blend-mode: multiply lets the page wash show through them. -->
@@ -383,7 +372,7 @@
                             <!-- Right Info -->
                             <div class="timeline-right-info">
                                 <div class="timeline-time-label">02:00 PM</div>
-                                <div class="timeline-title-label">Haldi & Phoolon Ki Holi</div>
+                                <div class="timeline-title-label">Haldi/Phoolon ki Haldi</div>
                                 <div class="timeline-meta-wrap">
                                     <span class="timeline-badge-tag">
                                         <i class="fas fa-map-marker-alt text-danger"></i> Hotel HR Greens, Indore
@@ -882,6 +871,15 @@
             </div>
         </div>
     </footer>
+
+    <!-- Theme switcher, kept at the very end of the page -->
+    <div class="theme-switcher">
+        <label for="themeSelect"><i class="fas fa-palette me-1"></i> Theme</label>
+        <select id="themeSelect">
+            <option value="blush-glass">Option 1 · Blush Garden · Liquid Glass</option>
+            <option value="mint-glass">Option 2 · Mint Aqua · Liquid Glass</option>
+        </select>
+    </div>
 
     <!-- =========================================================================
          9. FLOATING INTERACTIVE CONTROLS
