@@ -27,7 +27,7 @@ As requested, all events are beautifully displayed in a **single, unified Timeli
    - **02:00 PM**: Haldi & Phoolon Ki Holi (*Hotel HR Greens Lawn* • Bana: *Pastel Yellow & Powder Blue*)
    - **07:00 PM**: Ring Ceremony & Sangeet (*Grand Crystal Ballroom* • Bana: *Dusty Mauve, Powder Blue & Glam*)
 2. **Day 2 • Tuesday, 22nd December 2026**
-   - **12:30 PM**: Baraat Swagat & Milni (*HR Greens Grand Portico* • Bana: *Traditional Silk & Sherwanis*)
+   - **11:00 AM**: Baarat/Procession (*HR Greens Grand Portico* • Bana: *Traditional Silk & Sherwanis*)
    - **01:00 PM**: Shubh Vivah & Sacred Saat Phere (*Mandap Lawn* • Bana: *Heritage Mauve-Rose Silks*)
    - **07:00 PM ONWARDS**: The Grand Reception (*Celebrations Lawn* • Bana: *Formal Evening Wear & Tuxedos*)
 

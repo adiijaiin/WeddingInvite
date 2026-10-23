@@ -322,6 +322,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 location: "Hotel HR Greens, Indore",
                 googleDates: "20261221T133000Z/20261221T173000Z"
             },
+            'baraat': {
+                title: "Naincee & Aditya's Baarat / Procession",
+                desc: "The groom's procession arrives with music and dancing, received by the bride's family at the gate.",
+                location: "Hotel HR Greens, Indore",
+                googleDates: "20261222T053000Z/20261222T073000Z"
+            },
             'phere': {
                 title: "Naincee & Aditya's Shubh Vivah & Sacred Phere",
                 desc: "Witness the sacred seven vows around the holy fire as Naincee & Aditya unite in matrimony.",
@@ -360,6 +366,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 location: "Hotel HR Greens, Indore",
                 start: "20261221T190000",
                 end: "20261221T230000"
+            },
+            'baraat': {
+                title: "Naincee & Aditya's Baarat / Procession",
+                desc: "The groom's procession, received at the gate.",
+                location: "Hotel HR Greens, Indore",
+                start: "20261222T110000",
+                end: "20261222T130000"
             },
             'phere': {
                 title: "Naincee & Aditya's Shubh Vivah (Phere Ceremony)",

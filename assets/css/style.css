@@ -382,6 +382,13 @@ body {
     text-align: center;
 }
 
+/* the mangal shloka sits on its own line under the invocation, a touch smaller */
+.sanskrit-title-line2 {
+    font-size: 0.86em;
+    margin-top: 0.3rem;
+    opacity: 0.92;
+}
+
 .sanskrit-title {
     font-family: 'Rozha One', serif;
     font-size: clamp(1.1rem, 2.3vw, 1.45rem);

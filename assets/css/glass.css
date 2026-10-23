@@ -12,14 +12,14 @@
 
 /* ---------- 1. tokens ---------- */
 html.glass-theme {
-    --glass-blur: 20px;
+    --glass-blur: 16px;
     --glass-saturate: 170%;
     --glass-brightness: 1.05;
-    --glass-tint: rgba(255, 255, 255, 0.30);
-    --glass-tint-subtle: rgba(255, 255, 255, 0.18);
-    --glass-tint-strong: rgba(255, 255, 255, 0.42);
-    --glass-tint-hover: rgba(255, 255, 255, 0.46);
-    --glass-inner: rgba(255, 255, 255, 0.46);     /* nested elements: fill only, no blur */
+    --glass-tint: rgba(255, 255, 255, 0.18);
+    --glass-tint-subtle: rgba(255, 255, 255, 0.10);
+    --glass-tint-strong: rgba(255, 255, 255, 0.28);
+    --glass-tint-hover: rgba(255, 255, 255, 0.32);
+    --glass-inner: rgba(255, 255, 255, 0.30);     /* nested elements: fill only, no blur */
     --glass-border: rgba(255, 255, 255, 0.55);
     --glass-border-hover: rgba(255, 255, 255, 0.55);
     --glass-highlight: rgba(255, 255, 255, 0.85); /* top specular edge */
@@ -164,7 +164,14 @@ html.glass-theme .theme-switcher select { background: rgba(255, 255, 255, 0.14);
 
 html.glass-theme .floating-btn { border-radius: var(--glass-radius-pill); }
 
-html.glass-theme .pastel-footer { border-radius: var(--glass-radius-lg) var(--glass-radius-lg) 0 0; border-bottom: 0; }
+html.glass-theme .pastel-footer {
+    border-radius: var(--glass-radius-lg) var(--glass-radius-lg) 0 0;
+    border-bottom: 0;
+    /* the footer is the clearest pane on the page: barely a tint, lighter blur, so the garden shows through */
+    background: rgba(255, 255, 255, 0.07);
+    -webkit-backdrop-filter: blur(10px) saturate(var(--glass-saturate));
+    backdrop-filter: blur(10px) saturate(var(--glass-saturate));
+}
 
 /* nested containers: translucent fill, no blur (they sit inside a blurred card) */
 html.glass-theme .countdown-box-pastel,
@@ -224,6 +231,22 @@ html.glass-theme .quick-pill-btn,
 html.glass-theme .btn-cal-mini,
 html.glass-theme .floral-badge-pill { background: var(--glass-inner); color: var(--text-primary); }
 html.glass-theme .floral-badge-pill { padding: 0.3rem 0.9rem; }
+
+/* the venue section carries Bootstrap's white band and hairlines; drop them so the
+   showcase card inside reads as glass over the page like everything else */
+html.glass-theme #venue.bg-white {
+    background: transparent !important;
+    border: 0 !important;
+}
+html.glass-theme .badge.bg-light {
+    background: var(--glass-inner) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: inset 0 1px 1px var(--glass-highlight);
+    border-radius: var(--glass-radius-pill);
+}
+html.glass-theme .venue-showcase-pastel { overflow: hidden; }
+html.glass-theme .venue-pastel-img-wrap img { border-radius: calc(var(--glass-radius-lg) - 2px) calc(var(--glass-radius-lg) - 2px) 0 0; }
+html.glass-theme .venue-pastel-details { border-radius: 0 0 var(--glass-radius-lg) var(--glass-radius-lg); border: 0; box-shadow: none; }
 
 /* ---------- 4. interaction ---------- */
 html.glass-theme .glass--interactive,
