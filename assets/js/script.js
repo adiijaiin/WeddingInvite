@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timelineEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        showToast('🌸 Auspicious Welcome! Royal wedding itinerary unveiled.');
+        showToast('🌸 Auspicious Welcome! Wedding itinerary unveiled.');
     }
 
     if (openInviteBtn) openInviteBtn.addEventListener('click', handleUnveilInvite);
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const attendance = document.querySelector('input[name="attendance"]:checked')?.value || 'Attending with Joy';
             const guestsCount = document.getElementById('guestCount').value;
             const side = document.querySelector('input[name="side"]:checked')?.value || '';
-            const wishes = document.getElementById('guestWishes').value.trim();
+            const arrival = document.getElementById('guestArrival').value.trim();
             const website = document.getElementById('guestWebsite')?.value || ''; // honeypot, stays empty for real guests
 
             const rsvpData = {
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 attendance,
                 side,
                 guestsCount,
-                wishes,
+                arrival,
                 website,
                 submittedAt: new Date().toISOString()
             };
@@ -155,18 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify(rsvpData)
             }).catch(() => {
-                showToast('⚠️ Could not reach the RSVP sheet. Please call the helpdesk to confirm.');
+                showToast('⚠️ Could not reach the RSVP sheet. Please try again in a moment.');
             });
 
             const existingRsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
             existingRsvps.push(rsvpData);
             localStorage.setItem('wedding_rsvps', JSON.stringify(existingRsvps));
-
-            // The Apps Script copies an RSVP wish to the Blessings tab; show it to this guest
-            // right away, marked as awaiting approval.
-            if (wishes) {
-                addPendingBlessing(name, wishes);
-            }
 
             if (window.showerBlessings) {
                 window.showerBlessings(90);
@@ -305,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             'sangeet': {
                 title: "Naincee & Aditya's Ring Ceremony & Sangeet",
-                desc: "Exchange of rings followed by an electrifying evening of music, dance face-offs, and a royal feast!",
+                desc: "Exchange of rings followed by an electrifying evening of music, dance face-offs, and a festive feast!",
                 location: "Hotel HR Greens, Indore",
                 googleDates: "20261221T133000Z/20261221T173000Z"
             },
@@ -316,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 googleDates: "20261222T073000Z/20261222T100000Z"
             },
             'reception': {
-                title: "Naincee & Aditya's Grand Royal Reception",
+                title: "Naincee & Aditya's Grand Reception",
                 desc: "An enchanting evening banquet to toast the newlyweds. Live music & gourmet dining.",
                 location: "Hotel HR Greens, Indore",
                 googleDates: "20261222T133000Z/20261222T173000Z"
@@ -356,8 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 end: "20261222T160000"
             },
             'reception': {
-                title: "Naincee & Aditya's Grand Royal Reception",
-                desc: "Royal wedding dinner reception.",
+                title: "Naincee & Aditya's Grand Reception",
+                desc: "Wedding dinner reception.",
                 location: "Hotel HR Greens, Indore",
                 start: "20261222T190000",
                 end: "20261222T230000"

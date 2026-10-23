@@ -1,4 +1,4 @@
-# 🌸 Shubh Vivah - Royal Indian Wedding E-Invite Website
+# 🌸 Shubh Vivah - Indian Wedding E-Invite Website
 
 An interactive, responsive, festive, and bootstrapped Indian Wedding Invitation web application designed for laptops, tablets, and smartphones.
 
@@ -29,7 +29,7 @@ As requested, all events are beautifully displayed in a **single, unified Timeli
 2. **Day 2 • Tuesday, 22nd December 2026**
    - **12:30 PM**: Baraat Swagat & Milni (*HR Greens Grand Portico* • Bana: *Traditional Silk & Sherwanis*)
    - **01:00 PM**: Shubh Vivah & Sacred Saat Phere (*Mandap Lawn* • Bana: *Heritage Mauve-Rose Silks*)
-   - **07:00 PM ONWARDS**: The Grand Royal Reception (*Celebrations Lawn* • Bana: *Formal Evening Wear & Tuxedos*)
+   - **07:00 PM ONWARDS**: The Grand Reception (*Celebrations Lawn* • Bana: *Formal Evening Wear & Tuxedos*)
 
 ---
 
