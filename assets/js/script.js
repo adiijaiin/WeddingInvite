@@ -1,3 +1,28 @@
+/* Hindi pages (html lang="hi") get their interface strings from this map; everything else falls through to English. */
+const HI_STRINGS = {
+    '🌸 Auspicious Welcome! Wedding itinerary unveiled.': '🌸 हार्दिक स्वागत! विवाह कार्यक्रम प्रस्तुत है।',
+    '🌸 Shubh Aashirvaad! Fragrant petals showered upon the couple!': '🌸 शुभ आशीर्वाद! वर-वधू पर पुष्प वर्षा हुई!',
+    '📍 Address copied to clipboard! Ready to paste in Google Maps / Uber.': '📍 पता कॉपी हो गया! गूगल मैप्स / उबर में पेस्ट करें।',
+    '📍 Hotel HR Greens, Indore, Madhya Pradesh': '📍 होटल एचआर ग्रीन्स, इंदौर, मध्य प्रदेश',
+    '⚠️ Could not reach the RSVP sheet. Please try again in a moment.': '⚠️ RSVP शीट से संपर्क नहीं हो सका। कृपया थोड़ी देर बाद पुनः प्रयास करें।',
+    '⚠️ Could not reach the blessings sheet. Please try again in a moment.': '⚠️ आशीर्वाद शीट से संपर्क नहीं हो सका। कृपया थोड़ी देर बाद पुनः प्रयास करें।',
+    '💖 Thank you! Your blessing will appear on the wall once the family approves it.': '💖 धन्यवाद! परिवार की स्वीकृति के बाद आपका आशीर्वाद दीवार पर दिखाई देगा।',
+    '📥 iCalendar (.ics) downloaded for Apple/Outlook!': '📥 iCalendar (.ics) फ़ाइल डाउनलोड हो गई!',
+    '📅 Opening Google Calendar for ': '📅 गूगल कैलेंडर खुल रहा है: ',
+    'The Auspicious Moment is Here!': 'शुभ घड़ी आ गई!',
+    'Shubh Vivah ceremony is underway. Blessed with eternal togetherness.': 'शुभ विवाह संपन्न हो रहा है। सदा साथ का आशीर्वाद।',
+    "Manju & Rajendra Jain (Groom's Parents)": 'मंजू व राजेंद्र जैन (वर के माता-पिता)',
+    "Snehlata & Satyendra Jain (Bride's Parents)": 'स्नेहलता व सत्येंद्र जैन (वधू के माता-पिता)',
+    'Family Blessing': 'पारिवारिक आशीर्वाद',
+    'Awaiting approval': 'स्वीकृति की प्रतीक्षा में',
+    'Shubhkaamnaye': 'शुभकामनाएँ',
+    'Visible to you until approved': 'स्वीकृति तक केवल आपको दिखाई देगा',
+    'Today': 'आज',
+    'the Phere begin at 1 pm': 'फेरे दोपहर 1 बजे आरंभ होंगे',
+};
+const IS_HINDI = document.documentElement.lang === 'hi';
+function t(text) { return IS_HINDI && HI_STRINGS[text] ? HI_STRINGS[text] : text; }
+
 const current = document.documentElement.getAttribute('data-theme') || 'blush-glass';/**
  * Main Interactive Logic for Indian Wedding E-Invite (Pastel Theme)
  * Handles: Event Timeline Filtering, Audio, Countdown, Calendar (.ics & Google),
@@ -5,22 +30,6 @@ const current = document.documentElement.getAttribute('data-theme') || 'blush-gl
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 0. Temporary theme switcher: each theme is its own page (same assets, same backend),
-    //    so changing the dropdown navigates there. The current page is read from <html data-theme>.
-    const themePages = {
-        'blush-glass': 'index.html',
-        'mint-glass': 'mint-glass.html'
-    };
-    const themeSelect = document.getElementById('themeSelect');
-    if (themeSelect) {
-        const current = document.documentElement.getAttribute('data-theme') || 'pastel-mauve';
-        if ([...themeSelect.options].some(o => o.value === current)) themeSelect.value = current;
-        themeSelect.addEventListener('change', () => {
-            const page = themePages[themeSelect.value];
-            if (page) window.location.href = page;
-        });
-    }
-
     // 1. Initialize Petal Animation Engine
     if (window.petalEngine) {
         window.petalEngine.init();
@@ -42,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timelineEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        showToast('🌸 Auspicious Welcome! Wedding itinerary unveiled.');
+        showToast(t('🌸 Auspicious Welcome! Wedding itinerary unveiled.'));
     }
 
     if (openInviteBtn) openInviteBtn.addEventListener('click', handleUnveilInvite);
@@ -55,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.showerBlessings) {
                 window.showerBlessings(75);
             }
-            showToast('🌸 Shubh Aashirvaad! Fragrant petals showered upon the couple!');
+            showToast(t('🌸 Shubh Aashirvaad! Fragrant petals showered upon the couple!'));
         });
     }
 
@@ -76,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (diff <= 0) {
             document.getElementById('countdownSection').innerHTML = `
                 <div class="text-center py-4">
-                    <h3 class="font-royal text-mauve mb-2">The Auspicious Moment is Here!</h3>
-                    <p class="text-muted">Shubh Vivah ceremony is underway. Blessed with eternal togetherness.</p>
+                    <h3 class="font-royal text-mauve mb-2">${t('The Auspicious Moment is Here!')}</h3>
+                    <p class="text-muted">${t('Shubh Vivah ceremony is underway. Blessed with eternal togetherness.')}</p>
                 </div>
             `;
             return;
@@ -126,15 +135,25 @@ document.addEventListener('DOMContentLoaded', () => {
         copyAddressBtn.addEventListener('click', () => {
             const address = "Hotel HR Greens, MR-10 Road, Near Toll Naka, Scheme 78, Indore, Madhya Pradesh 452010, India";
             navigator.clipboard.writeText(address).then(() => {
-                showToast('📍 Address copied to clipboard! Ready to paste in Google Maps / Uber.');
+                showToast(t('📍 Address copied to clipboard! Ready to paste in Google Maps / Uber.'));
             }).catch(() => {
-                showToast('📍 Hotel HR Greens, Indore, Madhya Pradesh');
+                showToast(t('📍 Hotel HR Greens, Indore, Madhya Pradesh'));
             });
         });
     }
 
     // 8. Interactive RSVP Management (Google Sheet via Apps Script, LocalStorage as a backup copy)
     const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzSTB2cLzNC63_eH1Xo9ESj_7XwatvSKvX1iydRd3FHFeK9nNOkGb1VxJnwLwQqO88/exec';
+
+    // A random id kept in this browser, sent with every post so the Apps Script can throttle a
+    // single sender without needing an IP address (Apps Script never sees one).
+    function clientId() {
+        try {
+            let id = localStorage.getItem('wedding_client_id');
+            if (!id) { id = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem('wedding_client_id', id); }
+            return id;
+        } catch (e) { return 'anon'; }
+    }
     const rsvpForm = document.getElementById('weddingRsvpForm');
     const rsvpModal = document.getElementById('rsvpSuccessModal');
 
@@ -152,6 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const rsvpData = {
                 type: 'rsvp',
+                client: clientId(),
                 id: Date.now(),
                 name,
                 phone,
@@ -171,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify(rsvpData)
             }).catch(() => {
-                showToast('⚠️ Could not reach the RSVP sheet. Please try again in a moment.');
+                showToast(t('⚠️ Could not reach the RSVP sheet. Please try again in a moment.'));
             });
 
             const existingRsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
@@ -196,14 +216,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const defaultBlessings = [
         {
-            name: "Manju & Rajendra Jain (Groom's Parents)",
-            message: "Welcoming Naincee into our hearts and family as our cherished daughter. Aditya & Naincee, may your sacred union be showered with wisdom, peace, and lifelong happiness.",
-            time: "Family Blessing"
+            name: t("Manju & Rajendra Jain (Groom's Parents)"),
+            message: IS_HINDI ? "नैन्सी का हमारे हृदय और परिवार में प्रिय बेटी के रूप में स्वागत है। आदित्य व नैन्सी, आपका पावन बंधन विवेक, शांति और आजीवन सुख से भरा रहे।" : "Welcoming Naincee into our hearts and family as our cherished daughter. Aditya & Naincee, may your sacred union be showered with wisdom, peace, and lifelong happiness.",
+            time: t("Family Blessing")
         },
         {
-            name: "Snehlata & Satyendra Jain (Bride's Parents)",
-            message: "Our darling Naincee, you fill our lives with boundless joy and warmth. Aditya, we welcome you with open arms as our beloved son. May Bhagwan Mahavira bless both of you with eternal love, harmony, and prosperity!",
-            time: "Family Blessing"
+            name: t("Snehlata & Satyendra Jain (Bride's Parents)"),
+            message: IS_HINDI ? "हमारी प्यारी नैन्सी, तुम हमारे जीवन को असीम आनंद और स्नेह से भर देती हो। आदित्य, प्रिय पुत्र के रूप में हम तुम्हारा खुले हृदय से स्वागत करते हैं। भगवान महावीर आप दोनों को अटूट प्रेम, सामंजस्य और समृद्धि का आशीर्वाद दें!" : "Our darling Naincee, you fill our lives with boundless joy and warmth. Aditya, we welcome you with open arms as our beloved son. May Bhagwan Mahavira bless both of you with eternal love, harmony, and prosperity!",
+            time: t("Family Blessing")
         }
     ];
 
@@ -223,14 +243,14 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('wedding_blessings_pending', JSON.stringify(pending));
 
         blessingsList.innerHTML = '';
-        pending.forEach(b => renderBlessingCard(b.name, b.message, 'Awaiting approval', true));
+        pending.forEach(b => renderBlessingCard(b.name, b.message, t('Awaiting approval'), true));
         sheetBlessings.forEach(b => renderBlessingCard(b.name, b.message, formatBlessingTime(b.time)));
         defaultBlessings.forEach(b => renderBlessingCard(b.name, b.message, b.time));
     }
 
     function formatBlessingTime(value) {
         const d = new Date(value);
-        if (isNaN(d)) return 'Shubhkaamnaye';
+        if (isNaN(d)) return t('Shubhkaamnaye');
         return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
     }
 
@@ -252,8 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'col-md-6 col-lg-4';
         const badge = pending
-            ? '<span class="badge bg-light text-secondary border"><i class="far fa-hourglass me-1"></i> Visible to you until approved</span>'
-            : '<span class="badge bg-light text-mauve-deep border"><i class="fas fa-heart text-danger me-1"></i> Shubhkaamnaye</span>';
+            ? '<span class="badge bg-light text-secondary border"><i class="far fa-hourglass me-1"></i> ' + t('Visible to you until approved') + '</span>'
+            : '<span class="badge bg-light text-mauve-deep border"><i class="fas fa-heart text-danger me-1"></i> ' + t('Shubhkaamnaye') + '</span>';
         card.innerHTML = `
             <div class="blessing-card-pastel">
                 <div class="d-flex align-items-center mb-3">
@@ -290,14 +310,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify({ type: 'blessing', name, message, website: document.getElementById('guestWebsite')?.value || '' })
+                body: JSON.stringify({ type: 'blessing', client: clientId(), name, message, website: document.getElementById('guestWebsite')?.value || '' })
             }).catch(() => {
-                showToast('⚠️ Could not reach the blessings sheet. Please try again in a moment.');
+                showToast(t('⚠️ Could not reach the blessings sheet. Please try again in a moment.'));
             });
 
             addPendingBlessing(name, message);
             if (window.showerBlessings) window.showerBlessings(60);
-            showToast('💖 Thank you! Your blessing will appear on the wall once the family approves it.');
+            showToast(t('💖 Thank you! Your blessing will appear on the wall once the family approves it.'));
             blessingForm.reset();
         });
     }
@@ -345,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(ev.title)}&dates=${ev.googleDates}&details=${encodeURIComponent(ev.desc)}&location=${encodeURIComponent(ev.location)}`;
 
         window.open(googleUrl, '_blank');
-        showToast(`📅 Opening Google Calendar for ${ev.title}`);
+        showToast(t('📅 Opening Google Calendar for ') + ev.title);
     };
 
     window.downloadICS = function (eventType) {
@@ -414,7 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        showToast('📥 iCalendar (.ics) downloaded for Apple/Outlook!');
+        showToast(t('📥 iCalendar (.ics) downloaded for Apple/Outlook!'));
     };
 });
 

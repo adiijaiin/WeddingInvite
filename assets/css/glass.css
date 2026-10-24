@@ -248,6 +248,45 @@ html.glass-theme .venue-showcase-pastel { overflow: hidden; }
 html.glass-theme .venue-pastel-img-wrap img { border-radius: calc(var(--glass-radius-lg) - 2px) calc(var(--glass-radius-lg) - 2px) 0 0; }
 html.glass-theme .venue-pastel-details { border-radius: 0 0 var(--glass-radius-lg) var(--glass-radius-lg); border: 0; box-shadow: none; }
 
+/* ---------- the couple's names: the focus of the page ----------
+   Luxurious Script, very large, stepped across three lines:
+       Aditya
+              &
+                  Naincee                                            */
+html.glass-theme .names-main-title {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: 'Luxurious Script', 'Great Vibes', cursive;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: clamp(4.6rem, 12vw, 9.5rem);
+    line-height: 0.92;
+    text-align: left;
+    margin: 0.5rem auto 1.25rem;
+    /* room for the script's ascenders and swashes (the gold is painted only inside the box) */
+    padding: 0.18em 0.25em 0.12em 0.1em;
+}
+
+html.glass-theme .names-main-title > span { display: block; }
+html.glass-theme .names-main-title > span:nth-child(1) { margin-left: 0; }
+html.glass-theme .names-main-title > span:nth-child(2) { margin-left: 2.3em; font-size: 0.72em; line-height: 0.8; }
+html.glass-theme .names-main-title > span:nth-child(3) { margin-left: 2.0em; }
+
+@media (max-width: 768px) {
+    html.glass-theme .names-main-title { font-size: clamp(3.4rem, 15vw, 5rem); }
+    html.glass-theme .names-main-title > span:nth-child(2) { margin-left: 1.9em; }
+    html.glass-theme .names-main-title > span:nth-child(3) { margin-left: 1.6em; }
+}
+
+/* the parents' names: the page's sans, but at a regular weight rather than bold */
+html.glass-theme .parivaar-names {
+    font-weight: 400;
+    font-size: 1.35rem;
+    letter-spacing: 0.2px;
+}
+
 /* ---------- 4. interaction ---------- */
 html.glass-theme .glass--interactive,
 html.glass-theme .btn-mauve,
@@ -397,7 +436,16 @@ html.glass-theme .venue-showcase-pastel,
 html.glass-theme .blessing-card-pastel { text-shadow: var(--glass-text-shadow); }
 html.glass-theme .timeline-title-label,
 html.glass-theme .parivaar-names,
-html.glass-theme .names-main-title { text-shadow: none; } /* gradient-filled text must not carry a text-shadow */
+/* the names lift off the page with a soft, wide shadow. On gold (gradient-filled) text a text-shadow would
+   show through the letters, so a drop-shadow filter is used: it sits behind the painted glyphs only. */
+html.glass-theme .names-main-title {
+    text-shadow: none;
+    filter: drop-shadow(0 6px 14px rgba(70, 40, 50, 0.22)) drop-shadow(0 1px 2px rgba(70, 40, 50, 0.18));
+}
+
+html[data-theme="mint-hindi"] .names-main-title {
+    filter: drop-shadow(0 6px 14px rgba(20, 70, 75, 0.24)) drop-shadow(0 1px 2px rgba(20, 70, 75, 0.2));
+}
 
 /* mobile: lighter blur and tighter corners */
 @media (max-width: 768px) {
@@ -441,14 +489,15 @@ html.glass-theme .glass-blobs span:nth-child(4) { top: 45vh; left: 35vw; width: 
 }
 
 /* blob colours per page */
-html[data-theme="mint-glass"] {
+html[data-theme="mint-hindi"] {
     --blob-1: #a7dcd7;   /* mint */
     --blob-2: #b4cfe8;   /* powder blue */
     --blob-3: #f1dfae;   /* champagne */
     --blob-4: #f6d6de;   /* a breath of the monogram's pink */
 }
 
-html[data-theme="blush-glass"] {
+html[data-theme="blush-glass"],
+html[data-theme="blush-hindi"] {
     --blob-1: #f5c3cf;   /* blush rose */
     --blob-2: #c6d8c0;   /* sage */
     --blob-3: #f1dfae;   /* champagne */

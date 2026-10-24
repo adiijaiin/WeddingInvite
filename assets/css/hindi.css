@@ -1,0 +1,93 @@
+/* ==========================================================================
+   HINDI PAGES · type for Devanagari
+   Loaded only by the Hindi pages (html[lang="hi"]). The Latin faces used
+   elsewhere (Outfit, Cinzel, Luxurious Script) have no Devanagari glyphs,
+   so Yatra One (the face of the "उत्सव का स्थल" heading) carries the whole
+   page; only the couple's names differ, set in Rozha One. Letter-spacing and
+   uppercase are dropped — neither suits Devanagari.
+   ========================================================================== */
+
+html[lang="hi"] {
+    --font-heading: 'Yatra One', 'Rozha One', serif;
+    --font-script: 'Yatra One', 'Tillana', cursive;
+    --font-serif: 'Yatra One', 'Noto Serif Devanagari', serif;
+    --font-sans: 'Yatra One', 'Noto Sans Devanagari', sans-serif;
+}
+
+html[lang="hi"] body {
+    font-family: var(--font-sans);
+    line-height: 1.8;
+}
+
+/* Yatra One everywhere, forms and small notes included; only the couple's names differ (Kalam) */
+html[lang="hi"] .form-control,
+html[lang="hi"] .form-select,
+html[lang="hi"] .form-label,
+html[lang="hi"] .form-check-label,
+html[lang="hi"] .small,
+html[lang="hi"] small,
+html[lang="hi"] .btn,
+html[lang="hi"] .badge,
+html[lang="hi"] .toast-body,
+html[lang="hi"] .modal-content {
+    font-family: 'Yatra One', 'Noto Sans Devanagari', sans-serif;
+}
+
+/* the couple's names: Rozha One, the face of the "ॐ श्री जिनेंद्राय नमः" line; the stepped layout stays */
+html[lang="hi"].glass-theme .names-main-title {
+    font-family: 'Rozha One', 'Yatra One', serif;
+    font-weight: 400;
+    font-size: clamp(3.8rem, 10vw, 7.8rem);
+    line-height: 1.2;
+    padding: 0.1em 0.2em 0.1em 0.1em;
+}
+
+/* the ampersand stays in the Latin script face: Tillana has no "&" of its own */
+/* the Mint page takes Tillana Bold, the flowing Devanagari script, for the names instead */
+html[data-theme="mint-hindi"].glass-theme .names-main-title {
+    font-family: 'Tillana', 'Rozha One', cursive;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+html[lang="hi"].glass-theme .names-main-title > span:nth-child(2) {
+    font-family: 'Luxurious Script', 'Great Vibes', cursive;
+    font-size: 0.75em;
+}
+
+/* headings set in the display face */
+html[lang="hi"] .font-royal,
+html[lang="hi"] .timeline-main-title,
+html[lang="hi"] .countdown-digit {
+    font-family: 'Yatra One', 'Rozha One', serif;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+html[lang="hi"] .timeline-main-title { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+
+/* small caps and tracked labels become plain Devanagari */
+html[lang="hi"] .floral-badge-pill,
+html[lang="hi"] .parivaar-role,
+html[lang="hi"] .timeline-title-label,
+html[lang="hi"] .timeline-day-badge,
+html[lang="hi"] .timeline-main-subtitle,
+html[lang="hi"] .countdown-unit,
+html[lang="hi"] .text-uppercase,
+html[lang="hi"] .letter-spacing-2 {
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}
+
+html[lang="hi"] .timeline-title-label { font-size: 1.1rem; font-weight: 600; }
+html[lang="hi"] .timeline-time-label { font-family: 'Yatra One', serif; letter-spacing: 0; }
+html[lang="hi"].glass-theme .parivaar-names { font-weight: 500; font-size: 1.3rem; }
+html[lang="hi"] .parivaar-name { font-family: 'Yatra One', serif; font-size: 1.25em; }
+html[lang="hi"] .font-script { font-family: 'Yatra One', serif; }
+html[lang="hi"] .wax-seal-inner-monogram { font-family: 'Yatra One', serif; }
+html[lang="hi"] .floral-badge-pill { font-size: 0.9rem; }
+
+/* Devanagari sits taller than Latin: give buttons and pills a touch more room */
+html[lang="hi"] .btn,
+html[lang="hi"] .quick-pill-btn,
+html[lang="hi"] .btn-cal-mini { line-height: 1.6; }

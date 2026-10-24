@@ -165,7 +165,7 @@ html[data-theme="peach-camel"] {
    ground is a pale aqua-white watercolour wash. */
 html[data-theme="mint-aqua"],
 html[data-theme="mint-illustrated"],
-html[data-theme="mint-glass"] {
+html[data-theme="mint-hindi"] {
     --bg-page: #f6fbfa;
     --bg-page-soft: #eaf5f3;
     --bg-page-deep: #dcefeb;
@@ -216,7 +216,8 @@ html[data-theme="mint-glass"] {
    gold foil accents kept. */
 html[data-theme="blush-sage"],
 html[data-theme="blush-garden"],
-html[data-theme="blush-glass"] {
+html[data-theme="blush-glass"],
+html[data-theme="blush-hindi"] {
     --bg-page: #fdfbf6;
     --bg-page-soft: #f6f1e6;
     --bg-page-deep: #efe6d6;
@@ -843,6 +844,22 @@ body {
         width: calc(100% - 75px);
         padding-left: 1.6rem;
     }
+}
+
+/* the quick pills in the e-invitation jump to each event: land with a little headroom
+   and a brief glow so the eye finds the right row */
+.timeline-event-row {
+    scroll-margin-top: 110px;
+}
+
+.timeline-event-row:target .timeline-right-info {
+    animation: eventArrive 1.8s ease-out;
+    border-radius: 14px;
+}
+
+@keyframes eventArrive {
+    0%   { background: rgba(197, 160, 89, 0.28); box-shadow: 0 0 0 10px rgba(197, 160, 89, 0.18); }
+    100% { background: transparent; box-shadow: 0 0 0 10px transparent; }
 }
 
 .timeline-time-label {

@@ -9,16 +9,18 @@
         content="You are cordially invited to celebrate the wedding of Aditya & Naincee. Haldi, Ring Ceremony & Sangeet, Phere, and Reception at Hotel HR Greens, Indore.">
 
     <!-- Bootstrap 5.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha384-t1nt8BQoYMLFN5p42tRAtuAAFQaCQODekUVeKKZrEnEyp4H2R0RHFz0KWpmj7i8g" crossorigin="anonymous">
 
     <!-- Google Fonts: Royal Serifs, Sanskrit-friendly and Elegant Scripts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;800&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Rozha+One&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;800&family=Great+Vibes&family=Luxurious+Script&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Rozha+One&display=swap"
         rel="stylesheet">
 
     <!-- Custom Pastel Indian Wedding Stylesheet (Beige, Mauve, Powder Blue) -->
@@ -329,13 +331,13 @@
 
                     <!-- Quick Ceremony Jump Pills -->
                     <div class="event-quick-pills">
-                        <a href="#weddingTimeline" class="quick-pill-btn"><i class="fas fa-sun text-warning"></i> Haldi
+                        <a href="#ev-haldi" class="quick-pill-btn"><i class="fas fa-sun text-warning"></i> Haldi
                             (21 Dec, 02:00 PM)</a>
-                        <a href="#weddingTimeline" class="quick-pill-btn"><i
+                        <a href="#ev-sangeet" class="quick-pill-btn"><i
                                 class="fas fa-ring text-powder-blue"></i> Ring Ceremony & Sangeet (21 Dec, 7:00 PM)</a>
-                        <a href="#weddingTimeline" class="quick-pill-btn"><i
+                        <a href="#ev-phere" class="quick-pill-btn"><i
                                 class="fas fa-rings-wedding text-mauve"></i> Phere (22 Dec, 01:00 PM)</a>
-                        <a href="#weddingTimeline" class="quick-pill-btn"><i
+                        <a href="#ev-reception" class="quick-pill-btn"><i
                                 class="fas fa-glass-cheers text-success"></i> Reception (22 Dec, 7:00 PM)</a>
                     </div>
                 </div>
@@ -412,7 +414,7 @@
                         </div>
 
                         <!-- EVENT 1: HALDI & PHOOLON KI HOLI -->
-                        <div class="timeline-event-row">
+                        <div class="timeline-event-row" id="ev-haldi">
                             <!-- Left Illustration -->
                             <div class="timeline-left-art">
                                 <div class="timeline-art-box" title="Haldi & Floral Petals">
@@ -464,7 +466,7 @@
                         </div>
 
                         <!-- EVENT 2: RING CEREMONY & SANGEET -->
-                        <div class="timeline-event-row">
+                        <div class="timeline-event-row" id="ev-sangeet">
                             <!-- Left Illustration (Engagement Ring & Music Notes) -->
                             <div class="timeline-left-art">
                                 <div class="timeline-art-box" title="Ring Ceremony & Music">
@@ -521,7 +523,7 @@
                         </div>
 
                         <!-- EVENT 3: BAARAT / PROCESSION -->
-                        <div class="timeline-event-row">
+                        <div class="timeline-event-row" id="ev-baraat">
                             <!-- Left Illustration (Royal Safa / Dhol Welcome) -->
                             <div class="timeline-left-art">
                                 <div class="timeline-art-box" title="Baraat Swagat">
@@ -558,7 +560,7 @@
                         </div>
 
                         <!-- EVENT 4: SHUBH VIVAH & SACRED PHERE -->
-                        <div class="timeline-event-row">
+                        <div class="timeline-event-row" id="ev-phere">
                             <!-- Left Illustration (Interlocking Wedding Rings with Diamond - Like reference image!) -->
                             <div class="timeline-left-art">
                                 <div class="timeline-art-box" title="Wedding Ceremony">
@@ -604,7 +606,7 @@
                         </div>
 
                         <!-- EVENT 5: THE GRAND ROYAL RECEPTION -->
-                        <div class="timeline-event-row">
+                        <div class="timeline-event-row" id="ev-reception">
                             <!-- Left Illustration (Tiered Wedding Cake - Exactly like reference image!) -->
                             <div class="timeline-left-art">
                                 <div class="timeline-art-box" title="Reception & Cake">
@@ -769,7 +771,7 @@
                                 <div class="mb-3">
                                     <label class="form-label text-dark small fw-semibold">Full Name / Parivaar Name
                                         *</label>
-                                    <input type="text" id="guestName" class="form-control"
+                                    <input type="text" id="guestName" class="form-control" maxlength="120"
                                         placeholder="e.g. Rahul & Neha Kapoor" required>
                                 </div>
 
@@ -777,7 +779,7 @@
                                     <div class="col-md-6">
                                         <label class="form-label text-dark small fw-semibold">Phone / WhatsApp Number
                                             *</label>
-                                        <input type="tel" id="guestPhone" class="form-control"
+                                        <input type="tel" id="guestPhone" class="form-control" maxlength="20"
                                             placeholder="+91 98765 43210" required>
                                     </div>
                                     <div class="col-md-6">
@@ -840,7 +842,7 @@
 
                                 <div class="mb-4">
                                     <label class="form-label text-dark small fw-semibold">Arrival Details</label>
-                                    <textarea id="guestArrival" class="form-control" rows="2"
+                                    <textarea id="guestArrival" class="form-control" rows="2" maxlength="300"
                                         placeholder="e.g. Arriving 20th Dec by train, leaving 23rd morning"></textarea>
                                 </div>
 
@@ -877,12 +879,12 @@
                                     <div class="mb-3">
                                         <label class="form-label text-dark small fw-semibold">Your Name /
                                             Relationship</label>
-                                        <input type="text" id="blessingAuthor" class="form-control"
+                                        <input type="text" id="blessingAuthor" class="form-control" maxlength="120"
                                             placeholder="e.g. Priya Masi & Family" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label text-dark small fw-semibold">Blessing Message</label>
-                                        <textarea id="blessingContent" class="form-control" rows="3"
+                                        <textarea id="blessingContent" class="form-control" rows="3" maxlength="600"
                                             placeholder="May your lives together be filled with boundless laughter, health, and prosperity..."
                                             required></textarea>
                                     </div>
@@ -946,14 +948,6 @@
         </div>
     </footer>
 
-    <!-- Theme switcher, kept at the very end of the page -->
-    <div class="theme-switcher">
-        <label for="themeSelect"><i class="fas fa-palette me-1"></i> Theme</label>
-        <select id="themeSelect">
-            <option value="blush-glass">Option 1 · Blush Garden · Liquid Glass</option>
-            <option value="mint-glass">Option 2 · Mint Aqua · Liquid Glass</option>
-        </select>
-    </div>
 
     <!-- =========================================================================
          9. FLOATING INTERACTIVE CONTROLS
@@ -1008,7 +1002,8 @@
     </div>
 
     <!-- Bootstrap 5.3 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!-- Interactive Scripts -->
     <script src="assets/js/petals.js"></script>
